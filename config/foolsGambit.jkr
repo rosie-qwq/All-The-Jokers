@@ -1,0 +1,16 @@
+return {
+	["alternate_sfx"] = false,
+	["additional_title"] = true,
+	["s_version"] = {
+		["active"] = "None",
+		["selected"] = 1,
+		["options"] = {
+			"None",
+			"2025 April Fools",
+		},
+	},
+	["duplicated_jokers"] = false,
+	["version"] = "0.3.0-dev",
+	["extra_jokers"] = true,
+	["debug_mode"] = false,
+}

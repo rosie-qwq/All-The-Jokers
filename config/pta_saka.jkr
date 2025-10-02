@@ -1,0 +1,16 @@
+return {
+	["Fatty Mode"] = false,
+	["Property Music"] = true,
+	["Mechanic Music"] = true,
+	["Music"] = true,
+	["Risk Cards"] = true,
+	["Prismatic Music"] = true,
+	["Balanced-ish"] = false,
+	["Ahead"] = true,
+	["Support Card Animations"] = false,
+	["Experimental"] = true,
+	["Property Cards"] = true,
+	["New Run Plus"] = false,
+	["Cross Mod Content"] = true,
+	["Witty Comments"] = true,
+}

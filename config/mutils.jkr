@@ -1,0 +1,11 @@
+return {
+	["consumeable_slots"] = 0,
+	["rarity_rate_Uncommon"] = 25,
+	["rarity_rate_Common"] = 70,
+	["shop_joker_slots"] = 0,
+	["shop_voucher_slots"] = 0,
+	["joker_slots"] = 0,
+	["joker_rate"] = 71,
+	["shop_booster_slots"] = 0,
+	["rarity_rate_Rare"] = 5,
+}

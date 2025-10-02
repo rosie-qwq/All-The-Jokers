@@ -1,0 +1,6 @@
+return {
+	["disable_card"] = false,
+	["disable_tier3"] = false,
+	["starlo"] = false,
+	["disable_upgradedfood"] = false,
+}

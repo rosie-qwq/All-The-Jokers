@@ -1,0 +1,7 @@
+return {
+	["TsunamiXMod"] = true,
+	["PolyHandScale"] = false,
+	["LegendFusions"] = true,
+	["TsunRounding"] = false,
+	["TsunamiLevel2"] = true,
+}

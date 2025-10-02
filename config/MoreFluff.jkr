@@ -1,0 +1,15 @@
+return {
+	["Jokers"] = true,
+	["Colour Cards"] = true,
+	["Music"] = true,
+	["Achievements"] = true,
+	["Huger Joker"] = false,
+	["Colour Pack Music"] = true,
+	["Other Packs"] = true,
+	["Horse Sound"] = true,
+	["Other Tags"] = true,
+	["Disable Art Credits"] = false,
+	["Superboss"] = true,
+	["45 Degree Rotated Tarot Cards"] = true,
+	["Programmer Art"] = false,
+}

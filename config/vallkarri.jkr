@@ -1,0 +1,6 @@
+return {
+	["metaprogression"] = false,
+	["tau_collection"] = false,
+	["excessive_badges"] = true,
+	["overscoring"] = false,
+}
