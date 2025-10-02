@@ -6,3 +6,7 @@
 4. have fun and pray to god it works on ur machine lmao
 
 btw if the modpack crashes when u try to start, disable ur steam's auto cloudsave, delete the savefiles again, start the game, then re-enable cloudsave, that should fix it hopefully!! (btw u can delete the modded save too if it isnt compatible, im not always micromanaging every file sorrgy)
+
+# disclaimers
+
+credits go to all the mods's creators and devs nd so on, im only jumbling these together and making frankeinstein edits to them sometimes in hope they work together, but 90% of the time its still just all the mod author's work so go ahead and check their mods nd profiles and star and share their repos too!!
