@@ -1,3 +1,6 @@
+# PSA
+always download from releases page first, then main if that isnt working, and only then from dev, if you go straight to main or dev then u might encounter problems!
+
 # Instructions
 
 0. have love injector 8.0 (and the lua51.dll file) on ur balatro steamapps directory for the love of GOD!! its steamapps/common/balatro/version.dll IF YOU DONT HAVE THAT DONT COMPLAIN (pls)
