@@ -1,5 +1,6 @@
 # PSA
 always download from releases page first, then main if that isnt working, and only then from dev, if you go straight to main or dev then u might encounter problems!
+also if you want help or want to help or maybe just wanna chat about balatro modpacks, check out the official ATJ discord server: https://discord.gg/zJGDf3P3N8
 
 # Instructions
 
