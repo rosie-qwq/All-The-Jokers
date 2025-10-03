@@ -9,4 +9,4 @@ btw if the modpack crashes when u try to start, disable ur steam's auto cloudsav
 
 # disclaimers
 
-credits go to all the mods's creators and devs nd so on, im only jumbling these together and making frankeinstein edits to them sometimes in hope they work together, but 90% of the time its still just all the mod author's work so go ahead and check their mods nd profiles and star and share their repos too!!
+credits go to all the respective mods's creators and devs nd so on, im only jumbling these together and making frankeinstein edits to them sometimes in hope they work together, but 90% of the time its still just all the mod author's work so go ahead and check their mods nd profiles and star and share their repos too!!
