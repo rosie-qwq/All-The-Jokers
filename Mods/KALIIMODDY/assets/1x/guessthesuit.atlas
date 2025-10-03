@@ -1,0 +1,32 @@
+size: 142,192
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+clubs
+  rotate: false
+  xy: 0, 0
+  size: 71, 95
+  orig: 71, 95
+  offset: 0, 0
+  index: -1
+hearts
+  rotate: false
+  xy: 71, 0
+  size: 71, 95
+  orig: 71, 95
+  offset: 0, 0
+  index: -1
+diamonds
+  rotate: false
+  xy: 0, 97
+  size: 71, 95
+  orig: 71, 95
+  offset: 0, 0
+  index: -1
+spades
+  rotate: false
+  xy: 71, 97
+  size: 71, 95
+  orig: 71, 95
+  offset: 0, 0
+  index: -1

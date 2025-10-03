@@ -1,0 +1,234 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Ogerpon Cornestone "Stones have a rank"
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "function Card:get_id()"
+position = 'after'
+match_indent = true
+payload = '''
+    local ogerpons_cornerstone = find_joker('ogerpon_cornerstone')
+    if #ogerpons_cornerstone > 0 and self.ability.effect == 'Stone Card' then
+        return SMODS.Ranks["maelmc_Ogerpon"].id
+    end
+'''
+
+# Prevent Sun Stone from rolling Ogerpon rank
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokeutils.lua"]'
+pattern = '''if v.suit == card.base.suit then
+        table.insert(poss_ranks, v.value)
+'''
+position = 'at'
+match_indent = true
+payload = '''
+if v.suit == card.base.suit then
+    if not (v.value == "maelmc_Ogerpon") then
+        table.insert(poss_ranks, v.value)
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokeutils.lua"]'
+pattern = '''if _r == card.base.value then
+    table.insert(poss_ranks, v)
+    break
+'''
+position = 'at'
+match_indent = true
+payload = '''
+if _r == card.base.value then
+    if not (v == "maelmc_Ogerpon") then
+        table.insert(poss_ranks, v)
+        break
+    end
+'''
+
+# Gym Challenge and 'Til Death Do Us Part applying perish to jokers created (mainly for jokers in shop and boosters as Gym Leader already applies to jokers possessed)
+# Also the code for Perrin / Photographer 
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if card.ability.consumeable and not skip_materialize then card:start_materialize() end"
+position = "after"
+match_indent = true
+payload = '''
+if _type == 'Joker' then
+    if G.GAME.modifiers.maelmc_gym_challenge and not (get_type(card) == G.GAME.maelmc_gym_leader_type) then card:set_perishable(true) end
+    if G.GAME.modifiers.maelmc_perish_3 then card:set_perishable(true) end
+    photographer_util(card)
+end
+'''
+
+# More code for Photographer, to make it compatible with evolving pokemon
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+pattern = '''G.P_CENTERS.e_poke_shiny.on_load(card)
+    end
+  end'''
+position = "after"
+match_indent = true
+payload = '''
+photographer_util(card)
+'''
+
+# Right-click on Photographer to see all Pokémon taken in photo
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+pattern = '''if cardname == "ruins_of_alph" then
+    for k, v in pairs(card.ability.extra.forms) do
+      local form = {key = "j_poke_unown", form = v}
+      table.insert(keys, form)
+    end
+  end'''
+position = "after"
+match_indent = true
+payload = '''
+if cardname == "photographer" then
+    for k, v in pairs(card.ability.extra.timeless_woods_found) do
+        table.insert(keys, v)
+    end
+end
+'''
+
+# maelmc_ban_no_perish banishing non perish jokers
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if _ch.rules then"
+position = "before"
+match_indent = true
+payload = "local no_perish = false"
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "for k, v in ipairs(_ch.rules.custom) do"
+position = "after"
+match_indent = true
+payload = '''
+    if v.id == 'maelmc_ban_no_perish' then
+        no_perish = true
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if _ch.restrictions then"
+position = "after"
+match_indent = true
+payload = '''
+    if no_perish then
+        local to_add = {}
+        for _, v in ipairs(G.P_CENTER_POOLS.Joker) do
+            if not v.perishable_compat then
+                if not table.contains(to_add, v.key) then
+                    to_add[#to_add+1] = v.key
+                end
+            end
+        end
+        local banned = {}
+        for _, v in ipairs(_ch.restrictions.banned_cards) do
+            local curr = v["id"]
+            banned[#banned+1] = curr
+        end
+        for _, v in ipairs(to_add) do
+            if not table.contains(banned,v) then
+                _ch.restrictions.banned_cards[#_ch.restrictions.banned_cards+1] = {id = v}
+            end
+        end
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if challenge.restrictions then"
+position = "after"
+match_indent = true
+payload = '''
+    local no_perish = false
+    if challenge.rules and challenge.rules.custom then
+        for k, v in ipairs(challenge.rules.custom) do
+            if v.id == 'maelmc_ban_no_perish' then 
+                no_perish = true
+                break
+            end
+        end
+    end
+    if no_perish then
+        local to_add = {}
+        for _, v in ipairs(G.P_CENTER_POOLS.Joker) do
+            if not v.perishable_compat then
+                if not table.contains(to_add, v.key) then
+                    to_add[#to_add+1] = v.key
+                end
+            end
+        end
+        local banned = {}
+        for _, v in ipairs(challenge.restrictions.banned_cards) do
+            local curr = v["id"]
+            banned[#banned+1] = curr
+        end
+        for _, v in ipairs(to_add) do
+            if not table.contains(banned,v) then
+                challenge.restrictions.banned_cards[#challenge.restrictions.banned_cards+1] = {id = v}
+            end
+        end
+    end
+'''
+
+# call to remove and start_dissolve triggers Guzzlord
+
+#[[patches]]
+#[patches.pattern]
+#target = '=[SMODS Pokermon "functions/pokefunctions.lua"]'
+#pattern = '''remove = function(self, card, context, check_shiny)
+#  if check_shiny and card.edition and card.edition.poke_shiny then
+#    SMODS.change_booster_limit(-1)
+#  end'''
+#position = "after"
+#match_indent = true
+#payload = '''
+#    if card.config and card.config.center and (self == card.config.center) then
+#        local guzzlords = find_joker("guzzlord")
+#        for _, v in ipairs(guzzlords) do
+#            v.ability.extra.Xmult = v.ability.extra.Xmult + v.ability.extra.Xmult_mod
+#            v:juice_up()
+#            card_eval_status_text(v, 'extra', nil, nil, nil, {message = "Eaten", COLOUR = G.C.DARK_EDITION})
+#        end
+#    end
+#'''
+
+#[[patches]]
+#[patches.pattern]
+#target = 'card.lua'
+#pattern = "function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)"
+#position = "after"
+#match_indent = true
+#payload = '''
+#    if not self.getting_sliced)
+#'''
+
+# Hazards giving hand size on Hazard Deck (copied from the original code of Hazard cards)
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Pokermon "enhancements/enhancement1.lua"]'
+pattern = '''in_pool = function(self, args) return false end,'''
+position = "after"
+match_indent = true
+payload = '''set_ability = function(self, card, initial, delay_sprites)
+    if G.GAME.modifiers.hazard_deck then
+        card.ability.card_limit = 1
+    end
+  end,'''

@@ -1,0 +1,18 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+dump_lua = true
+
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''
+function love.update( dt )
+'''
+position = "after"
+payload = '''
+versatileUpd()
+'''
+match_indent = true
+times = 1
+

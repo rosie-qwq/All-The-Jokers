@@ -1,0 +1,56 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# This is Deck Stuffer implementation.
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{type = (G.GAME.used_vouchers["v_illusion"] and pseudorandom(pseudoseed('illusion')) > 0.6) and 'Enhanced' or 'Base', val = G.GAME.playing_card_rate},'''
+position = "after"
+payload = '''{type = (G.GAME.used_vouchers["v_roff_deckstuffer"] and pseudorandom(pseudoseed('roff_deckstuffer')) > 0.6) and 'Enhanced' or 'Base', val = G.GAME.playing_card_rate},'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')'''
+position = "at"
+payload = '''local card
+if G.GAME.used_vouchers["v_roff_deckstuffer"] and pseudorandom(pseudoseed('illusion')) > 0.5 and (v.type == 'Base' or v.type == 'Enhanced') then
+local pool = {}
+for j = 1, #G.playing_cards do
+if G.playing_cards[j].ability.roff_favorite then
+pool[#pool + 1] = G.playing_cards[j] end end
+card = copy_card(pseudorandom_element(pool, pseudoseed('roff_favorite')), nil, nil, G.playing_card) else
+card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')
+end'''
+match_indent = true
+
+# Casually fix Illusion, just because we can!
+
+# This is Hone/Glow Up fix.
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''if (v.type == 'Base' or v.type == 'Enhanced') and G.GAME.used_vouchers["v_illusion"] and pseudorandom(pseudoseed('illusion')) > 0.8 then'''
+position = "at"
+payload = '''if (v.type == 'Base' or v.type == 'Enhanced') and G.GAME.used_vouchers["v_illusion"] and pseudorandom(pseudoseed('illusion_editions')) < (G.GAME.edition_rate / 5) then'''
+match_indent = true
+
+# This is seal fix.
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''if edition_poll > 1 - 0.15 then edition.polychrome = true
+                elseif edition_poll > 0.5 then edition.holo = true
+                else edition.foil = true
+                end
+                card:set_edition(edition)'''
+position = "after"
+payload = '''end if (v.type == 'Base' or v.type == 'Enhanced') and G.GAME.used_vouchers["v_illusion"] and pseudorandom(pseudoseed('illusion_enhancements')) > 0.6 then
+card:set_ability(SMODS.poll_enhancement({guaranteed = true})) 
+end if (v.type == 'Base' or v.type == 'Enhanced') and G.GAME.used_vouchers["v_illusion"] and pseudorandom(pseudoseed('illusion_seals')) > 0.8 then
+card:set_seal(SMODS.poll_seal({ guaranteed = true, type_key = 'illusion'}))
+'''
+match_indent = true

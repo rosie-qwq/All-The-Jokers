@@ -1,0 +1,19 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+[[patches]]
+[patches.pattern]
+target = '''functions/misc_functions.lua'''
+pattern = '''
+elseif card.config.center.set == 'Spectral' then  G.GAME.consumeable_usage_total.spectral = G.GAME.consumeable_usage_total.spectral + 1
+'''
+position = '''after'''
+payload = '''
+elseif card.config.center.set == 'Conspiracy' then 
+    G.GAME.consumeable_usage_total.conspiracy = G.GAME.consumeable_usage_total.conspiracy or 0
+    G.GAME.consumeable_usage_total.conspiracy = G.GAME.consumeable_usage_total.conspiracy + 1
+'''
+match_indent = true
+times = 1

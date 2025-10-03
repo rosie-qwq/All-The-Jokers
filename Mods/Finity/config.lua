@@ -1,0 +1,3 @@
+return {
+	["spectral"] = true,
+}

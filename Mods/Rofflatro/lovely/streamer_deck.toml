@@ -1,0 +1,19 @@
+[manifest]
+version = "1.0.0"
+priority = 28
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local rarity = _rarity or SMODS.poll_rarity("Joker", 'rarity'..G.GAME.round_resets.ante..(_append or ''))'''
+position = "after"
+payload = '''
+if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_roff_streamerluck" and _type == 'Joker' then
+    for i = 1, 4 do
+        if rarity == 1 then
+            rarity = SMODS.poll_rarity("Joker", 'rarity'..G.GAME.round_resets.ante..(_append or ''))
+        end
+    end
+end
+'''
+match_indent = true

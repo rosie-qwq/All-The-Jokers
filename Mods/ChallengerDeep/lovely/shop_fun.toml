@@ -1,0 +1,129 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# Increase cost of rerolls with reroll_cost_increase rule
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end"
+position = "at"
+match_indent = true
+payload = 'if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + (G.GAME.modifiers.reroll_cost_increase or 1) end'
+
+# Stop Voucher Tags from working with no_vouchers rule
+[[patches]]
+[patches.pattern]
+target = "tag.lua"
+pattern = "if self.name == 'Voucher Tag' then"
+position = "after"
+match_indent = true
+payload = '''
+    if not G.GAME.modifiers.no_vouchers then
+'''
+# remove vouchers
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] then"
+position = "at"
+match_indent = true
+payload = 'if G.GAME.current_round.voucher and G.P_CENTERS[G.GAME.current_round.voucher] and not G.GAME.modifiers.no_vouchers then'
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if G.load_shop_vouchers then"
+position = "at"
+match_indent = true
+payload = '''if G.GAME.modifiers.no_vouchers then
+    elseif G.load_shop_vouchers then '''
+
+[[patches]]
+[patches.pattern]
+target = "tag.lua"
+pattern = "elseif _context.type == 'tag_add' then"
+position = "before"
+match_indent = true
+payload = '''
+    else
+        self:yep('+', G.C.RED,function() 
+            play_sound('tarot2', 0.76, 0.4)
+            play_sound('tarot2', 1, 0.4)
+            return true
+        end)
+    end
+'''
+
+# update shop ui to tell the player they are NOT getting any vouchers anytime soon
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "{n=G.UIT.T, config={text = 'DEFEAT', scale = 0.6, colour = G.C.WHITE}}"
+position = "at"
+match_indent = true
+payload = "{n=G.UIT.T, config={text = (G.GAME.modifiers.no_vouchers and 'VOUCHERS ARE') or 'DEFEAT', scale = 0.6, colour = G.C.WHITE}}"
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "{n=G.UIT.T, config={text = 'BOSS BLIND', scale = 0.4, colour = G.C.WHITE}}"
+position = "at"
+match_indent = true
+payload = "{n=G.UIT.T, config={text = (G.GAME.modifiers.no_vouchers and 'DISABLED') or 'BOSS BLIND', scale = (G.GAME.modifiers.no_vouchers and 0.8) or 0.4, colour = (G.GAME.modifiers.no_vouchers and G.C.RED) or G.C.WHITE}}"
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "{n=G.UIT.T, config={text = 'TO RESTOCK', scale = 0.4, colour = G.C.WHITE}}"
+position = "at"
+match_indent = true
+payload = "not G.GAME.modifiers.no_vouchers and {n=G.UIT.T, config={text = 'TO RESTOCK', scale = 0.4, colour = G.C.WHITE}} or nil"
+
+# Multiplies cost with all_shop_scaling rule
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.cost = math.max(1, math.floor((self.base_cost + self.extra_cost + 0.5)*(100-G.GAME.discount_percent)/100))"
+position = "at"
+match_indent = true
+payload = 'self.cost = math.max(1, math.floor(((self.base_cost*(G.GAME.modifiers.all_shop_scaling or 1)) + self.extra_cost + 0.5)*(100-G.GAME.discount_percent)/100))'
+
+
+# Disable rerolls with disable_rerolls rule
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = 'if ((G.GAME.dollars-G.GAME.bankrupt_at) - G.GAME.current_round.reroll_cost < 0) and G.GAME.current_round.reroll_cost ~= 0 then'
+position = 'at'
+match_indent = true
+payload = '''if G.GAME.modifiers.disable_rerolls then
+    e.nodes = {}
+end
+if (((G.GAME.dollars-G.GAME.bankrupt_at) - G.GAME.current_round.reroll_cost < 0) and G.GAME.current_round.reroll_cost ~= 0) or G.GAME.modifiers.disable_rerolls then'''
+
+# TALISMAN VERSION
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = 'if ((to_big(G.GAME.dollars)-to_big(G.GAME.bankrupt_at)) - to_big(G.GAME.current_round.reroll_cost) < to_big(0)) and G.GAME.current_round.reroll_cost ~= 0 then'
+position = 'at'
+match_indent = true
+payload = '''if G.GAME.modifiers.disable_rerolls then
+    e.nodes = {}
+end
+if (((to_big(G.GAME.dollars)-to_big(G.GAME.bankrupt_at)) - to_big(G.GAME.current_round.reroll_cost) < to_big(0)) and G.GAME.current_round.reroll_cost ~= 0) or G.GAME.modifiers.disable_rerolls then'''
+
+
+# Force jokers with forced_joker/forced_joker_all/forced_joker_pool rules - unchanged in talisman
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = "local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')"
+position = 'at'
+match_indent = true
+payload = '''local card = create_card(v.type, area, nil, nil, nil, nil, (v.type == 'Joker') and (G.GAME.modifiers.forced_joker or G.GAME.modifiers.forced_joker_all or pseudorandom_element(G.GAME.modifiers.forced_joker_pool)) or nil, 'sho')
+if G.GAME.modifiers.forced_joker then
+    G.GAME.modifiers.forced_joker = nil
+end'''

@@ -1,0 +1,51 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Space Invader Joker ability
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and not self.ability.extra_enhancement then"
+position = "at"
+match_indent = true
+payload = """
+local has_space_invader = next(find_joker("j_bplus_space_invader"))
+if self.seal == 'Blue' and (
+  (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and not self.ability.extra_enhancement)
+  or has_space_invader
+) then
+  if has_space_invader then
+    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
+  end
+"""
+
+# Joker Not Found make Common Jokers no longer appear
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')"
+position = "at"
+match_indent = true
+payload = """
+G.bplus_create_card_opt = { for_shop = true }
+local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')
+G.bplus_create_card_opt = nil
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_starting_pool, _pool_key = G.P_JOKER_RARITY_POOLS[rarity], 'Joker'..rarity..((not _legendary and _append) or '')"
+position = "before"
+match_indent = true
+payload = """
+if G.bplus_create_card_opt and G.bplus_create_card_opt.for_shop and rarity == 1 and next(find_joker("j_bplus_not_found")) then
+  rarity = BPlus.u.poll_rarity("Joker", 'rarity'..G.GAME.round_resets.ante..(_append or ''), {
+    filter = function(r)
+      return r.key ~= "Common"
+    end
+  })
+end
+"""

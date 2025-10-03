@@ -1,0 +1,19 @@
+    {
+    "id": "TheCrackerPack",
+    "name": "The Cracker Pack",
+    "display_name": "The Cracker Pack",
+    "author": ["sophiedeergirl", "sugariimarii"],
+    "description": "A Balatro mod that adds new content, including upgraded food, vouchers, challenges, and more!",
+    "prefix": "cracker",
+    "main_file": "main.lua",
+    "priority": 4,
+    "badge_colour": "d9af4e",
+    "badge_text_colour": "FFFFFF",
+    "version": "0.6.6",
+    "dependencies": [
+        "Steamodded (>=1.0.0~BETA-0711a)", 
+        "Lovely (>=0.6)", 
+    ],
+    "conflicts": [
+    ],
+}

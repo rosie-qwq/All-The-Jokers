@@ -1,0 +1,17 @@
+{
+	"id": "Conspiracy",
+	"name": "Conspiracy",
+	"display_name": "Conspiracy",
+	"author": ["Astra", "anerdymous"],
+	"description": "A new consumable type with a twist",
+	"prefix": "cspy",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "f51bbc",
+	"badge_text_colour": "f8a100",
+	"version": "0.3.0~beta",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-0711a)",
+		"Lovely (>=0.7.1)"
+	]
+}

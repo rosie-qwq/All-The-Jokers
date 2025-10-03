@@ -1,0 +1,1485 @@
+V 0.10.4b:
+Bug Fix:
+- Shang Chi and the Legend of the Ten Rings no longer crashes the game
+- Doctor Strange properly casts its spell
+- Your Highness no longer gives negatives to jokers
+- Aliens now properly debuffs only 2 cards
+- Now You See Me, Encanto, Dark Crystal properly casts a spell now
+- Made it so Kino cards with destroy effects now also destroy debuffed objects
+
+V 0.10.4a:
+Bug Fix:
+- Fixed Magic Beans confection
+- Fixed Fantasy enhancement
+- Fixed spell casting related joker contexts
+
+V 0.10.4:
+API Changes:
+- Decapitalized a decent number of folders and files. This may help with compiling the mod for unconventional set-ups
+- Blockbuster: Spellcasting, the API for all Kino's spell mechanics, has been released and is now implemented in the mod.
+
+Content changes:
+Added 6 new Joker Textures:
+- Star Wars Episode VIII, Star Wars Episode IX, Star Wars: The Clone Wars, Star Wars Holiday Special, Rogue One, Killer Klowns from Outer Space
+
+Added spell retextures:
+- Spell cards now have a new aesthetic
+
+Bug fixes:
+- Fixed Edward Scissorhands' missing description
+- Fixed 12 Monkeys crashing the game
+
+
+
+V 0.10.3c:
+Bug Fixes:
+- Alderaan Deck no longer crashes
+- Counters no longer crash when incrementing down
+- Fixed display error for Demonic cards
+- Evil Dead (2013) no longer can create multiple copies of sacrificed cards if multiple Demonic Cards are used
+- Legendary quests no longer fail to display
+
+V 0.10.3b:
+Content Updates:
+Added 4 new Joker Textures:
+- Star Wars Episode II, Star Wars Episode III, Star Wars Episode V, Star Wars Episode VI
+
+Bug Fixes:
+- Debug tarot card removed from pool
+- specific Lovely patches no longer break other mods' patches
+
+
+V 0.10.3a:
+Content Updates:
+Added 11 new Joker Textures:
+- Rush Hour, Hot Fuzz, Blade Runner, The Force Awakens, Your Highness
+Source Code, Trading Places, Pirates of the Caribbean 2: Dead Man's Chest, Pirates of the Caribbean 3: At World's End, Star Wars Episode 1
+The Pirates! In an Adventure with Scientists
+
+Bug Fixes:
+- Hand upgrade system has been properly updated; non-level upgrades no longer get wiped when leveling up a hand
+- Apollo no longer crashes when no valid target exists
+- 12 Monkeys no longer crashes when Cryptid is installed
+- Batman: Mask of the Phantasm actually works
+- Fixed spawn rates for Star Wars deck and Batman deck
+- Fixed certain jokers forgetting their current target when reloading 
+(Longlegs, The Batman (2022), Lord of the Rings: The Fellowship of the Ring, Predator)
+
+V 0.10.3:
+- Dependency changed to Smods 0827
+
+Content Updates:
+- Added 20 new joker textures:
+John Wick, Die Hard, Resident Evil, School of Rock, Big Daddy, 
+a Fish Called Wanda, Fast 5, Tower Heist, Minecraft, Gulliver's Travels,
+Pulp Fiction, Dead Zone, Bones & All, Blue Velvet, Elephant Man,
+Teenage Mutant Ninja Turtles, Paul, Annihilation, Sunshine, Nightcrawler
+
+API Changes:
+- Fixed Burn Counters not working properly when applied to jokers
+
+Content Updates:
+- Jokers with a loss condition will now taunt you after you lose your run
+
+Bug Fixes:
+- Fixed an issue related to Mystery cards
+- Fixed an issue with Stranger than Fiction crashing the game when used with Cryptid installed
+- Fixed the Questionable deck crashing upon start up
+- Snow White & The Seven Dwarves now works as intended
+- Shazam no longer crashes the game
+- Mortal Kombat no longer crashes when used when you do not have 2 other jokers
+- Fixed crashes that occured when spells were manipulated to have a strength below 1 or above 4
+- Retrigger Counters are no longer disabled
+- Fixed Talisman related crashes
+
+V 0.10.2a:
+Content Updates:
+- Added 14 new textures:
+Glass, the Iron Lady, Lord of the Rings, Snowpiercer, Moulin Rouge, 
+Her, Hell Knight, Peggy Sue got Married, The Tree of Life, Kung Fu Panda, 
+Grown Ups, Kramer Vs. Kramer, Pitch Black, Mamma Mia,
+
+API Changes:
+- Added additional functionality to the counter API
+
+Bug Fixes:
+- Donnie Darko no longer crashes if no joker is present
+- Fixed Krypton crash in specific circumstances
+- Counters no longer animate being applied when a card is copied, or they're displayed in the UI
+
+
+V 0.10.2:
+Content Updates:
+- Added 5 new Textures: House of Gucci, Gravity, Pain & Gain, Fargo, Metropolis
+
+API Changes:
+- Counters API changed. For more details, see the Blockbuster: Counters repository
+
+Content Changes:
+- Reduced lag when playing with some other mods enabled due to interaction between quantum enhancements and the draw step
+
+
+V 0.10.1d:
+Content Update:
+- Added 11 new joker textures (Guardiants of the Galaxy volume 3, Doctor Strange 1 & 2, Big Trouble in Little China, Popeye, Modern Times, Taken, Demolition Man, to Kill a Mockingbird, V for Vendetta & Black Swan)
+
+Content Changes:
+- Actor packs should now only spawn if there is a pool of 10 or more jokers to spawn
+
+Bug Fix:
+- Aliens no longer crashes the game when used with no valid targets left in the deck
+- Resident Evil functions properly
+- Demolition man now upgrades and destroys cards properly
+- Chow boss blind no longer crashes
+- Fixed Actor Pack crashing when set of connected movies is too small
+
+Localization Changes:
+- Added Info Queues for relevant cards for: Aliens 3, The Martian, Mars Attacks, Evil Dead, Ex Machina,
+The Exorcist, Friday the 13th, Gremlins, Halloween, I Robot, The Incredibly Hulk, M3gan, Pride & Prejudice,
+Sleepy Hollow, Steel, Tower Heist, Twilight, Us, 10 Things I Hate About You, 50 First Dates, Dead Zone, Mortal Kombat,
+- Set up description to use multi-boxes for: Elephant Man, Pitch Black, Star Wars Episode V, Signs
+- Changed Clerks description to be more precise
+- Fixed localization for Big Short
+- Fixed localization for Freaky Friday
+
+
+V 0.10.1c:
+
+Content Update:
+- Added 6 new joker textures (Encanto, The Menu, Signs, Doctor Who, Stargate, Independence Day)
+
+Bug Fix:
+- Fixed mystery cards displaying 'Error' when the rank had been discovered
+- Annihilation is now actually fixed
+- Fixed the Snack Bag not properly spawning
+- Oscar Tag no longer awards multiple jokers
+- Fixed the PG & E blind crashing the game
+- Fixed a bug causing retriggered counters to go into the negatives
+
+V 0.10.1b:
+Content update:
+- Added 3 new joker textures (The Sorcerer's Apprentice, Shang Chi, Hit-Man)
+Bug fix:
+- Fixed a crash upon switching profiles
+
+API (dev only):
+- Added contexts related to counters. See Blockbuster: Counters repo for more.
+
+V 0.10.1a:
+
+Content change:
+- Added 3 more new textures
+- Temporarily disabled Asteroid City
+
+Bug Fixes:
+- Annihilation now does not crash when used on rankless or suitless playing cards as the main target
+- Kiki's Delivery Service no longer crashes in specific circumstances
+- Fixed a bug that could crash the game when counters are retriggered
+- Fixed Dinner Tag softlocking the game
+- Spellcasting using modded Suits should no longer crash the game
+
+V 0.10.1:
+Content Changes:
+- Implemented Counters as an actual game item, viewable in the collection
+
+Bug Fixes:
+- Joker boss blind will no longer crash when you do not have any jokers when facing it
+- Fixed Frankenstein 
+- The Prestige functions again
+- Barbie now triggers properly on Queens, instead of Kings (we blame Ken)
+- Debuff counters now remove the debuff when they get removed in any way
+- The Anton Chigurh boss blind now functions as intended, with an update description
+
+V 0.10a:
+
+Bug Fix:
+Fixed an issue where counters could be retriggered to tick over into negatives, rather than be removed from the card
+
+V 0.10 
+
+Texture Pack Change:
+- Pixel art jokers have become the default! If you prefer consistency, you can use the
+texture pack provided by the mod through the Malverk texture loader!
+
+New Mechanic:
+Counters!
+
+## New Content: ##
+
+Jokers (54 new jokers):
+- Pirates of the Caribbean
+- Pirates of the Caribbean 2
+- Pirates of the Caribbean 3
+- Batman (1966)
+- Batman Returns
+
+- Batman Forever
+- The Dark Knight Rises
+- Paul Blart Mall Cop
+- Treasure Island
+- When Harry Met Sally
+
+- House of Gucci
+- Lord of the Rings: The Fellowship of the Ring
+- School of Rock
+- Gulliver's Travels
+- The Warriors
+
+- Annihilation
+- Glass
+- Waterworld
+- The Pirates! Band of Misfits
+- Captain Blood
+
+- Muppet Treasure Island
+- Trading Places
+- Mafia Mamma
+- Mortal Kombat
+- Batman: Mask of the Phantasm
+
+- The Batman (2022),
+- Batman V Superman: Dawn of Justice
+- Shin Kamen Rider
+- Oppenheimer
+- Arrival
+
+- Donnie Darko
+- Kiki's Delivery Service
+- Moulin Rouge
+- Spirited Away
+- Pulp Fiction
+
+- Solo: A Star Wars Story
+- Lost in Translation
+- Kramer Vs. Kramer
+- Blade Runner
+- Demolition Man
+
+- Blue Velvet
+- Elephant Man
+- Resident Evil
+- Rogue One
+- Star Wars: The Clone Wars
+
+- Zodiac
+- To Kill a Mockingbird
+- Bones And All
+- Bucket List
+- The Star Wars Holiday Special
+
+- Hit Man
+- Rush Hour
+- Peggy Sue Got Married
+- Treasure Island
+
+Tarots:
+- Detective
+- Superhero
+
+Spectrals:
+- Fright
+- Whimsy
+
+Enhancements:
+- Mystery Cards
+- Superhero Cards
+
+Seals:
+- Thriller Seal
+- Comedy Seal
+
+Decks:
+(genre decks):
+- Questionable Deck (Mystery)
+- Illicit Deck (Crime)
+- Heroic Deck (Superhero)
+- Atlethic Deck (Sports)
+- Childlike Deck (Family)
+- Adventurous Deck (Adventure)
+- High Pressure Deck (Thriller)
+- Funny Deck (Comedy)
+
+
+- Investment Deck
+- Dark Knight Deck
+- Spellslinger's Deck
+- Deck That Makes You Old
+- Alderaan Deck
+- Cosmonaut's Deck
+- Empowered Deck
+
+
+Boss Blinds:
+- PB & E
+
+Skip Tags:
+- Dinner Tag
+- Snack Tag
+- Oscar Tag
+- Counter Tag
+
+-- Genre Tags 
+(Genre tags will only be able to spawn if you own a joker of that genre.)
+
+
+## Reworked Content: ##
+
+Jokers:
+- Anora
+- Apollo 13
+- The Abyss
+- Heart Eyes
+- Psycho
+- Terror Train
+- Snow White
+- Batman & Robin
+- Wall E 
+- Stripes
+
+Boss Blinds:
+- Gordon Gekko
+- Hans Gruber
+- Mr. Chow
+- Sallie Tomato
+- Anton Chigurh
+
+Decks:
+- All genre decks
+
+## Bug fixes & Balancing: ##
+
+Bug Fixes:
+- Cryptid Crossmod: Monster energy's don't retrigger every joker selected by monster energy
+- Cryptid Crossmod: Selling Monster Energy no longer lets the marker linger
+- Citizen Kane is now a Legendary, as intended
+- Kino blinds can no longer lower your mult to 0
+- Moneyball is Cryptid compatible
+- c2n deck and IMDB packs no longer create duplicates of owned jokers
+
+Balance Changes:
+- Jaws: +30 Chips > +50 Chips
+- Star Wars Episode III: The Revenge of the Sith > No longer upgrades cards on retriggers
+- Beetlejuice: Rare, x2 > Uncommon, x3
+
+
+V 0.9.4g:
+Bug Fixes:
+- Star Wars Episode III: Revenge of the Sith no longer upgrades on retriggers
+- Fixed a bug with Soul cards not spawning souls
+
+Dependency Changes:
+- Kino is now dependant on the latest SMODS release, to avoid specific unintended interactions
+
+V 0.9.4f:
+Bug Fixes:
+- Dracula (1931): Dracula now properly gains xmult when triggered for unenhanced cards
+- Fixed the movie jokers only config option not working when the rarity system was enabled
+- Gentlemen Prefer Blondes; Titanic; Dickie Roberts, Child Star; The Breakfast Club: No longer give negative mult when below the threshold
+- Deckard Shaw now properly displays its effect
+- Balatro Multiplayer: Fixed crash on exiting run through the pause menu
+- Fixed a bug with Hard Eight's chances
+- Fixed some crashes that could happen when using confections with other mods enabled
+- Fixed Snackbag crashes under specific sell circumstances
+- Card Sleeve: Producer sleeve now functions identically to the deck
+- BFG now properly works when playing with Talisman, but not with Cryptid
+
+Balance Changes:
+- Gentlemen Prefer Blondes; Titanic; Dickie Roberts, Child Star; The Breakfast Club: Instead of always measuring from 13, it instead measures from the starting suit count of your deck
+- Baby Driver: No longer gives double mult if card matches on both sides
+- Ghost Rider: Gain x0.25 > Gain x0.5
+
+Localization Changes:
+- 9
+- 12 Monkeys
+- Alien
+- Aliens
+- Always
+- Apollo 13
+- Batman & Robin
+- Batman Begins
+- Big Daddy
+- Big Short
+- Big Trouble in Little China
+- Black Swan
+- Blair Witch Project
+- Back to the Future
+- Cast Away
+- Chef
+- Children of the Corn
+- Clockwork Orange
+
+Content Changes:
+- Turner & Hooch: Effect Reworked
+- 10 Things I Hate About You: New Effects
+- 30 Days of Night: New Effect
+- Children of the Corn: New Effect
+- Ex Machina: New Effect
+- Evil Dead: New Effect
+- Death Star: Now destroys a random joker except your leftmost one
+
+Content Additions:
+- MALVERK textures now at 110
+
+V 0.9.4e:
+Bug fix:
+- Balatro Multiplayer: No longer makes the game crash on start-up
+
+V 0.9.4d:
+Bug Fixes:
+- Star Wars Episode II no longer crashes the game
+- Batman & Robin now works correctly
+
+Localization fixes:
+- Crime cards: Incorrect steal glossary item removed
+- Fixed localization error for Morbius
+- Dark Knight now specifies batman-joker immunity
+- Fixed Star Wars Episode IX incorrectly showing the hand size gain
+- Blair Witch now properly indicates its self-destruct condition
+
+Balance Changes:
+- Ex Machina: Gains x0.1 > Gains x0.25
+- Horror card: Gives x1.5 chips while in hand > Gives x2 chips while in hand
+- Monster card: -50 chips when scored > -25 chips when scored
+- Death Star: Destroy random joker > Destroy leftmost joker
+- Soldier Tarot: Up to 2 cards > Up to 3 cards
+
+Content Updates:
+- Added more textures to the texture pack
+- Added Joker boss blind interaction with Batman jokers
+
+V 0.9.4c:
+Bug fixes:
+- Fixed talisman issue for goodfellas
+- Removed leftover print statements
+- Various mods: Thor no longer causes a stack overflow
+- Various mods: Predator no longer causes a stack overflow
+- Various mods: Longlegs no longer crashes the game
+- Cryptid: Monster Energy no longer crashes the game
+
+Content changes:
+- Cryptid: Monster Energy now visually marks the joker that will retrigger when used
+- Added 7 new retextures to the Malverk texture pack
+
+V 0.9.4b:
+hotfix: no longer crashes on start-up
+
+V 0.9.4a:
+New Content (Cryptid crossmod exclusive):
+- Shrek (Exotic joker)
+- The Bee Movie (Exotic Joker)
+- The Human Centipede (Epic Joker)
+
+New Content (Malverk exclusive):
+- Updated the texture pack to include new texture reworks (currently for a total of 69 retextured jokers)
+
+Fixes:
+- Properly set up the order for the jokers added in the previous release
+
+V 0.9.4:
+New Jokers:
+- Ratatouille (Legendary)
+- Citizen Kane (Legendary)
+
+- Pitch Black
+- Star Wars: Attack of the Clones
+- Star Wars: Revenge of the Sith
+- Star Wars: The Empire Strikes Back
+- Star Wars: The Return of the Jedi
+- Star Wars: The Last Jedi
+- Star Wars: The Rise of Skywalker
+- Ponyo
+- Frankenstein
+
+New Confection:
+- Ratatouille
+
+New Blinds:
+- Beach That Makes You Old
+- Deckard Shaw
+- Palpatine (Showdown blind)
+- Dr. Evil (Showdown Blind)
+
+Balance Changes:
+- Angel Hearts: Reset per hand > Reset per round
+- Treasure Planet: $1 when you use a planet > $3 when you use a planet
+- Treasure Planet: [HIDDEN EFFECT] > [HIDDEN EFFECT]
+- Goldleaf Sticker: Gain $1 when this triggers > Gain $1 for each time a goldleaf confection was triggered this game
+
+Content Changes:
+- Added more new textures to the Malverk texture pack
+- Bonnie & Clyde blind only rerolls between antes, no longer between blinds
+- Blofeld blind now requires subsequent hands to be smaller rather than allowing them to be the same size
+
+Bug fixes:
+- Confections no longer have a use button outside of the consumable area
+- Confections can no longer be bought infinitely if you have a snackbag and a free slot
+- Confections can be sold from the Snackbag
+- Bonnie and Clyde now correctly display the name of the card, rather than the internal id
+- Cryptid compatibility: Popeye shouldn't infinitely stack anymore
+- Cryptid compatibility: The BFG should properly track score increases in cryptid/talisman runs
+
+V 0.9.3d:
+Texture Pack additions:
+18 new joker artworks added to the texture pack
+
+Changes:
+- The rarity system rework has been turned into a toggle. It is recommended to turn it off when playing with other mods
+
+V 0.9.3c:
+Content Changes:
+NEW TEXTURE PACK: Kino now includes a texture pack! It's accessible in the texture pack menu if you have Malverk installed.
+It adds pixel art more in line with the Balatro style for specific jokers.
+
+Bugfixes:
+- Darth Vader Blind fixed
+- Fixed crashes that could happen due to improper nill checks
+- Fixed an issue where the game would crash if another mod added cards that act like Soul or Black Hole
+- Fixed an issue where hovering over the snackbag in the collection would crash the game
+- Fixed a crash where planets would fail to assign a hand
+- Fixed confections not showing the correct value when power boosted or chocolate-dipped
+- Sci-fi cards no longer add to the event queue when upgrading slowly
+
+V 0.9.3b:
+Bugfix:
+- Fixed a minor issue with the new rarity system
+
+V 0.9.3a:
+Bugfix:
+- Fixed a major mod compatibility issue that made other mods unable to spawn objects properly in certain circumstances
+V 0.9.3:
+Mechanical Changes:
+- Cards now have the chance to have individual spawn chances
+- Every genre deck is reworked to incorporate these spawn chances
+- The Kino planets each have had their spawn rates adjusted
+
+Bug Fixes:
+- Abyss properly destroys cards
+- Edward Scissorhands properly destroys cards
+
+Mod Compatibility:
+- Removed Cryptid compatibility code and implemented changes into Cryptid
+
+Mod Crossover Content:
+- Morefluff:
+- 7 New enhancements
+-- Error Card
+-- Wifi Card
+-- Angelic Card
+-- Finance Card
+-- Factory Card
+-- Time Card
+-- Fraction Card
+
+- 9 new 45 Degree Rotated Tarots:
+- One per new enhancement and the Chef! and the Producer!
+
+
+V 0.9.2c:
+Bug Fixes:
+- Horror cards properly give xchips when held in hand
+- Sports Seal no longer crashes the game
+- Turner and Hooch trigger properly
+
+Balance Changes:
+- Slasher creates 2 horror cards instead of 1
+
+V 0.9.2b:
+Bug Fixes:
+- Fixed pool selection for some jokers
+- Clown no longer ignores joker limit
+- Genre packs now account for rarity (legendaries will no longer show up in their corresponding genre packs without meeting any criteria)
+
+
+Balance Changes:
+- Clown now gives +3 mult for each Clown instead of +4 mult total.
+
+V 0.9.2a:
+Bug Fixes:
+- Dr. Strangelove now gives mult
+- Fixed a cryptid interaction related to the Award's Bait voucher
+- Peanut no longer has issues when the values are changed by setting your interest to a negative number
+- Fixed a series of crossmod crashes related to indexing hands in specific contexts
+
+Content Changes:
+- Overhauled Sports Seal's effect
+
+Visual Changes:
+- Sci-fi cards have a visual indicator for card level
+
+V 0.9.2:
+New Content:
+Decks & Sleeves:
+- Snack Deck: Start with all confection related vouchers
+- Trophy Deck: Start with all award related vouchers
+
+Bug Fixes
+- Removed Hannibal Lecter's test effect of giving 50 chips
+- Matrix now properly displays the chips it's giving
+- Close Encounters of the Third Kind no longer crashes when hovered over in the collection after finishing a run
+- Tree of Life now properly triggers
+- Freaky Friday no longer crashes the collection when playing with other mods
+- Snackbag properly disappears when you have no confections present
+
+Balance Changes:
+- Matrix now gives 25 chips per sci-fi card
+- Freaky Friday now always spawns as a foil, rather than a random edition
+- Star Wars Episode VII: The Force Awakens effect overhaul: Each card gives +1 mult for each level of the scoring poker hand
+
+Other Changes:
+- Fixed order of the jokers in the collection
+- Kino and Cryptid's respective powerboost systems are now compatible with another
+- Rewrote some confection descriptions to allow for scaling numbers to be shown
+
+V 0.9.1a:
+Bug fixes:
+- Fixed a crash due to Cryptid crossmod reliance
+
+V 0.9.1:
+Config updates:
+- All existing content toggles have been updated
+- Crime and Action cards and related jokers can now be toggled off
+- Confections and related content can now be toggled off.
+
+Bug Fixes:
+- Removed debugging print statements
+- fixed Dark Knight crossmod issues related to destroying cards
+- Fixed power raising system affecting values it shouldn't touch
+
+V 0.9.0e-Cryptid:
+Cryptid crossmod content:
+New Vouchers:
+Tier 3 vouchers for each base Kino voucher
+
+New Confections:
+Added 3 new confections
+
+V 0.9.0e:
+Bug Fixes:
+- A crash relating to the after context has been fixed in around 25 objects in the mod
+- Batman Begins no longer doubles money earned for each batman joker
+
+Balance Changes:
+- Sausage Party: 1/3 chance > 1/2 chance
+
+Localization Changes:
+- Big Daddy's description now properly describes its effect
+- Junior now shows a counter
+- Up's spelling error was fixed
+
+V 0.9.0d:
+Bug Fixes:
+- Certain confections no longer crash the game when chocolate-dipped
+- Horror cards no longer trigger when played
+- Sci-fi cards now also display the mult + xmult upgrades
+
+Balance Changes:
+- 24 Hour Party People can no longer give more money than you are able to earn as interest
+- Up now only retriggers the final highest card, instead of every
+- Thor now only triggers if your hand contains more than 1 scoring card
+- Thor now retriggers 3 times
+- Skyscraper now gives half a mult
+- La La Land now only works on the first played hand
+- Point Break now gives a default of +2 mult
+- Point Break: Rare > Uncommon
+
+V 0.9.0c:
+Bug Fixes:
+
+- Clerks, Lady and the Tramp and Home Alone no longer have strange interactions with rankless cards
+- Abduction Jokers should no longer crash the game if you have no abducted cards at the end of the blind
+- They Live will still pay out during Boss-blinds
+- Jump Scare jokers will no longer crash the game when blueprinted
+- Spartacus no longer crashes the game when it interacts with a destroy effect
+- Shang-Chi should no longer crash the game when affected by powerboosts
+- The Dark Knight should no longer crash if another effect that destroy jokers is also triggering
+- As Above So Below no longer triggres its reset for every card in hand at the end of the round
+
+- Resolved crashes due to the multiplier system being able to target non-jokers
+- Removed the tag functionalities to prevent conflicts with other mods
+- Award Show voucher only triggers once per ante, instead of four
+- Producer Tarot card now allows use when earning money while it's present
+- The Flying Monkey enhancement shouldn't naturally spawn anymore
+- Peanuts now decrease interest if they're destroyed after activation, instead of permanently upgrading it
+- Upgrading a hand in a non-levelling way will show the hand name
+- Cybertron and the Cade Yaeger cosplay challenge now properly reset
+
+Balance changes:
+Blinds:
+- Gordon Gekko: money lost $10 > money lost $5
+
+Consumables:
+- Peanuts: $1 interest > $2 additional interest
+- Candy: +1 handsize > +2 handsize
+- Ice Cream: +10 chips > +20 chips
+- Popcorn: +2 mult > +4 mult
+- Large Soda: 2 retriggers > 3 retriggers
+- Chocolate Bar: 2 Cards drawn > 4 Cards drawn
+- Chocolate Bar, Chocolate Covered: 1 Chocolate Bonus > 2 Chocolate Bonus
+- Fries: 10 Chips Upgrade > 25 Chips Upgrade
+- Fries, Chocolate Covered: 5 Chips Chocolate Bonus > 25 Chips Chocolate Bonus
+- Gum: 1 additional discard > 2 additional discards
+- Cybertron: x0.1 per sci-fi card used > x0.25 per sci-fi card used
+
+V 0.9.0b:
+Bug Fixes:
+- Hovering over the Snackbag in the collection no longer crashes the game
+
+V 0.9.0a:
+Bug Fixes:
+- Lord Humungus and Immortan Joe no longer crash the game
+- Pizza Snack no longer crashes the game
+- toomanyjoker incompatibility fixed
+
+
+Art Changes:
+Changed the Thanos blind art
+
+V 0.9:
+New Jokers:
+- John Wick
+- Die Hard
+- Hot Fuzz
+- Pain & Gain
+- Source Code
+- Con Air
+- Fargo
+- Fast & Furious 5
+- Tower Heist
+- Oceans 12
+- A Fish Called Wanda
+- Limitless
+- Scarface (1932)
+- Scarface (1983)
+- Dick Tracy
+- The Martian
+- Teenage Mutant Ninja Turtles
+- Taken
+- Modern Times
+- Death Race
+- Her
+- Minecraft
+- Tales from the Crypt: Demon Knight
+- Snowpiercer
+- Freaky Friday
+- My Neighbor Totoro
+- Bloodshot
+- Sunshine
+- Dune 1984
+- Paul
+- Gravity
+- Nightcrawler
+- Black Swan
+- Your Highness
+- Star Wars Episode IV
+- Star Wars Episode I
+- Star Wars Episode VII
+- Sausage Party
+- V for Vendatta
+- Big Daddy
+- Peggy Sue Got Married
+- Pitch Black
+- Da 5 Bloods
+- The Shawshank Redemption
+- Metropolis
+
+New Planet:
+- Death Star
+
+New Tarot:
+- Gangster
+- Soldier
+
+New Spectral Cards:
+- Award (The award tarot is no longer available)
+- Homerun
+- Gathering
+- Artifact
+- Ambrosia
+
+New Seals:
+- Sports Seal
+- Family Seal
+- Artifact Seal
+- Cheese Seal
+
+New Blinds:
+- Loki
+- Nurse Ratched
+- Rico Dynamite
+- Mr. Chow
+- An Entity
+- Lord Humungus
+- Amadeus
+- Cruella De Vil
+- Bonnie & Clyde
+- Blofeld
+- Thanos
+- Immortan Joe
+
+Bug Fixes:
+- Gentlemen Prefer Blondes works properly
+- Stargate
+- Monster & Horror related jokers now correctly spawn
+- Barbie no longer crashes the game
+- Baby Driver now only triggers for cards played and scored
+- Shopaholic should now be compatible with talisman
+- 30 Days of Night no longer crashes the game
+- 10 Things I hate About You
+
+Enhancement Gates Added:
+Set up more jokers to properly check for spawning conditions
+
+
+     
+
+V 0.8.1a:
+Bug Fix:
+- Abduction jokers should no longer crash the game on run load
+- Peanuts now properly function in the snackbag
+- Card ui shouldn't crash the game if accidentally called by another mod
+- Added more general protections to objects to test whether they actually have a card to have an effect on
+- power boosts should no longer create issues on reload
+- Stargate now uses the correct art
+- Mars Attacks no longer triggers on every planet
+- Removed the incorrectly available Blank Deck With Griffin and David
+
+Localization Fixes:
+- Popeye now shows the percentage power increase
+- A Clockwork Orange now has the correct title
+- A Nightmare on Elm Street now has the correct title
+- Fixed proper formatting for the following jokers:
+     - The Bfg
+     - Braveheart
+     - Children of the Corn
+     - A Clockwork Orange
+     - Ex Machina
+     - The Exorcist
+     - Ghostbusters
+     - Gremlins
+     - I, Robot
+     - The Iron Lady
+     - Kindergarten Cop
+     - Megalopolis
+     - Nope
+     - Ring
+     - Wonka
+     - Coco
+     - My Dinner With André
+     - Goodfellas
+     - Gone Girl
+     - A Nightmare on Elm Street
+     - Nosferatu (2024)
+     - Only Lovers Left Alive
+     - Predator
+     - Stargate
+     - Turner & Hooch
+     - Beetlejuice
+     - Fight Club
+
+
+V 0.8.1:
+New Jokers:
+- Easy A
+- 9 
+- Up
+- Iron Lady
+- Mamma Mia!
+- la la land
+- Cruella
+- Men in Black
+- Hellboy
+- Popeye
+
+New Decks:
+- Cine2Nerdle Deck
+
+Bug Fixes:
+- Asteroid City works
+- Genre Boosters spawn in every runs again
+- Stargate no longer crashes the game
+- Terminator 2 now functions properly
+- Awards should no longer spawn on all jokers, but only movie jokers
+- M3gan only spawns when you have a sci-fi card in deck
+- The Bag of Peanuts confection now works properly
+
+Localization Fixes:
+- Clockwork Orange localization fix
+
+V 0.8g:
+Bug Fixes:
+- Lucky Number Slevin no longer crashes the game
+- Spells are protected against indexing error
+- Oceans 11 works again
+
+Localization Fixes and Changse:
+- 30 Days of Night's localization fixed
+- Iron Giant localization fixed
+- Dungeons & Dragons description changed to reflect the active effect
+- Alien's description now correctly reflects its effect
+- Jurassic Park description fit
+- Shang Chi now shows the next spell it will cast
+- Harry Potter now has the spellcasting tooltip
+
+V 0.8f:
+Bug Fixes:
+- Stripes no longer decreases its mult incorrectly when discarding multiple cards
+- Wall Street no longer crashes the game
+- Talisman no longer crashes due to Sugarland Express
+- Cruella De Vil boss blind has been temporarily disabled
+- The Prestige now only spawns if you have a lucky card
+- The Producer deck now no longer triggers after every blind, but only boss blinds
+- The Producer deck no longer loses money if you do not own any movie jokers
+- Gum has the correct card art
+- Hotdog no longer crashes the game when it has the Chocolate effect
+
+V 0.8e:
+Bug Fixes:
+- Barbie now has correct metadata
+- Barbie now only triggers on scoring queens
+- Insomnia now doesn't stop cards from being drawn outside of blinds
+- Hustle is now compatible with talisman
+- Producer tarot now has a safeguard against cards with incorrect budgets
+- Producer now refunds investment if used on a broken movie joker
+- Producer Deck should no longer give infinite money if a broken movie joker is owned
+- Ghostbusters now only spawns if you have debuffed cards in deck
+- ratatouille confection removed from the collection
+
+V 0.8d:
+Bug Fixes:
+- Jokers that interact with spells won't spawn anymore if you have no means of casting a spell
+- the Ma-Ma blind no longer crashes the game if you haven't used a consumable
+- The Joker blind now displays text properly
+- Commando only spawns in you have wild cards
+- Steel only spawns in you have steel cards
+
+
+V 0.8c:
+Bug Fixes:
+- Cronos no longer sets ranks to half-ranks on the back end
+
+- Xenomorph blind no longer crashes the game
+
+- Demonic enhancements no longer fail to destroy cards
+
+- Fixed the following challenges:
+- The movie only rule no longer causes only jimbo to spawn
+- Cade Yeager Cosplay now properly pays out
+- Xenomorph Invasion now properly debuffs
+- Best Song in the World now properly transfers discards
+- Genre variety now works
+- Genre snob now works
+- The Jimbo of wall street now properly busts
+
+V 0.8b:
+Hot Fix:
+- 2001: A Space Odyssey no longer crashes the game
+- Cards that grant chip upgrades no longer crash the game
+- Sci-fi cards' localization works
+- Confection's now no longer show ERROR when eaten
+- Fries's message no longer triggers for each card in hand
+- Fixed the Talisman incompatibility issue with the Hans Gruber blind
+- Batman jokers no longer have their empty slot count affected by multipliers
+
+V 0.8a:
+Hot fix:
+Non-movie jokers no longer crash the game
+
+V 0.8:
+10 New Jokers:
+- Raiders of the Lost Ark
+- Barbie (2024)
+- As Above So Below
+- Baby Driver
+- Contagion
+- Double Dragon
+- Grown Ups
+- Hard Eight
+- Kung Fu Panda
+- The Tree of Life
+
+8 New Challenges:
+- Monster Inc.
+- Six Degrees of Kevin Bacon
+- Cade Yeager Cosplay
+- Xenomorph Invasion
+- The Best Song in the World
+- Genre Variety
+- Genre Snob
+- The Jimbo of Wallstreet
+
+11 New Boss Blinds:
+- Hannibal Lecter
+- Darth Vader
+- Ma-Ma
+- Cruella De Vil
+- Gordon Gekko
+- Pazuzu
+- Xenomorph Queen
+- Dracula
+- Frank Booth
+- The Joker
+- Hans Gruber
+
+2 New Vouchers:
+- Media Collection
+- Criterion Collection
+
+2 New Booster Packs:
+- The Fantasy Pack will of course contain jokers of the fantasy genre
+- The Actor Pack will only spawn if you own at least two movie jokers, and will only contain jokers that share actors with jokers you currently own!
+
+Deck Sleeve compatibility:
+- Each available Deck now has an equivalent sleeve
+
+Bug Fixes:
+- Awarded stickers no longer read ERROR on the badge
+- 24 Hour Party People no longer crashes the game when Talisman is being used
+
+Visual Updates:
+- Predator now shakes when you are still holding on to the hidden card
+- Longlegs now shakes when you are holding it's partner in your hand
+- Movie Jokers now show the multiplier they have through synergy
+- Synergy indicators now pop up only once, regardless of how many actors they are synergizing with
+- Genre synergy is now a general pop up, not a per joker pop up
+
+
+Spawn Limitations:
+Multiple Jokers have had their spawn conditions updated.
+- Ready Player One will only spawn if you have at least one joker from the 70s or 80s
+
+Suit Count Jokers:
+- The Breakfast Club  will only spawn once you have more Spades in deck than your starting count. 
+- Dickie Roberts will only spawn once you have more Spades in deck than your starting count. 
+- Titanic will only spawn once you have more Hearts in deck than your starting count.
+- Gentlemen Prefer Blondes will only spawn once you have more Hearts in deck than your starting count.
+
+Horror/Monster Card synergy Jokers:
+- Child's Play, Gremlins, Incredible Hulk and the Wolf Man will only spawn if you have Horror or Monster cards in your deck, rather than just Horror cards
+
+Debuffed Card Synergy
+- Alien 3 now only spawns once you have debuffed cards in deck
+
+V 0.7.2:
+New Jokers:
+Legendaries:
+- 2001: A Space Odyssey
+
+UI update:
+- Active jokers now show when they're active in their UI
+
+Confection rework:
+- Confections have changed their functionality. Instead of being used up immediately and creating a tag,
+     they now become active, and disappear once eaten their effect's triggered.
+     
+New Vouchers:
+- Cornucopia, the second tier voucher for the Special Treats voucher.
+     After buying it, all confections will go to their own inventory space
+     that stack up to four, with your new Snack Bag taking up a single slot
+- Award Bait, 1st Tier. Movie jokers have a small chance to spawn with an Award.
+- Award Show, 2nd Tier. When you defeat a boss blind, an unawarded movie joker will be rewarded
+
+Balancing Changes:
+- Stranger Than Fiction (10 Chips > 25 Chips)
+
+Bug Fixes:
+Talisman compatibility fixed for certain jokers.
+
+
+V 0.7.1a:
+Bug Fixes:
+- Abduction mechanics shouldn't be crashed by destruction effects anymore
+- Avatar no longer crashes the game
+
+V 0.7.1:
+New Jokers:
+     Common
+- Clockwork Orange
+- Gremlins
+- Heart Eyes
+- Shazam
+- The Smurfs
+- Sugarland Express
+     Uncommon
+- Big Trouble in Little China
+- Cast Away
+- Independence Day
+- Insomnia
+- Kraven the Hunter
+- Moonfall
+- The Polar Express
+- The Terminator
+- True Lies
+     Rare
+- Asteroid City
+- Blank Check
+- Doctor Strange
+- Doctor Strange in the Multiverse of Madness
+- Hustle
+- Killer Klowns from Outer Space
+- Lucky Number Slevin
+- Terminator 2: Judgement Day
+- Twelve monkeys
+
+Mechanics:
+- The Actor Synergy system is now turned on by default.
+
+Tarot Cards:
+- The Award Tarot is now turned on by default
+
+Decks:
+- Spooky Deck
+- Flirty Deck
+- Dangerous Deck
+- Tech_Deck
+- Enchanted Deck
+- Egg Deck
+- Bacon Deck
+- Producer Deck
+
+V 0.7.0b:
+Fixed certain vanilla jokers crashing the game
+
+V 0.7.0a:
+Abduction jokers now show the abduction Tool Tip
+
+V 0.7.1b:
+Bug Fixes:
+- The Double, The Three Musketeers, Lethal Weapon, Skyscraper and Monster House no longer crash the game
+- Sci-fi cards upgrade properly
+
+V 0.7.1a:
+Bug Fixes:
+- Abduction mechanics shouldn't be crashed by destruction effects anymore
+- Avatar no longer crashes the game
+
+V 0.7.1:
+New Jokers:
+     Common
+- Clockwork Orange
+- Gremlins
+- Heart Eyes
+- Shazam
+- The Smurfs
+- Sugarland Express
+     Uncommon
+- Big Trouble in Little China
+- Cast Away
+- Independence Day
+- Insomnia
+- Kraven the Hunter
+- Moonfall
+- The Polar Express
+- The Terminator
+- True Lies
+     Rare
+- Asteroid City
+- Blank Check
+- Doctor Strange
+- Doctor Strange in the Multiverse of Madness
+- Hustle
+- Killer Klowns from Outer Space
+- Lucky Number Slevin
+- Terminator 2: Judgement Day
+- Twelve 12_monkeys
+
+Mechanics:
+- The Actor Synergy system is now turned on by default.
+
+Tarot Cards:
+- The Award Tarot is now turned on by default
+
+Decks:
+- Spooky Deck
+- Flirty Deck
+- Dangerous Deck
+- Tech_Deck
+- Enchanted Deck
+- Egg Deck
+- Bacon Deck
+- Producer Deck
+
+V 0.7.0b:
+Fixed certain vanilla jokers crashing the game
+
+V 0.7.0a:
+Abduction jokers now show the abduction Tool Tip
+
+V 0.7:
+New Mechanic:
+- Abduction! Certain jokers have the ability to abduct other cards. Abducted cards are stored in the joker, and returned to wherever they were abducted from when you start the first blind of a new ante.
+
+New Jokers:
+- Nope
+- Close Encounters of the Third Kind
+- Junior
+- Edward Scissorhands-
+- Guardians of the Galaxy Vol. 2
+- Guardians of the Galaxy Vol. 3
+- Jurassic Park
+- Catch Me If You Can
+- Lady and the Tramp
+- Insidious
+- Smile
+- Nosferatu (2024)
+- Child's Play
+- Snow White
+- Cronos
+- Le Voyage Dans La Lune
+- The Sound of Music
+- The Evil Dead (2013)
+- The Wolf Man (1941)
+- West Side Story (1961)
+- Friday the 13th
+- Signs
+- They Live
+- Doctor Who: The Movie
+- Stargate
+
+
+V 0.6.3b-3:
+Hotfix Patch:
+
+Bug Fix:
+- Wonka no longer crashes the game if no consumeables have been used
+
+V 0.6.3b-2:
+Hotfix Patch:
+Bug Fixes:
+- Ocean's 11 (2001) no longer crashes the game when sold while in a booster pack screen
+- Dungeons and Dragons (2000) now properly displays its values
+
+
+Bug Fixes:
+- Ghoulies now properly increases the deck size
+
+V 0.6.3b:
+Asset changes:
+- The Award tarot no longer has placeholder art
+
+Balance Changes:
+Jokers:
+- Twins: Chips reduced to 25 from 30. Mult reduced to 25 from 30.
+
+Planets:
+- Krypton: base chance reduced from 0.5 in 100 to 1 in 25
+
+Bug Fixes:
+- Confection boosters now no longer display 'ERROR'
+- E.T. has its refactored description
+- E.T. no longer creates a whole bunch of planets
+- The Exorcist now properly displays numbers
+- The Awarded sticker now displays a description
+- The Award Tarot now has a description
+- Thor now properly displays its repetition values if changed in any way
+- Benjamin Button shouldn't lower Aces into 2s, but into kings
+- the Ring should display X0 on the 7th hand, instead of a floating point number
+- Princess Bride should now draw cards beyond the hand limit
+- Sci-fi cards now also properly upgrade their mult bonus
+
+Localization Changes:
+- Robocop now specifies that the scoring hand needs to be a High Card, not just Contain one.
+- Romance cards now specify that they need 2 romance cards exactly
+- Princess Bride now has barks
+
+Bugs I am aware of:
+Compatibility issues:
+- Any object that grants money will crash the game when Talisman is installed
+- Some mods will break the BFG joker functionality
+
+V 0.6.3:
+Bug Fixes:
+- Fixed genre synergy disappearing after buying a 6th joker of the same genre
+
+Visual Update:
+- Genres are no longer a separate text box, but instead a sub-header
+
+New Collection order:
+- Jokers are sorted by rarity first
+
+New Config options:
+- Turn off specific mechanics and their associated cards & jokers
+
+New Jokers:
+- Fantasia
+- Children of the Corn
+- Encanto
+- Cocktail
+- Coco
+- Shang-Chi
+- The Exorcist
+- The Menu
+- Dungeons & Dragons: Honor Among Thieves
+- Dungeons & Dragons (2000)
+- M3gan
+
+Actor Synergy system (Must be turned on in the config):
+- The Award Tarot (With placeholder art) doubles the values of a Movie Joker
+- The more movie jokers you have that share an actor, the stronger it becomes!
+(The synergy system is turned off by default as it is still very buggy. 
+While plenty of jokers are functional, it may result in doing some weird things with your values)
+
+
+V 0.6.2:
+New Jokers:
+- The Dark Crystal
+- My Dinner With Andre
+- Oceans 11 (1960)
+- Harry Potter and the Philosopher's Stone
+- Clerks
+- Wonka
+- Coco
+
+Bug Fix:
+- Wall Street no longer crashes the game
+
+V 0.6.1a:
+
+- Fixed a crash caused by the Diamond Spade combination spell
+
+
+V 0.6.1:
+
+Confection Update:
+- Confections can now have upgrades.
+- Goldleaf: Gain $1 when used
+- Chocolate: Your confection is stronger
+- Extra Large: Your confections can be used twice
+
+New Tarot:
+- Witch, turn 1 card into a Fantasy card!
+
+New Card Enhancement:
+- Fantasy Cards. These cards cast a Spell depending on the first three cards in your hand!
+
+New Mechanic: Spells
+- Spells, currently only implemented in the Fantasy cards, are additional effects that can be triggered. 
+There are currently 10 spells in the mod.
+
+New Joker:
+- E.T. The Extra Terrestrial
+- Charlie & The Chocolate Factory
+
+V. 0.6b:
+
+Fixed compatibility with SMODS bonuses
+
+V. 0.6a:
+
+Fixed metadata errors for small amount of jokers
+
+
+V. 0.6:
+
+New Tarots:
+- Chef, creates 2 Confections
+- Producer, money generator
+
+Genre Synergy:
+- If you have 5 movie jokers of the same genre, you get an additional joker slot. 
+
+New Jokers:
+- Cars
+- The Founder
+- Morbius
+- Ready Player One
+- Sleepy Hollow
+
+
+Confection Change:
+- Can now only be used while in a blind
+- Grabbing confections from packs will put them in your consumable slots
+
+Bug Fixes:
+- Dracula (1931) now actually counts as a Vampire joker
+
+
+
+V. 0.5
+
+Bug Fixes:
+- Ocean's 11 now works when purchased and sold
+- Added genres to Spartacus, The Social Network and Point Break
+- Iron Man 1 now only upgrades on the first hand played, as the description indicates
+- Casablanca now shakes when cards gain from its effect
+- Cards that retrigger now display the 'again' message themselves, instead of the retriggered card
+- Increased the spawn chances of confections in the shop from .75 to 2
+- Cards that rely on counts in the deck now already display the correct info while in packs or the collection
+
+22 New Jokers:
+- 6 Underground
+- Alien 3
+- The Blair Witch Project
+- Clown
+- Commando
+- Get Out
+- Gone Girl
+- Goodfellas
+- Guardians of the Galaxy
+- Hook
+- Kindergarten Cop
+- Moneyball
+- Psycho
+- Ring
+- The Rock
+- Se7en
+- Starman
+- Steel
+- Thor
+- Treasure Planet
+- Us
+- War of the Worlds
+
+2 New Vouchers:
+- Confection Merchant
+- Confection Tycoon
+
+V. 0.4.1
+
+To Do:
+- Ocean's 11 triggering automatically
+
+Bugfixes:
+Blade no longer crashes the game
+Fixed localization issues
+
+
+
+Balance Changes:
+- Point Break changed to Rare (from Common)
+- Joe Dirt now resets after each round
+- Angel Hearts now resets after each hand
+- Skyscraper, Lethal Weapon, The Three Musketeers (2011), The Double & Monster House
+     now resets its gathered mult after defeating a boss blind
+- Stripes no longer gains mult from cards drawn on the first hand
+- Batman & Robin now gives +1 Mult per open joker slot
+- Demonic cards now give x1 + x0.25 per non-demonic card scored, instead of a flat X3
+- Wicker Man changed to Uncommon (from Common)
+- Pandora now gives +2 Chips per times played.
+
+
+
+V 0.4:
+
+New Enhancement:
+- Horror Card
+- Monster Card
+
+New Tarot:
+- Slasher
+
+New Jokers:
+- 50 First Dates
+- Aliens
+- Baby Geniuses
+- Ghostbusters
+- Halloween
+- The Incredible Hulk
+- Jaws
+- Nightmare on Elm Street
+- The Number 23
+- Pride & Prejudice
+- The Social Network
+- The Wicker Man
+
+Bug Fixes:
+- The Cookie, Gum and Candy confection no longer make the UI uninteractable

@@ -1,0 +1,79 @@
+SMODS.Joker {
+
+    discovered = true,
+    key = 'watermelon_candy',
+
+    config = {
+        extra = {
+            rounds = nil,
+            mult = nil,
+            min_rounds = 3,
+            max_rounds = 5,
+            min_mult = 10,
+            max_mult = 20
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        local rounds = card.ability.extra.rounds or '3~5'
+        local mult = card.ability.extra.mult or '10~20'
+        return {
+            vars = {mult, rounds}
+        }
+    end,
+    rarity = 1,
+    atlas = 'sarcpot_atlas',
+    pos = {
+        x = 3,
+        y = 4
+    },
+    cost = 5,
+    eternal_compat = false,
+    pools = {
+        Food = true
+    },
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.rounds = math.random(card.ability.extra.min_rounds, card.ability.extra.max_rounds)
+        card.ability.extra.mult = math.random(card.ability.extra.min_mult, card.ability.extra.max_mult)
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.after and not context.blueprint then
+            card.ability.extra.mult = math.random(card.ability.extra.min_mult, card.ability.extra.max_mult)
+          
+        end
+        if context.end_of_round and context.cardarea == G.jokers then
+            card.ability.extra.rounds = card.ability.extra.rounds - 1
+            if card.ability.extra.rounds <= 0 then
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.7,
+                    func = function()
+                        play_sound('tarot1')
+                        card.T.r = -0.2
+                        card:juice_up(0.3, 0.4)
+                        card.states.drag.is = true
+                        card.children.center.pinch.x = true
+                        card:start_dissolve()
+                        card = nil
+                        return true
+                    end
+                }))
+                return {
+                    message = localize('k_eaten_ex')
+
+                }
+            else
+                return {
+                    message = localize('k_safe_ex')
+
+                }
+            end
+            
+        end
+    end
+}

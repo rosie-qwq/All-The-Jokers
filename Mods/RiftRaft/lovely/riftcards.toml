@@ -1,0 +1,54 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# prevent the Negative tooltip from showing up for every rift card
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "badges[#badges + 1] = 'negative_consumable'"
+position = "after"
+payload = '''
+if self.config.center.set == 'Rift' then badges[#badges] = nil end
+'''
+match_indent = true
+
+# define last used rift card
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if not copier then set_consumeable_usage(self) end"
+position = "after"
+payload = '''
+if self.config.center.set == 'Rift' then
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = function()
+                    G.GAME.riftraft_last_rift = self.config.center.key
+                    return true
+                end
+            }))
+            return true
+        end
+    }))
+end
+'''
+match_indent = true
+
+# create the void UI in view deck
+[[patches]]
+[patches.regex]
+target = "functions/UI_definitions.lua"
+pattern = "(?<indent>[\t ]*)\\{\n[\t ]*label = localize\\('b_full_deck'\\),(\n[\t ]*chosen = true,)*\n.*\n[\t ]*\\},"
+position = "after"
+line_prepend = "$indent"
+payload = '''
+{
+    label = localize('b_riftraft_void'),
+    tab_definition_function = RIFTRAFT.view_void_deck
+},
+'''

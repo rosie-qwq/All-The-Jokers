@@ -1,0 +1,9 @@
+return {
+	["sdm_decks"] = true,
+	["sdm_bakery"] = true,
+	["retrigger_on_deck"] = true,
+	["sdm_consus"] = true,
+	["sdm_bakery_cross"] = true,
+	["sdm_vouchers"] = true,
+	["sdm_jokers"] = true,
+}

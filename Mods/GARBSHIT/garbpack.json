@@ -1,0 +1,14 @@
+{
+	"id": "GARBPACK",
+	"name": "Garbshit",
+	"author": ["garb"],
+    "badge_colour": "7E5A7D",
+	"description": "Garb's silly collection of good and bad thingamajigs.",
+	"prefix": "garb",
+	"main_file": "garbpack.lua",
+    "version": "2.0.1",
+    "priority": 0,
+    "dependencies": [
+        "Steamodded (>=1.0.0~ALPHA-1418a)"
+    ]
+}

@@ -1,0 +1,33 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "engine/profile.lua"
+pattern = """local cols = { 3, 29, 11, 24, 32 }"""
+position = "at"
+payload = """local cols = { 3, 29, 11, 24, 128 }"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "engine/profile.lua"
+pattern = """    _defined[f] = info.short_src..":"..info.linedefined"""
+position = "at"
+payload = """    _defined[f] = info.source..":"..info.linedefined"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """        if G.check and G.SETTINGS.perf_mode then"""
+position = "before"
+payload = """if AKYRS.debug then love.graphics.print("Garbage Count: "..collectgarbage("count"), 10, 80) end"""
+overwrite = true
+match_indent = true

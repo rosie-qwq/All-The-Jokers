@@ -1,0 +1,738 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """                            game_over = false
+            end"""
+position = "after"
+payload = """
+if G.GAME.current_round.advanced_blind then
+    if G.GAME.aiko_puzzle_win then
+        game_over = false
+    else
+        game_over = true
+    end
+elseif G.GAME.akyrs_mathematics_enabled and G.GAME.akyrs_character_stickers_enabled then
+    if G.GAME.blind and AKYRS.is_value_within_threshold(G.GAME.blind.chips,G.GAME.chips,G.GAME.akyrs_math_threshold) then
+        game_over = false
+    else
+        game_over = true
+    end
+end
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """
+            G.STATE = G.STATES.NEW_ROUND
+"""
+position = "after"
+payload = """
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """        G.STATE_COMPLETE = false
+        return true
+"""
+position = "before"
+payload = """
+if G.GAME.current_round.advanced_blind and G.GAME.aiko_puzzle_win or G.GAME.current_round.hands_left < 1 then
+    if G.GAME.aiko_puzzle_win or G.GAME.current_round.hands_left < 1 then
+        G.STATE = G.STATES.NEW_ROUND
+    else
+        G.STATE = G.STATES.DRAW_TO_HAND
+    end
+elseif G.GAME.akyrs_mathematics_enabled and G.GAME.akyrs_character_stickers_enabled then
+    if (G.GAME.blind and AKYRS.is_value_within_threshold(G.GAME.blind.chips,G.GAME.chips,G.GAME.akyrs_math_threshold)) or G.GAME.current_round.hands_left < 1 or AKYRS.does_hand_only_contain_symbols(G.hand) then
+        G.STATE = G.STATES.NEW_ROUND
+    else
+        G.STATE = G.STATES.DRAW_TO_HAND
+    end
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """                    table.insert(left_text, {n=G.UIT.O, config={w=1.2,h=1.2 , object = blind_sprite, hover = true, can_collide = false}})"""
+position = "after"
+payload = """
+local akyrs_cashouttxt = AKYRS.getCashOutText(config,scale, stake_sprite, num_dollars)
+if akyrs_cashouttxt then
+    table.insert(left_text, akyrs_cashouttxt) 
+else
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """                elseif string.find(config.name, 'tag') then
+"""
+position = "before"
+payload = """
+        end
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """        {n=G.UIT.O, config={object = blind_choice.animation}}
+      }},
+    }"""
+position = "after"
+payload = """if AKYRS.getGameOverBlindText() then
+    score_tab = {
+      {n=G.UIT.R, config={align = "cm", minh = 0.6}, nodes={
+        {n=G.UIT.O, config={object = DynaText({string = {{string = AKYRS.getGameOverBlindText()}}, colours = {G.C.WHITE},shadow = true, float = true,maxw = 2.2, scale = 0.45})}}
+      }},
+      {n=G.UIT.R, config={align = "cm", padding = 0.1}, nodes={
+        {n=G.UIT.O, config={object = blind_choice.animation}}
+      }},
+    }
+
+end
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "engine/controller.lua"
+pattern = """caps = self.held_keys["lshift"] or self.held_keys["rshift"]"""
+position = "at"
+payload = """
+caps = AKYRS.shift_toggled or self.held_keys["lshift"] or self.held_keys["rshift"]
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "engine/node.lua"
+pattern = """            love.graphics.setLineWidth(3)"""
+position = "at"
+payload = """
+            love.graphics.setLineWidth(1)
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """        add_round_eval_row({dollars = 0, name='blind1', pitch = pitch, saved = true})"""
+position = "before"
+payload = """
+local should_win = false
+if G.GAME.blind.debuff.special_blind and G.GAME.aiko_puzzle_win then
+    if G.GAME.aiko_puzzle_win then
+        --print("win")
+        should_win = true
+    end
+elseif G.GAME.akyrs_mathematics_enabled and G.GAME.akyrs_character_stickers_enabled then
+    if (G.GAME.blind and AKYRS.is_value_within_threshold(G.GAME.blind.chips, G.GAME.chips, G.GAME.akyrs_math_threshold)) or AKYRS.compare(G.GAME.current_round.hands_left,"<",1) or AKYRS.does_hand_only_contain_symbols(G.hand) then
+        should_win = true
+    end
+end
+if should_win then 
+    add_round_eval_row({dollars = G.GAME.blind.dollars, name='blind1', pitch = pitch})
+    dollars = dollars + G.GAME.blind.dollars
+else
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """        add_round_eval_row({dollars = 0, name='blind1', pitch = pitch, saved = true})"""
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """    extras = create_UIBox_blind_tag(type, run_info)"""
+position = "before"
+payload = """
+if not G.GAME.akyrs_no_skips then
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """    extras = create_UIBox_blind_tag(type, run_info)"""
+position = "after"
+payload = """
+    extras = AKYRS.mod_skip_box(type, run_info, extras)
+end
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """        ability_text[1] and {n=G.UIT.R, config={align = "cm", padding = 0.08, colour = mix_colours(blind.boss_colour, G.C.GREY, 0.4), r = 0.1, emboss = 0.05, minw = 2.5, minh = 0.9}, nodes=ability_text} or nil
+      }}"""
+position = "after"
+payload = """
+AKYRS.add_blind_extra_info(blind,ability_text,{text_size = 0.25, difficulty_text_size = 0.3, full_ui = true, info_queue = info_queue})
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  local run_info_colour = run_info and (blind_state == 'Defeated' and G.C.GREY or blind_state == 'Skipped' and G.C.BLUE or blind_state == 'Upcoming' and G.C.ORANGE or blind_state == 'Current' and G.C.RED or G.C.GOLD)"""
+position = "before"
+payload = """
+AKYRS.add_blind_extra_info(blind_choice.config,blind_desc_nodes,{text_size = 0.25, difficulty_text_size = 0.3,border_size = 0.75})
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = """                            G.HUD_blind:get_UIE_by_ID("HUD_blind_count"):juice_up()"""
+position = "before"
+payload = """
+local akyrs_blind_thing = G.HUD_blind:get_UIE_by_ID("akyrs_blind_attributes")
+if akyrs_blind_thing then
+    akyrs_blind_thing.states.visible = true
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = """	assert(G.HUD_blind == e.UIBox)"""
+position = "at"
+payload = """"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """    if G.COLLABS.options[suit.key] then
+        suitTabs[index] = {
+                    label = localize(suit.key, 'suits_plural'),
+                    tab_definition_function = G.UIDEF.custom_deck_tab,
+                    tab_definition_function_args = suit.key
+                }
+        index = index + 1
+    end"""
+position = "before"
+payload = """if not suit.akyrs_hidden then"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """    if G.COLLABS.options[suit.key] then
+        suitTabs[index] = {
+                    label = localize(suit.key, 'suits_plural'),
+                    tab_definition_function = G.UIDEF.custom_deck_tab,
+                    tab_definition_function_args = suit.key
+                }
+        index = index + 1
+    end"""
+position = "after"
+payload = """end"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = """        self.ability_UIBox_table = self:generate_UIBox_ability_table()
+        self.config.h_popup = G.UIDEF.card_h_popup(self)
+        self.config.h_popup_config = self:align_h_popup()"""
+position = "before"
+payload = """if not AKYRS.should_hide_ui() then"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = """        self.ability_UIBox_table = self:generate_UIBox_ability_table()
+        self.config.h_popup = G.UIDEF.card_h_popup(self)
+        self.config.h_popup_config = self:align_h_popup()"""
+position = "after"
+payload = """end"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "engine/node.lua"
+pattern = """    if self.config and self.config.h_popup then
+        if not self.children.h_popup then 
+            self.config.h_popup_config.instance_type = 'POPUP'
+            self.children.h_popup = UIBox{
+                definition = self.config.h_popup,
+                config = self.config.h_popup_config,
+            }
+            self.children.h_popup.states.collide.can = false
+            self.children.h_popup.states.drag.can = true
+        end
+    end"""
+position = "before"
+payload = """if not AKYRS.should_hide_ui() then"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "engine/node.lua"
+pattern = """    if self.config and self.config.h_popup then
+        if not self.children.h_popup then 
+            self.config.h_popup_config.instance_type = 'POPUP'
+            self.children.h_popup = UIBox{
+                definition = self.config.h_popup,
+                config = self.config.h_popup_config,
+            }
+            self.children.h_popup.states.collide.can = false
+            self.children.h_popup.states.drag.can = true
+        end
+    end"""
+position = "after"
+payload = """end"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      local card_type = localize('k_'..string.lower(AUT.card_type))"""
+position = "before"
+payload = """if not AUT.card_type then return nil end"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """    if self.debug_tools then """
+position = "before"
+payload = """
+if (self.AKYRS_AIKOYORI and not self.AKYRS_AIKOYORI.REMOVED) then
+    love.graphics.push()
+    self.AKYRS_AIKOYORI:draw(dt)
+    self.akyrs_aiko_y = self.akyrs_aiko_y or 0
+    self.AKYRS_AIKOYORI.T.y = self.akyrs_aiko_y + G.WINDOWTRANS.real_window_h/(G.TILESCALE*G.TILESIZE)-self.AKYRS_AIKOYORI.T.h+0.1 + math.sin(G.TIMERS.REAL * 2.1) * 0.1
+    self.AKYRS_AIKOYORI.T.x = G.WINDOWTRANS.real_window_w/(G.TILESCALE*G.TILESIZE)-self.AKYRS_AIKOYORI.T.w+1
+    love.graphics.pop()
+end"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  args.focus_args = args.focus_args or nil"""
+position = "before"
+payload = """args.akyrs_extras = args.akyrs_extras or nil"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = """    e.config.toggle_callback(e.config.ref_table.ref_table[e.config.ref_table.ref_value])"""
+position = "at"
+payload = """    e.config.toggle_callback(e.config.ref_table.ref_table[e.config.ref_table.ref_value], e) -- patched by aikyoori lmaooo"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """          {n=G.UIT.T, config={text = blind.mult..localize('k_x_base'), scale = 0.4, colour = G.C.RED}},"""
+position = "before"
+payload = """AKYRS.mod_blind_display(blind) or"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling"""
+position = "after"
+payload = """blind_amt = AKYRS.mod_blind_requirement(blind_choice.config,blind_amt)"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = """          G.shop.alignment.offset.y = G.ROOM.T.y + 29"""
+position = "before"
+payload = """if G.shop then"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = """          G.shop.alignment.offset.y = G.ROOM.T.y + 29"""
+position = "after"
+payload = """end"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/game_object.lua"]'''
+pattern = '''desc_nodes.background_colour = res.background_colour'''
+position = 'before'
+payload = '''
+if card and AKYRS.is_in_pool(card,"Kessoku Band") then
+	info_queue[#info_queue+1] = AKYRS.DescriptionDummies["dd_akyrs_kessoku_band"]
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/UI_definitions.lua'''
+pattern = '''      one_press = args.one_press,'''
+position = 'before'
+payload = '''  akyrs_osk = args.akyrs_osk,'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/misc_functions.lua'''
+pattern = '''  local _c, _c_name, _c_val, _c_gather = nil, nil, nil, nil'''
+position = 'before'
+payload = '''local is_escaping = false'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/misc_functions.lua'''
+pattern = '''      if char == '{' then --Start of a control section, extract all controls'''
+position = 'before'
+payload = '''
+if char == '\\' then
+    is_escaping = true
+    goto akyrs_loc_escape_continue
+end
+if not is_escaping then
+'''
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '''functions/misc_functions.lua'''
+pattern = '''      if i == #line then'''
+position = 'before'
+payload = '''
+else
+    str_parts[str_it] = (str_parts[str_it] or '')..(char)
+    is_escaping = false
+end
+::akyrs_loc_escape_continue::
+'''
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/overrides.lua"]'''
+pattern = '''			})}}}}'''
+position = 'after'
+payload = '''
+object = AKYRS.mod_run_info_hands(object)
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''engine/particles.lua'''
+pattern = '''    self.states.release_on.can = false'''
+position = 'after'
+payload = '''
+self.akyrs_stay_on_top = config.akyrs_stay_on_top
+'''
+match_indent = true
+overwrite = true
+[[patches]]
+[patches.pattern]
+target = '''engine/text.lua'''
+pattern = '''    self.start_pop_in = self.config.pop_in'''
+position = 'after'
+payload = '''
+self.akyrs_stay_on_top = config.akyrs_stay_on_top
+'''
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/UI_definitions.lua'''
+pattern = '''              attach = args.AT,'''
+position = 'after'
+payload = '''
+akyrs_stay_on_top = args.akyrs_stay_on_top,
+'''
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/UI_definitions.lua'''
+pattern = '''          args.AT.attention_text = true'''
+position = 'before'
+payload = '''
+args.AT.definition.nodes[1].config.object.akyrs_stay_on_top = args.akyrs_stay_on_top
+'''
+match_indent = true
+overwrite = true
+[[patches]]
+[patches.pattern]
+target = '''functions/UI_definitions.lua'''
+pattern = '''              timer_type = 'TOTAL',
+              timer = 5,
+              scale = 2.4*(args.backdrop_scale or 1), 
+              lifespan = 5,
+              speed = 0,,'''
+position = 'at'
+payload = '''timer_type = args.backdrop_timer_type or 'TOTAL',
+timer = args.backdrop_timer or 5,
+scale = 2.4*(args.backdrop_scale or 1), 
+lifespan = args.backdrop_lifespan or 5,
+speed = args.backdrop_speed or 0,'''
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = '''engine/text.lua'''
+pattern = '''                new_string = (v.prefix or '')..format_ui_value(v.ref_table and v.ref_table[v.ref_value] or v.string)..(v.suffix or '')'''
+position = 'after'
+payload = '''
+if self.config.akyrs_number_format then
+    new_string = (v.prefix or '')..number_format(v.ref_table and v.ref_table[v.ref_value] or v.string, self.config.akyrs_number_format)..(v.suffix or '')
+end
+'''
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/UI_definitions.lua'''
+pattern = '''    local stake_sprite = get_stake_sprite(G.GAME.stake or 1, 0.4)
+    blind_text[#blind_text + 1] ='''
+position = 'after'
+payload = '''AKYRS.getBlindText(blind.key, true)[1] and
+{n=G.UIT.R, config={align = "cm", emboss = 0.05, r = 0.1, minw = 2.5, padding = 0.07, colour = G.C.WHITE}, nodes={
+    {n=G.UIT.R, config={align = "cm", maxw = 2.4}, nodes={
+        {n=G.UIT.T, config={text = AKYRS.getBlindText(blind.key, true)[1], scale = 0.35, colour = G.C.UI.TEXT_DARK}},
+    }},
+{n=G.UIT.R, config={align = "cm"}, nodes={
+    {n=G.UIT.O, config={object = stake_sprite}},
+    AKYRS.mod_blind_display(blind) or
+    {n=G.UIT.T, config={text = AKYRS.getBlindText(blind.key, true)[2], scale = 0.4, colour = G.C.RED}},
+}},
+{n=G.UIT.R, config={align = "cm"}, nodes={
+    {n=G.UIT.T, config={text = localize('ph_blind_reward'), scale = 0.35, colour = G.C.UI.TEXT_DARK}},
+    {n=G.UIT.O, config={object = DynaText({string = {_dollars and string.rep(localize('$'),_dollars) or '-'}, colours = {G.C.MONEY}, rotate = true, bump = true, silent = true, scale = 0.45})}},
+}},
+ability_text[1] and {n=G.UIT.R, config={align = "cm", padding = 0.08, colour = mix_colours(blind.boss_colour, G.C.GREY, 0.4), r = 0.1, emboss = 0.05, minw = 2.5, minh = 0.9}, nodes=ability_text} or nil
+}} or '''
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """    if config.name ~= 'bottom' then"""
+position = "before"
+payload = """
+num_dollars = AKYRS.setCashOutDollars(config,scale,stake_sprite, num_dollars) or num_dollars
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """        love.graphics.setShader( G.SHADERS['CRT'])"""
+position = "before"
+payload = """if AKYRS.config.turn_on_crt then"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """        love.graphics.setShader( G.SHADERS['CRT'])"""
+position = "after"
+payload = """end"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """    if not full_UI_table.name then"""
+position = "before"
+payload = """local akyrs_should_conceal = false
+if _c and AKYRS.should_conceal_card(card, _c) then
+    local _c2 = {}
+    for k, v in pairs(_c) do
+        _c2[k] = v
+    end
+    _c2.key = "j_hatena"
+    _c2.generate_ui = nil
+    _c2.set = "DescriptionDummy"
+    akyrs_should_conceal = true
+    _c = _c2
+end"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """    for _, v in ipairs(info_queue) do"""
+position = "before"
+payload = """if _c and akyrs_should_conceal and AKYRS.should_conceal_card(card, _c) then
+    info_queue = {}
+end"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      local multi_boxes = {}"""
+position = "before"
+payload = """
+if not multi_boxes then
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      local multi_boxes = {}"""
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      local info_cols = {}"""
+position = "before"
+payload = """
+if not info_cols then
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      local info_cols = {}"""
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      if AUT.badges.card_type or AUT.badges.force_rarity then"""
+position = "before"
+payload = """
+local multi_boxes = {}
+local info_cols = {}
+if obj and AKYRS.should_conceal_card(card, obj) then
+
+else"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """          table.insert(info_cols, {n=G.UIT.C, config = {align="cm"}, nodes = col})
+      end"""
+position = "after"
+payload = """end"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = """	elseif num_lines < #e.children then"""
+position = "before"
+payload = """num_lines = num_lines + AKYRS.rows_needed_for_icon()"""
+overwrite = true
+match_indent = true
+

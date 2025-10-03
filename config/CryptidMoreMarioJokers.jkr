@@ -1,0 +1,4 @@
+return {
+	["More_mario_jokers"] = true,
+	["Nostalgic_luigi"] = true,
+}

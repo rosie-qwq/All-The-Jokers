@@ -1,0 +1,50 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = """        RENTAL = HEX('b18f43'),"""
+position = "after"
+payload = """AKYRS_PLAYABLE = HEX("ee36ff"),
+AKYRS_PISSANDSHITTIUM = HEX("68211d"),
+AKYRS_BOCCHI = HEX("ff61d2"),
+AKYRS_KITA = HEX("ff294d"),
+AKYRS_NIJIKA = HEX("e38e20"),
+AKYRS_RYOU = HEX("3653f7"),
+AKYRS_UMBRAL_P = HEX("925ac3"),
+AKYRS_UMBRAL_Y = HEX("ffd45b"),
+AKYRS_AIKOYORI_HAIR = HEX("8dffa8"),
+AKYRS_AIKOYORI_BOW = HEX("ff5979"),
+AKYRS_AIKOYORI_BOW_SHADE = HEX("d53e99"),
+AKYRS_AIKOYORI_BG = HEX("533B4077"),
+AKYRS_HAIR_DARK = HEX("244748"),
+AKYRS_HAIR_DARKER = HEX("1c363d"),
+AKYRS_AIKOYORI_SHIRT = HEX("ffffff"),
+AKYRS_AIKOYORI_CARDIGAN = HEX("a06d4d"),
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = """  return G.ARGS.LOC_COLOURS[_c] or _default or G.C.UI.TEXT_DARK"""
+position = "before"
+payload = """G.ARGS.LOC_COLOURS.akyrs_playable = G.C.AKYRS_PLAYABLE
+G.ARGS.LOC_COLOURS.akyrs_pissandshittium = G.C.AKYRS_PISSANDSHITTIUM
+G.ARGS.LOC_COLOURS.akyrs_bocchi = G.C.AKYRS_BOCCHI
+G.ARGS.LOC_COLOURS.akyrs_kita = G.C.AKYRS_KITA
+G.ARGS.LOC_COLOURS.akyrs_nijika = G.C.AKYRS_NIJIKA
+G.ARGS.LOC_COLOURS.akyrs_ryou = G.C.AKYRS_RYOU
+G.ARGS.LOC_COLOURS.akyrs_umbral_p = G.C.AKYRS_UMBRAL_P
+G.ARGS.LOC_COLOURS.akyrs_umbral_y = G.C.AKYRS_UMBRAL_Y
+"""
+overwrite = true
+match_indent = true
+

@@ -1,0 +1,286 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# initiate variables
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "rental_rate = 3,"
+position = "after"
+payload = '''
+    mtg_storm_count = 0,
+    mtg_bonus_chips = 0,
+	mtg_energy_storage = 0,
+'''
+match_indent = true
+
+# increment storm
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "local used_tarot = copier or self"
+position = "after"
+payload = '''
+    G.GAME.mtg_storm_count = G.GAME.mtg_storm_count + 1
+'''
+match_indent = true
+
+# reset storm
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.RESET_JIGGLES = nil"
+position = "after"
+payload = '''
+    G.GAME.mtg_storm_count = 0
+'''
+match_indent = true
+
+# reset storm
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.RESET_JIGGLES = true"
+position = "after"
+payload = '''
+    G.GAME.mtg_storm_count = 0
+'''
+match_indent = true
+
+# get suit changes to work
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''return self.base.suit == suit'''
+position = "before"
+payload = '''
+    if self.ability.effect == 'Gold Card' and next(SMODS.find_card("j_mtg_chromaticlantern")) then
+        return true
+    end
+	if suit == 'Diamonds' and next(SMODS.find_card("j_mtg_celestialdawn")) then
+		return true
+	elseif suit == 'Hearts' and next(SMODS.find_card("j_mtg_bloodmoon")) then
+		return true
+	elseif suit == 'Spades' and next(SMODS.find_card("j_mtg_urborg")) then
+		return true
+	elseif suit == 'Clubs' and next(SMODS.find_card("j_mtg_harbinger")) then
+		return true 
+	end
+	if MagicTheJokering.config.include_clover_suit then
+		if suit == suit_clovers.key and next(SMODS.find_card("j_mtg_yavimaya")) then
+			return true 
+		end
+	end
+'''
+match_indent = true
+
+# add bonus damage
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "ease_to = G.GAME.chips + math.floor(hand_chips*mult),"
+position = "at"
+payload = '''ease_to = G.GAME.chips + math.floor(hand_chips*mult) + math.floor(G.GAME.mtg_bonus_chips),
+'''
+match_indent = true
+
+# reset bonus damage
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.FUNCS.evaluate_play()"
+position = "after"
+payload = '''
+	G.GAME.mtg_bonus_chips = 0
+'''
+match_indent = true
+
+# Obliterate - don't lose
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''game_over = false
+(?<indent>[\t ]*)end
+[\t ]*for i = 1, #G.jokers.cards do'''
+position = 'at'
+# match_indent = true
+line_prepend = '$indent'
+payload = '''
+game_over = false
+end
+if G.GAME.current_round.instant_win and game_over then
+    game_over = false
+end
+for i = 1, #G.jokers.cards do
+'''
+
+# Obliterate - reset value at start of round
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.blind:set_blind(G.GAME.round_resets.blind)"
+position = "after"
+payload = '''
+G.GAME.current_round.instant_win = false
+'''
+match_indent = true
+
+# Obliterate - end screen text
+[[patches]]
+[patches.regex]
+target = "functions/common_events.lua"
+pattern = '''localize\('ph_mr_bones'\)..' '\}, colours = \{G.C.FILTER'''
+position = 'at'
+match_indent = true
+line_prepend = ''
+payload = '''(G.GAME.current_round.instant_win and "OBLITERATED" or localize('ph_mr_bones'))..' '}, colours = {(G.C.FILTER)'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''G.RESET_JIGGLES = true'''
+position = 'after'
+match_indent = true
+payload = '''
+if G.GAME.current_round.obliterate then
+    game_over = false
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.blind:set_blind(G.GAME.round_resets.blind)"
+position = "after"
+payload = '''
+G.GAME.current_round.obliterate = false
+'''
+match_indent = true
+
+[[patches]]
+[patches.regex]
+target = "functions/common_events.lua"
+pattern = '''localize\('ph_mr_bones'\)'''
+position = 'at'
+payload = '''(G.GAME.current_round.obliterate and "OBLITERATED" or localize('ph_mr_bones'))'''
+
+# rats - negative if you have a copy
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "card:set_edition(edition)"
+position = "at"
+payload = '''
+    if card.ability.name == "mtg-relentlessrats" and next(SMODS.find_card("j_mtg_relentlessrats")) then
+		card:set_edition("e_negative", true, nil, true)
+	else
+        card:set_edition(edition)
+    end
+'''
+match_indent = true
+
+# Joker Sell List
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'local eval, post = eval_card(self, {selling_self = true})'
+position = "before"
+payload = '''
+if self.config.center.set == 'Joker' then
+	if G.GAME.jokers_sold then
+		local contained = false
+		for i = 1, #G.GAME.jokers_sold do
+			if self.config.center.key == G.GAME.jokers_sold[i] then contained = true end
+		end
+		if not contained then table.insert(G.GAME.jokers_sold, self.config.center.key) end
+	else
+		G.GAME.jokers_sold = {self.config.center.key}
+	end
+end
+'''
+match_indent = true
+
+# Discount
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.cost = math.max(1, math.floor((self.base_cost + self.extra_cost + 0.5)*(100-G.GAME.discount_percent)/100))"
+position = "after"
+payload = '''
+    self.cost = math.max(1, self.cost - G.FUNCS.total_shop_discount())
+	if self.ability.set == 'Joker' and G.FUNCS.free_jokers() then 
+        self.cost = 0
+	end
+'''
+match_indent = true
+
+# Force Suit
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if card.ability.consumeable and not skip_materialize then card:start_materialize() end"
+position = "before"
+payload = '''
+	if center.force_suit or center.force_value then
+    	SMODS.change_base(card, center.force_suit, center.force_value)
+	end
+'''
+match_indent = true
+
+# Prevent ghost card
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local cards = {}"
+position = "before"
+payload = '''
+	highlighted_count = math.min(#G.hand.highlighted, G.discard.config.card_limit - #G.play.cards)
+'''
+match_indent = true
+
+# Use Energy button
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "function G.UIDEF.use_and_sell_buttons(card)"
+position = "after"
+payload = '''
+   local gx = nil
+    if card.area and card.area.config.type == 'joker' and card.ability.set == 'Joker' then
+		if card.ability.mtg_energy == true then
+			gx = 
+			{n=G.UIT.C, config={align = "cl"}, nodes={
+			
+				{n=G.UIT.C, config={ref_table = card, align = "cl",maxw = 1.25, padding = 0.1, r=0.08, minw = 1.0, hover = true, shadow = true, colour = G.C.GOLD, one_press = true, button = 'use_energy', func = 'can_use_energy'}, nodes={
+				{n=G.UIT.B, config = {w=0.1,h=0.6}},
+				{n=G.UIT.C, config={align = "tm"}, nodes={
+					{n=G.UIT.R, config={align = "cm", maxw = 1.25}, nodes={
+						{n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true}}
+					}},
+					{n=G.UIT.R, config={align = "cm"}, nodes={
+						{n=G.UIT.T, config={text = "Energy",colour = G.C.WHITE, scale = 0.55, shadow = true}}
+					}}
+				}}
+				}}
+			}}
+		end
+    end
+
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = 'cl'}, nodes={
+            use
+          }},'''
+position = "after"
+payload = '''
+{n=G.UIT.R, config={align = 'cl'}, nodes={
+            gx
+          }},
+'''
+match_indent = true

@@ -1,0 +1,14 @@
+{
+	"id": "cardspecies",
+	"name": "Card Species", 
+	"author": ["RosieQwQ"], 
+	"description": "Adds species to all cards, because why the fuck not.",
+	"prefix": "cspeci",
+	"main_file": "main.lua",
+	"priority": -99999998, 
+	"badge_colour": "ffffff",
+	"version": "0.0.1", 
+	"dependencies": [
+		"cardpronouns (>=1.2)"
+	]
+}

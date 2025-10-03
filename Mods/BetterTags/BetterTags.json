@@ -1,0 +1,14 @@
+{
+	"id": "bettertags",
+	"name": "Better Tags",
+	"display_name": "Better Tags",
+	"author": ["WaffleDevs"],
+	"description": "Reworks how tags render. This preserves tag order.",
+	"prefix": "bt",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "ffffff",
+	"badge_text_colour": "ffffff",
+	"version": "1.0.4"
+	
+}

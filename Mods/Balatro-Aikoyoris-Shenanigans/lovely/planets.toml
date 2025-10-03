@@ -1,0 +1,114 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """                elseif v.set == 'Planet' then"""
+position = "after"
+payload = '''
+
+local softlocked = true
+
+if v.config.akyrs_hand_types then
+    add = false
+    for _, h in pairs(v.config.akyrs_hand_types) do
+        if G.GAME.hands[h].played > 0 then
+            softlocked = false
+        end
+    end
+end
+
+if not softlocked then
+    add = true
+end
+'''
+match_indent = true
+
+
+# i fucking patch cryptid
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """if not v.config.softlock then
+    softlocked = softlocked"""
+position = "after"
+payload = '''
+
+local softlocked = true
+
+if v.config.akyrs_hand_types then
+    add = false
+    for _, h in pairs(v.config.akyrs_hand_types) do
+        if G.GAME.hands[h].played > 0 then
+            softlocked = false
+        end
+    end
+end
+
+if not softlocked then
+    add = true
+end
+'''
+match_indent = true
+
+# i fucking patch vanilla
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """                    if (not v.config.softlock or G.GAME.hands[v.config.hand_type].played > 0) then
+                        add = true
+                    end"""
+position = "before"
+payload = '''
+if v.config.hand_type then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """                    if (not v.config.softlock or G.GAME.hands[v.config.hand_type].played > 0) then
+                        add = true
+                    end"""
+position = "after"
+payload = '''
+end
+'''
+match_indent = true
+
+
+# so it adds words thing
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = """if v.config.hand_type == G.GAME.last_hand_played then
+    _planet = v.key
+end"""
+position = "before"
+payload = '''
+if v.config.hand_type then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = """                        if v.config.hand_type == G.GAME.last_hand_played then
+                            _planet = v.key
+                        end"""
+position = "after"
+payload = '''
+    end
+    if v.config.akyrs_hand_types then
+        for _, h in pairs(v.config.akyrs_hand_types) do
+            if h == G.GAME.last_hand_played then
+                _planet = v.key
+                break
+            end
+        end
+    end
+'''
+match_indent = true

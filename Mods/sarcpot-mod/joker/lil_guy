@@ -1,0 +1,59 @@
+SMODS.Joker {
+    key = "lil_guy",
+    config = {
+        extra = {
+            hands_mod = 1,
+            chips_mod = 35,
+            chips = 0
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.hands_mod, card.ability.extra.chips_mod, card.ability.extra.chips}
+        }
+    end,
+    rarity = 1,
+    pos = {
+        x = 0,
+        y = 7
+    },
+    atlas = 'sarcpot_atlas',
+    cost = 5,
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    soul_pos = nil,
+
+    in_pool = function(self, args)
+        return true
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind and not context.blueprint then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                blocking = true,
+                delay = 0.2,
+                func = function()
+                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+                    play_sound('tarot1')
+                    card:juice_up()
+                    ease_hands_played(-card.ability.extra.hands_mod)
+                    SMODS.calculate_effect({
+                        message = "+" .. card.ability.extra.chips,
+                        colour = G.C.BLUE
+                    }, card)
+                    return true
+                end
+            }))
+        end
+        if context.joker_main then
+            return {
+
+                chips = card.ability.extra.chips
+
+            }
+        end
+    end
+}
+

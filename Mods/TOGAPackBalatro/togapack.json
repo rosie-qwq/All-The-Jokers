@@ -1,0 +1,14 @@
+{
+	"id": "TOGAPack",
+	"name": "TOGA's Stuff",
+	"author": ["TheOneGoofAli"],
+	"description": "Personal timewaster project with a few references here and there.",
+	"prefix": "toga",
+	"main_file": "togastuff.lua",
+	"priority": 2,
+	"badge_colour": "fd9712",
+	"version": "1.10.0",
+	"dependencies": ["Steamodded (>=1.0.0~BETA-0827c)"],
+	"conflicts": ["Talisman (<<2.4.0*~)"],
+	"allow_redistribution": true
+}

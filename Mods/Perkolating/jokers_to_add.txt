@@ -1,0 +1,5 @@
+just the perks- retiggers all perkeo cards
+PERKoMN card- 2x mult per perkeo card
+--Perkeo Template- plus 1.5 mult per negative consumeable card
+Perkotory - creates a negative perkeo every x consumeables used
+Perkolatte - creates 5 copies of a random consumeable, -1 comsumable every round

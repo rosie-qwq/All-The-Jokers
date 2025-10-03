@@ -1,0 +1,83 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS YGGDRASIL "code/jokers.lua"]'
+pattern = '''if not DisabledSkills[i] then'''
+position = "at"
+match_indent = true
+payload = '''if not (DisabledSkills[i] or G.GAME.modifiers.chdp_banned_skills_yggdrasil[i]) then'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS YGGDRASIL "code/loot_system.lua"]'
+pattern = '''local amountOfMat = pseudorandom("amountOfMat_check",1,3)'''
+position = "at"
+match_indent = true
+payload = '''local amountOfMat = pseudorandom("amountOfMat_check",G.GAME.modifiers.chdp_ygg_min_mats,(G.GAME.modifiers.chdp_ygg_max_mats))'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS YGGDRASIL "code/loot_system.lua"]'
+pattern = '''local allBlindTypes = {"Small", "Big", "Boss"}'''
+position = "at"
+match_indent = true
+payload = '''local allBlindTypes = G.GAME.modifiers.chdp_third_boss and {"Small", "Big", "ChDp_Boss2", "ChDp_Boss", "Boss"} or G.GAME.modifiers.second_boss and {"Small", "Big", "ChDp_Boss", "Boss"} or {"Small", "Big", "Boss"}'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS YGGDRASIL "code/loot_system.lua"]'
+pattern = '''if blind == "Small" or blind == "Big" or blind == "Boss" then'''
+position = "at"
+match_indent = true
+payload = '''if blind == "Small" or blind == "Big" or blind == "Boss" or (G.GAME.modifiers.chdp_third_boss and blind == "ChDp_Boss2") or ((G.GAME.modifiers.chdp_third_boss or G.GAME.modifiers.second_boss) and blind == "ChDp_Boss") then'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS YGGDRASIL "code/loot_system.lua"]'
+pattern = '''check = "Big"'''
+position = "after"
+match_indent = true
+payload = '''elseif G.GAME.modifiers.chdp_third_boss and G.GAME.round_resets.blind_states.ChDp_Boss == "Upcoming" then
+check = "ChDp_Boss2"
+elseif G.GAME.modifiers.second_boss and G.GAME.round_resets.blind_states.Boss == "Upcoming" then
+check = "ChDp_Boss"'''
+
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS YGGDRASIL "code/loot_system.lua"]'
+pattern = '''if G.GAME["loot_table"][type.."Loots"] then'''
+position = "at"
+match_indent = true
+payload = '''if G.GAME["loot_table"][type.."Loots"] and #G.GAME["loot_table"][type.."Loots"] > 3 then
+    for _,v in ipairs(G.GAME["loot_table"][type.."Loots"]) do
+        if _ < 4 then
+            nodes[#nodes+1] = {}
+            local loc_vars = {scale = 0.925, text_colour = G.C.WHITE, background_colour = G.C.CLEAR, vars = {v.amount, localize("ygg_"..v.info.id), localize("ygg_"..v.info.rarity), colours = { G.C["ygg_"..v.info.rarity]},}}
+            localize({type = 'descriptions', key = "ygg_test", set = 'Other', nodes = nodes[#nodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow})
+            nodes[#nodes] = desc_from_rows(nodes[#nodes])
+            nodes[#nodes].config.colour = loc_vars.background_colour or nodes[#nodes].config.colour
+            nodes[#nodes].config.outline = 0.7
+            nodes[#nodes].config.outline_colour = G.C.GRAY
+        end
+        if _ == 4 then
+            local loc_vars = {scale = 0.925, text_colour = G.C.WHITE, background_colour = G.C.CLEAR, vars = {(#G.GAME["loot_table"][type.."Loots"] - 3)}}
+            localize({type = 'descriptions', key = "chdp_ygg_more", set = 'Other', nodes = nodes[#nodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow})
+            nodes[#nodes] = desc_from_rows(nodes[#nodes])
+            nodes[#nodes].config.colour = loc_vars.background_colour or nodes[#nodes].config.colour
+            nodes[#nodes].config.outline = 0.7
+            nodes[#nodes].config.outline_colour = G.C.GRAY
+        end
+    end
+elseif G.GAME["loot_table"][type.."Loots"] and #(G.GAME["loot_table"][type.."Loots"]) == 0 then
+    local loc_vars = {scale = 0.925, text_colour = G.C.WHITE, background_colour = G.C.CLEAR, vars = {}}
+        localize({type = 'descriptions', key = "chdp_ygg_zero", set = 'Other', nodes = nodes[#nodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow})
+        nodes[#nodes] = desc_from_rows(nodes[#nodes])
+        nodes[#nodes].config.colour = loc_vars.background_colour or nodes[#nodes].config.colour
+        nodes[#nodes].config.outline = 0.7
+        nodes[#nodes].config.outline_colour = G.C.GRAY
+elseif G.GAME["loot_table"][type.."Loots"] then'''

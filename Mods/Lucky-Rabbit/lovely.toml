@@ -1,0 +1,373 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+
+# --------- circus ---------
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = "if G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then"
+position = "at"
+payload = '''if G.GAME.used_vouchers.v_fmod_circus and pseudorandom("circus") > 0.8 then
+    _card = {set = "Silly", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sil1"}
+elseif G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then'''
+match_indent = true
+times = 1
+
+# -------- reroll superfluity --------
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
+    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end'''
+position = "at"
+payload = '''if G.GAME.used_vouchers.v_fmod_reroll_superfluity and G.GAME.round_scores.times_rerolled.amt % 2 == 0 then
+    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
+else
+    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
+    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end
+end'''
+match_indent = true
+times = 1
+
+# -------- juggler --------
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''used_vouchers = {},'''
+position = "after"
+payload = '''juggler_count = 0,'''
+match_indent = true
+times = 1
+
+# -------- recursive deck --------
+
+[[patches]]
+[patches.regex]
+target = 'functions/common_events.lua'
+pattern = '''and not SMODS\.showman\(\s*(v\.key|'[^']+')\s*\)'''
+position = "at"
+payload = '''and not (SMODS.showman($1) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
+times = 4
+
+# -------- fennex deck ---------
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if add and not G.GAME.banned_keys[v.key] then "
+position = "after"
+match_indent = true
+payload = '''
+    if (G.GAME.selected_back_key or {}).key == 'b_fmod_fennex' and v.key:find('j_fmod_') then
+      for i = 1, 2 do
+        _pool[#_pool + 1] = v.key
+        _pool_size = _pool_size + 1
+      end
+    end
+'''
+
+# -------- reaper deck ---------
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling"
+position = "after"
+match_indent = true
+payload = '''
+if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
+    blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*(blind_choice.config.mult*2)*G.GAME.starting_params.ante_scaling
+end
+'''
+
+# -------- trapeze --------
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''juggler_count = 0,'''
+position = "after"
+payload = '''trapeze_count = 0,'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local card = Card(area.T.x + area.T.w/2, area.T.y, G.CARD_W, G.CARD_H, SMODS.set_create_card_front or front, center,'''
+position = "before"
+payload = '''if center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
+    center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully", MINTY and "c_minty_wand", GB and "c_gb_shatter", next(SMODS.find_mod("VISIBILITY")) and "c_vis_hamsa"}, pseudoseed("trapeze"))]
+    G.GAME.trapeze_count = 0
+end'''
+match_indent = true
+times = 1
+
+# -------- saffron shield blind --------
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "most_played_poker_hand = 'High Card',"
+position = "after"
+payload = "most_played_rank = 'Ace',"
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.current_round.most_played_poker_hand = _handname"
+position = "after"
+payload = '''local _rankname, played = 'Ace', -1
+            for k, v in pairs(G.GAME.cards_played) do
+                if G.GAME.cards_played[k].total > played then
+                    played = G.GAME.cards_played[k].total
+                    _rankname = k
+                end
+            end
+        G.GAME.current_round.most_played_rank = _rankname'''
+match_indent = true
+times = 1
+
+# -------- marking badges --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "badges.mod_set = nil"
+position = "before"
+match_indent = true
+payload = '''
+if LR_UTIL and card and card.ability then
+    local key = LR_UTIL.has_marking(card)
+    if key then
+        SMODS.create_mod_badges(SMODS.Stickers[key], badges)
+    end
+end
+'''
+
+# -------- pinhole marking --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''draw_card(G.play,G.discard, it*100/play_count,'down', false, v)'''
+position = "at"
+payload = '''
+if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
+    draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
+else
+    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
+end'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
+if G.GAME.modifiers.flipped_cards and to == G.hand then
+    if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
+        stay_flipped = true
+    end
+end
+to:emplace(card, nil, stay_flipped)'''
+position = "at"
+payload = '''local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
+if G.GAME.modifiers.flipped_cards and to == G.hand then
+    if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
+        stay_flipped = true
+    end
+end
+if to == G.deck and #G.deck.cards > 0 and LR_UTIL.has_marking(card) == "fmod_pinhole_mark" then
+    local poss_deck = {}
+    for k, v in ipairs(G.deck.cards) do
+        poss_deck[#poss_deck+1] = k
+    end
+    local rand_card = pseudorandom_element(poss_deck, pseudoseed("pinhole"))
+    table.insert(G.deck.cards, rand_card, card)
+    card:set_card_area(to)
+    play_sound('card1', 0.85 + percent*0.2/100, 0.6*(vol or 1))
+    to:set_ranks()
+    to:align_cards()
+else
+    to:emplace(card, nil, stay_flipped)
+end'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''if card then drawn = true end'''
+position = "at"
+payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end'''
+match_indent = true
+times = 1
+
+# -------- hyperfixation --------
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''trapeze_count = 0,'''
+position = "after"
+payload = '''hyperfix_card = {
+    rank = 'Ace',
+    suit = 'Spades',
+},'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''idol_card = {suit = 'Spades', rank = 'Ace'},'''
+position = "after"
+payload = '''hyperfix_card = {rank = '2'},
+'''
+match_indent = true
+times = 1
+
+# -------- despicable bear --------
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = """
+for _, v in ipairs(G.handlist) do
+if not results.top and results[v] then"""
+position = "before"
+payload = '''
+if next(SMODS.find_card("j_fmod_despicable_bear")) and #hand == 4 and next(results["Two Pair"]) then
+    results["Four of a Kind"] = { SMODS.merge_lists(results["Four of a Kind"], results["Two Pair"]) }
+end'''
+match_indent = true
+
+# -------- clown car --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.sell_cost = * + (self.ability.extra_value or 0)"
+position = "after"
+match_indent = true
+payload = '''
+if self.ability.fmod_no_sell_value then
+    self.sell_cost = self.ability.extra_value or 0
+end'''
+
+# -------- crazy neil --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'
+position = "before"
+payload = '''
+if self.ability.fmod_crazy_neil_discount then
+    self.cost = math.max(1, math.floor(self.cost - (self.cost * 0.75)))
+end'''
+times = 1
+match_indent = true
+
+# -------- harmony deck --------
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''    card_from_control(v)
+end'''
+position = "after"
+payload = '''
+        if G.GAME.starting_params.fmod_harmony then
+            local chosen = pseudorandom_element(G.playing_cards, pseudoseed('harmony'))
+            local suit, rank = chosen.base.suit, chosen.base.value
+            for i = 1, #G.playing_cards do
+                SMODS.change_base(G.playing_cards[i], suit, rank)
+            end
+        end'''
+times = 1
+match_indent = false
+
+# ------bepis' implementation of ferromancy
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif _c.set == 'Enhanced' then'''
+position = "after"
+payload = '''
+    if #SMODS.find_card('j_fmod_ferromancy') > 0 then
+        if _c.effect == "Gold Card" and not _c.ferromancy_converted then
+            _c.ferromancy_converted = true
+            _c.effect = "Steel Card"
+            _c.key = "m_steel"
+        elseif _c.effect == "Steel Card" and not _c.ferromancy_converted then
+            _c.ferromancy_converted = true
+            _c.effect = "Gold Card"
+            _c.key = "m_gold"
+        end
+    else
+        if _c.effect == "Gold Card" and _c.ferromancy_converted then
+            _c.ferromancy_converted = false
+            _c.effect = "Steel Card"
+            _c.key = "m_steel"
+        elseif _c.effect == "Steel Card" and _c.ferromancy_converted then
+            _c.ferromancy_converted = false
+            _c.effect = "Gold Card"
+            _c.key = "m_gold"
+        end
+    end
+'''
+times = 1
+match_indent = true
+
+# -------- tem shop --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'''
+position = "at"
+payload = '''if next(SMODS.find_card("j_fmod_tem_shop")) then
+    self.sell_cost = math.max(1, math.floor((self.cost/4) * 3)) + (self.ability.extra_value or 0)
+else
+    self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)
+end'''
+times = 1
+match_indent = true
+
+# -------- orbit fix --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'
+position = "before"
+payload = '''
+if self.ability.fmod_halve then
+    self.cost = math.max(1, math.floor(self.cost - (self.cost * 0.5)))
+end'''
+times = 1
+match_indent = true
+
+
+# -------- double down seal patch --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local seals = card:calculate_seal(context)"
+position = "after"
+payload = '''
+for i=1, #SMODS.find_card("j_fmod_double_down") do
+    local seal2 = card:calculate_seal(context)
+    seals = SMODS.merge_effects({seals, {message = localize('k_again_ex'), message_card = SMODS.find_card("j_fmod_double_down")[i]}, seal2})
+end'''
+times = 2
+match_indent = true

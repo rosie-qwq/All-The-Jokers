@@ -1,0 +1,61 @@
+SMODS.Joker {
+
+	discovered = true,
+	key = 'thief_dice',
+
+
+
+	config = {
+        extra = {
+            n = 1,
+            d = 6
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        local n, d = SMODS.get_probability_vars(card, card.ability.extra.n,  card.ability.extra.d, 'thief_dice')
+        return {
+            vars = {n, d}
+        }
+    end,
+	rarity = 2,
+	atlas = 'sarcpot_atlas',
+	pos = { x = 1, y = 2 },
+	cost = 6,
+	
+	calculate = function(self, card, context)
+		local trigger = nil
+		if context.ending_shop and context.cardarea == G.jokers then
+			if SMODS.pseudorandom_probability(card, 'thief_dice_consumable', card.ability.extra.n, card.ability.extra.d, 'thief_dice') then
+				local consumable = poll_consumable('thief_dice')
+				consumable:add_to_deck()
+				G.consumeables:emplace(consumable)
+				trigger = localize('sarc_yoink')
+			end
+			if SMODS.pseudorandom_probability(card, 'thief_dice_joker', card.ability.extra.n, card.ability.extra.d, 'thief_dice') then
+				SMODS.add_card({ area = G.jokers, set = 'Joker', rarity = 0, edition = 'e_negative', stickers = { 'perishable' } })
+				trigger = localize('sarc_stolen')
+			end
+			return {
+				message = trigger,
+				colour = G.C.GREEN,
+				card = card
+			}
+		end
+	end
+
+}
+--Blatantly stolen from Paperback
+
+function poll_consumable(seed)
+	local types = {}
+
+	for _, k in ipairs(SMODS.ConsumableType.ctype_buffer) do
+		types[#types + 1] = k
+	end
+
+	return SMODS.create_card {
+		set = pseudorandom_element(types, pseudoseed(seed)),
+		area = G.consumables,
+		key_append = seed,
+	}
+end

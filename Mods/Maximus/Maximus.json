@@ -1,0 +1,24 @@
+{
+	"id": "Maximus",
+	"name": "Maximus",
+	"display_name": "Maximus",
+	"author": ["theAstra", "Maxiss02"],
+	"description": "Maximus is a Vanilla+ mod that strives to preserve the Vanilla feel of the game (for the most part, looking at you Nuclear deck) while innovating on newer ideas to keep things fresh! Join the Discord: https://discord.gg/GvCCcryM48",
+	"prefix": "mxms",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "f51bbc",
+	"badge_text_colour": "f8a100",
+	"version": "1.2.3",
+	"git_owner": "the-Astra",
+	"git_repo": "Maximus",
+	"mod_path": "Mods/Maximus-main",
+	"download_suffix": "Maximus-main.zip",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-0827)",
+		"Lovely (>=0.7.1)"
+	],
+	"provides": [
+		"OTMAPI (1.0.0)"
+	]
+}

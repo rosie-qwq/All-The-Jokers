@@ -1,0 +1,2920 @@
+{
+    "Terror Train1": {
+        "adult": false,
+        "backdrop_path": "/b3oaJRsVlvnXUAhkYEJOAfEKGdl.jpg",
+        "belongs_to_collection": null,
+        "budget": 3500000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "",
+        "id": 40969,
+        "imdb_id": "tt0081617",
+        "origin_country": [
+            "CA"
+        ],
+        "original_language": "en",
+        "original_title": "Terror Train",
+        "overview": "A masked killer targets six college kids responsible for a prank gone wrong three years earlier and who are currently throwing a large New Year's Eve costume party aboard a moving train.",
+        "popularity": 2.8881,
+        "poster_path": "/jeDVKkeCk9U75a0TZ4mezylXy3j.jpg",
+        "production_companies": [
+            {
+                "id": 5538,
+                "logo_path": null,
+                "name": "Sandy Howard Productions",
+                "origin_country": ""
+            },
+            {
+                "id": 10313,
+                "logo_path": null,
+                "name": "Astral Bellevue Path\u00e9",
+                "origin_country": "CA"
+            },
+            {
+                "id": 15758,
+                "logo_path": null,
+                "name": "Triple T Productions",
+                "origin_country": ""
+            },
+            {
+                "id": 25,
+                "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+                "name": "20th Century Fox",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "CA",
+                "name": "Canada"
+            }
+        ],
+        "release_date": "1980-10-03",
+        "revenue": 0,
+        "runtime": 97,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The boys and girls of Sigma Phi. Some will live. Some will die.",
+        "title": "Terror Train",
+        "video": false,
+        "vote_average": 5.735,
+        "vote_count": 282
+    },
+    "Ghoulies2": {
+        "adult": false,
+        "backdrop_path": "/f01AbhKF4GSAxUxxBnXqk1012Ga.jpg",
+        "belongs_to_collection": {
+            "id": 44913,
+            "name": "Ghoulies Collection",
+            "poster_path": "/jSIPtRn81nfQnHEOtkB2568utpD.jpg",
+            "backdrop_path": "/h9pZnjShhHf5h9MaEWg2RPkrgsf.jpg"
+        },
+        "budget": 5500000,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
+        ],
+        "homepage": "",
+        "id": 18498,
+        "imdb_id": "tt0089200",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Ghoulies",
+        "overview": "A young man and his girlfriend move into the man's old mansion home, where he becomes possessed by a need to control ancient demons.",
+        "popularity": 2.3971,
+        "poster_path": "/yV8z6deULhH4oJAUj2YdhITPwfc.jpg",
+        "production_companies": [
+            {
+                "id": 1212,
+                "logo_path": null,
+                "name": "Empire Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1985-01-18",
+        "revenue": 35000000,
+        "runtime": 81,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "They'll get you in the end.",
+        "title": "Ghoulies",
+        "video": false,
+        "vote_average": 4.9,
+        "vote_count": 268
+    },
+    "The Wicker Man3": {
+        "adult": false,
+        "backdrop_path": "/7t1ZMaVY92KqkaxJtRO89tARg6V.jpg",
+        "belongs_to_collection": null,
+        "budget": 40000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 9648,
+                "name": "Mystery"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "https://www.warnerbros.com/wicker-man",
+        "id": 9708,
+        "imdb_id": "tt0450345",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Wicker Man",
+        "overview": "A sheriff investigating the disappearance of a young girl from a small island discovers there's a larger mystery to solve among the island's secretive, neo-pagan community.",
+        "popularity": 4.4092,
+        "poster_path": "/xsHrmfgDcEk5fGhSiieKvrDuofq.jpg",
+        "production_companies": [
+            {
+                "id": 1020,
+                "logo_path": "/kuUIHNwMec4dwOLghDhhZJzHZTd.png",
+                "name": "Millennium Media",
+                "origin_country": "US"
+            },
+            {
+                "id": 831,
+                "logo_path": "/vLENXiYTyITnMDrTKabUXhgTKX2.png",
+                "name": "Saturn Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 10405,
+                "logo_path": null,
+                "name": "EFO Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 10885,
+                "logo_path": null,
+                "name": "Equity Pictures Medienfonds GmbH & Co. KG III",
+                "origin_country": ""
+            },
+            {
+                "id": 925,
+                "logo_path": "/dIb9hjXNOkgxu4kBWdIdK8nM4w.png",
+                "name": "Nu Image",
+                "origin_country": "US"
+            },
+            {
+                "id": 1088,
+                "logo_path": "/9WOE5AQUXbOtLU6GTwfjS8OMF0v.png",
+                "name": "Alcon Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 214742,
+                "logo_path": null,
+                "name": "Emmett/Furla Films",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "DE",
+                "name": "Germany"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            },
+            {
+                "iso_3166_1": "CA",
+                "name": "Canada"
+            },
+            {
+                "iso_3166_1": "MX",
+                "name": "Mexico"
+            }
+        ],
+        "release_date": "2006-08-31",
+        "revenue": 38805380,
+        "runtime": 102,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Some sacrifices must be made",
+        "title": "The Wicker Man",
+        "video": false,
+        "vote_average": 4.312,
+        "vote_count": 1330
+    },
+    "Longlegs4": {
+        "adult": false,
+        "backdrop_path": "/bizhlTVjifYQUu4Xrdt7m3TYr7d.jpg",
+        "belongs_to_collection": null,
+        "budget": 10000000,
+        "genres": [
+            {
+                "id": 80,
+                "name": "Crime"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "https://neonrated.com/films/longlegs",
+        "id": 1226578,
+        "imdb_id": "tt23468450",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Longlegs",
+        "overview": "FBI Agent Lee Harker is a gifted new recruit assigned to the unsolved case of an elusive serial killer. As the case takes complex turns, unearthing evidence of the occult, Harker discovers a personal connection to the merciless killer and must race against time to stop him before he claims the lives of another innocent family.",
+        "popularity": 13.4579,
+        "poster_path": "/1EwNyiiNFd863H4e8nWEzutnZD7.jpg",
+        "production_companies": [
+            {
+                "id": 184518,
+                "logo_path": "/lOouI8ibBzhLI4qvku74FPUVT8t.png",
+                "name": "C2 Motion Picture Group",
+                "origin_country": "US"
+            },
+            {
+                "id": 831,
+                "logo_path": "/vLENXiYTyITnMDrTKabUXhgTKX2.png",
+                "name": "Saturn Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 85465,
+                "logo_path": "/oxx1bmXDQxeBsvYZmCxMtfJ5wa3.png",
+                "name": "Oddfellows Entertainment",
+                "origin_country": "CA"
+            },
+            {
+                "id": 232289,
+                "logo_path": "/bV35YIaGQvRtjsD2r8KdlvYDKrp.png",
+                "name": "Traffic.",
+                "origin_country": "US"
+            },
+            {
+                "id": 167684,
+                "logo_path": "/kzQwU2H6woBFti9cqjr9BrVXrst.png",
+                "name": "Range Media Partners",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "CA",
+                "name": "Canada"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2024-07-10",
+        "revenue": 126942386,
+        "runtime": 101,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Say your prayers.",
+        "title": "Longlegs",
+        "video": false,
+        "vote_average": 6.559,
+        "vote_count": 1976
+    },
+    "Scream5": {
+        "adult": false,
+        "backdrop_path": "/4PPC7fKClu0u7NTbo5xgV4vb5VD.jpg",
+        "belongs_to_collection": {
+            "id": 2602,
+            "name": "Scream Collection",
+            "poster_path": "/p3EjClFy20jjT0u06dzBs4lvvhi.jpg",
+            "backdrop_path": "/fG6GzZAwtsW3v2mhB4EyQLMRjUV.jpg"
+        },
+        "budget": 14000000,
+        "genres": [
+            {
+                "id": 80,
+                "name": "Crime"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 9648,
+                "name": "Mystery"
+            }
+        ],
+        "homepage": "https://www.miramax.com/movie/scream/",
+        "id": 4232,
+        "imdb_id": "tt0117571",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Scream",
+        "overview": "A year after the murder of her mother, a teenage girl is terrorized by a masked killer who targets her and her friends by using scary movies as part of a deadly game.",
+        "popularity": 13.5115,
+        "poster_path": "/lr9ZIrmuwVmZhpZuTCW8D9g0ZJe.jpg",
+        "production_companies": [
+            {
+                "id": 7405,
+                "logo_path": "/rfnws0uY8rsNAsrLbx3gEIcYXx3.png",
+                "name": "Dimension Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 163562,
+                "logo_path": null,
+                "name": "Woods Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1996-12-20",
+        "revenue": 173046663,
+        "runtime": 112,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Someone has taken their love of scary movies one step too far. Solving this mystery is going to be murder.",
+        "title": "Scream",
+        "video": false,
+        "vote_average": 7.412,
+        "vote_count": 7257
+    },
+    "Poltergeist6": {
+        "adult": false,
+        "backdrop_path": "/IDjiEj9R4VKB8lPVfxODdjhr44.jpg",
+        "belongs_to_collection": {
+            "id": 10453,
+            "name": "Poltergeist Collection",
+            "poster_path": "/5KRPLR2StT2nemK4LhDOEppw4G.jpg",
+            "backdrop_path": "/i8QZZV1olny9FCPNrxAL7Kk9CJy.jpg"
+        },
+        "budget": 10700000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "",
+        "id": 609,
+        "imdb_id": "tt0084516",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Poltergeist",
+        "overview": "Upon realizing that something truly evil haunts his home, Steve Freeling calls in a team of parapsychologists to help before it's too late.",
+        "popularity": 7.8895,
+        "poster_path": "/4eMN3GANH5GG4kXdHkrTZEUuQ9M.jpg",
+        "production_companies": [
+            {
+                "id": 21,
+                "logo_path": "/usUnaYV6hQnlVAXP6r4HwrlLFPG.png",
+                "name": "Metro-Goldwyn-Mayer",
+                "origin_country": "US"
+            },
+            {
+                "id": 214636,
+                "logo_path": null,
+                "name": "Steven Spielberg Productions",
+                "origin_country": ""
+            },
+            {
+                "id": 396,
+                "logo_path": "/5iNXO7nAiSsms7ur1Qy2UwuwcDP.png",
+                "name": "SLM Production Group",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1982-06-04",
+        "revenue": 122200000,
+        "runtime": 114,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "They Are Here.",
+        "title": "Poltergeist",
+        "video": false,
+        "vote_average": 7.149,
+        "vote_count": 3079
+    },
+    "The Omen7": {
+        "adult": false,
+        "backdrop_path": "/5sfbPsenSrbH8pzVMjEd0LUu50Y.jpg",
+        "belongs_to_collection": {
+            "id": 10919,
+            "name": "The Omen Collection",
+            "poster_path": "/5De8Hqq0z9gmDM7SbWU0C5pTjPC.jpg",
+            "backdrop_path": "/4RyL9BO36iRnQP7r9wiboOGwJKQ.jpg"
+        },
+        "budget": 2800000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "",
+        "id": 794,
+        "imdb_id": "tt0075005",
+        "origin_country": [
+            "US",
+            "GB"
+        ],
+        "original_language": "en",
+        "original_title": "The Omen",
+        "overview": "Immediately after their miscarriage, the US diplomat Robert Thorn adopts the newborn Damien without the knowledge of his wife. Yet what he doesn\u2019t know is that their new son is the son of the devil.",
+        "popularity": 7.0623,
+        "poster_path": "/mDcjjEu1fMNmsXi4l4D8IftlTix.jpg",
+        "production_companies": [
+            {
+                "id": 2767,
+                "logo_path": null,
+                "name": "Mace Neufeld Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 25,
+                "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+                "name": "20th Century Fox",
+                "origin_country": "US"
+            },
+            {
+                "id": 3399,
+                "logo_path": null,
+                "name": "Harvey Bernhard Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            },
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            }
+        ],
+        "release_date": "1976-06-25",
+        "revenue": 60922980,
+        "runtime": 111,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Italian",
+                "iso_639_1": "it",
+                "name": "Italiano"
+            },
+            {
+                "english_name": "Latin",
+                "iso_639_1": "la",
+                "name": "Latin"
+            }
+        ],
+        "status": "Released",
+        "tagline": "You Have Been Warned",
+        "title": "The Omen",
+        "video": false,
+        "vote_average": 7.407,
+        "vote_count": 2190
+    },
+    "Krazy House8": {
+        "adult": false,
+        "backdrop_path": "/fctm4oBXsShRgVFzzHoxUXMW9vn.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "",
+        "id": 607338,
+        "imdb_id": "tt12276028",
+        "origin_country": [
+            "NL"
+        ],
+        "original_language": "en",
+        "original_title": "Krazy House",
+        "overview": "When Russian workers in Bernie\u2019s house turn out to be wanted criminals, Bernie has to man up and save his \u201990s sitcom family.",
+        "popularity": 1.9688,
+        "poster_path": "/36gDjx56RDhjIpynKkrseJCJJDi.jpg",
+        "production_companies": [
+            {
+                "id": 67254,
+                "logo_path": "/oV4xUvzWljGW1QVAa8qR2INNyN7.png",
+                "name": "Kaap Holland Film",
+                "origin_country": "NL"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "NL",
+                "name": "Netherlands"
+            }
+        ],
+        "release_date": "2024-05-16",
+        "revenue": 0,
+        "runtime": 90,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Krazy House",
+        "video": false,
+        "vote_average": 4.7,
+        "vote_count": 34
+    },
+    "Alien9": {
+        "adult": false,
+        "backdrop_path": "/hdHIjZxq3SWFqpAz4NFhdbud0iz.jpg",
+        "belongs_to_collection": {
+            "id": 8091,
+            "name": "Alien Collection",
+            "poster_path": "/gWFHIY77cRVoBRGERwMHqpD27gc.jpg",
+            "backdrop_path": "/6X42JnSMdo3dPAswOHUuvebdTq7.jpg"
+        },
+        "budget": 11000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
+        ],
+        "homepage": "https://www.20thcenturystudios.com/movies/alien",
+        "id": 348,
+        "imdb_id": "tt0078748",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Alien",
+        "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
+        "popularity": 24.498,
+        "poster_path": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
+        "production_companies": [
+            {
+                "id": 25,
+                "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+                "name": "20th Century Fox",
+                "origin_country": "US"
+            },
+            {
+                "id": 401,
+                "logo_path": "/t7mM3DvQ9MwDT3YzMCBrkWpWiiz.png",
+                "name": "Brandywine Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1979-05-25",
+        "revenue": 104931801,
+        "runtime": 117,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Espa\u00f1ol"
+            }
+        ],
+        "status": "Released",
+        "tagline": "In space, no one can hear you scream.",
+        "title": "Alien",
+        "video": false,
+        "vote_average": 8.163,
+        "vote_count": 15208
+    },
+    "Smile10": {
+        "adult": false,
+        "backdrop_path": "/kMZIMqEXO5MFd5Y1Ha2jZZF4pvF.jpg",
+        "belongs_to_collection": {
+            "id": 1100788,
+            "name": "Smile Collection",
+            "poster_path": "/vm1PfA3biDn528mlkfVrBjmpqFl.jpg",
+            "backdrop_path": "/pn3cr4dX5z68A1tRryPLsx3FK3q.jpg"
+        },
+        "budget": 17000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 9648,
+                "name": "Mystery"
+            }
+        ],
+        "homepage": "https://www.paramountmovies.com/movies/smile",
+        "id": 882598,
+        "imdb_id": "tt15474916",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Smile",
+        "overview": "After witnessing a bizarre, traumatic incident involving a patient, Dr. Rose Cotter starts experiencing frightening occurrences that she can't explain.",
+        "popularity": 24.2866,
+        "poster_path": "/aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg",
+        "production_companies": [
+            {
+                "id": 96540,
+                "logo_path": "/AgYjTNeIKOh0yvegPLSjq8EOsif.png",
+                "name": "Paramount Players",
+                "origin_country": "US"
+            },
+            {
+                "id": 12292,
+                "logo_path": "/4GQTeqos2luopEtp3OgMQYusQ5c.png",
+                "name": "Temple Hill Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2022-09-23",
+        "revenue": 217408513,
+        "runtime": 115,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Once you see it, it's too late.",
+        "title": "Smile",
+        "video": false,
+        "vote_average": 6.665,
+        "vote_count": 3532
+    },
+    "Insidious11": {
+        "adult": false,
+        "backdrop_path": "/yZP6GyrgzdpjH1AxPHlb8ACLkiA.jpg",
+        "belongs_to_collection": {
+            "id": 228446,
+            "name": "Insidious Collection",
+            "poster_path": "/ppXhhlBtI8tomYKcby0F4hqYptR.jpg",
+            "backdrop_path": "/5FrPZHgbbmTIq0oxpwSGqu5HyXC.jpg"
+        },
+        "budget": 1500000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "http://www.insidious-movie.com/",
+        "id": 49018,
+        "imdb_id": "tt1591095",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Insidious",
+        "overview": "A family discovers that dark spirits have invaded their home after their son inexplicably falls into an endless sleep. When they reach out to a professional for help, they learn things are a lot more personal than they thought.",
+        "popularity": 16.6835,
+        "poster_path": "/1egpmVXuXed58TH2UOnX1nATTrf.jpg",
+        "production_companies": [
+            {
+                "id": 2514,
+                "logo_path": "/zEyrFF8Nn325PXG0Q9j7my0JqIJ.png",
+                "name": "Alliance Films",
+                "origin_country": "CA"
+            },
+            {
+                "id": 7437,
+                "logo_path": "/e5CcgFrdlxMUwlsS72si8q1yHBr.png",
+                "name": "IM Global",
+                "origin_country": "US"
+            },
+            {
+                "id": 21742,
+                "logo_path": null,
+                "name": "Haunted Movies",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "CA",
+                "name": "Canada"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2011-03-31",
+        "revenue": 100106454,
+        "runtime": 102,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "It's not the House that's Haunted.",
+        "title": "Insidious",
+        "video": false,
+        "vote_average": 6.94,
+        "vote_count": 6906
+    },
+    "Ghost Rider12": {
+        "adult": false,
+        "backdrop_path": "/7zS58YPAw002RNejOF1vNB3XHbW.jpg",
+        "belongs_to_collection": {
+            "id": 90306,
+            "name": "Ghost Rider Collection",
+            "poster_path": "/feaMFCuO6ToJ6fd4kkTTg2xuAyc.jpg",
+            "backdrop_path": "/cNRAWtbItigb2oFwXpcDi6mjMQm.jpg"
+        },
+        "budget": 110000000,
+        "genres": [
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
+        ],
+        "homepage": "https://www.sonypictures.com/movies/ghostrider",
+        "id": 1250,
+        "imdb_id": "tt0259324",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Ghost Rider",
+        "overview": "In order to save his dying father, young stunt cyclist Johnny Blaze sells his soul to Mephistopheles and sadly parts from the pure-hearted Roxanne Simpson, the love of his life. Years later, Johnny's path crosses again with Roxanne, now a go-getting reporter, and also with Mephistopheles, who offers to release Johnny's soul if Johnny becomes the fabled, fiery 'Ghost Rider'.",
+        "popularity": 9.7058,
+        "poster_path": "/d9Oan9XJJ6gRJa64Ifsgp1sXbC4.jpg",
+        "production_companies": [
+            {
+                "id": 20241,
+                "logo_path": null,
+                "name": "Crystal Sky Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 7295,
+                "logo_path": "/5MYE96QiE5a5oFhXxFb4y8ILSpw.png",
+                "name": "Relativity Media",
+                "origin_country": "US"
+            },
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 420,
+                "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+                "name": "Marvel Studios",
+                "origin_country": "US"
+            },
+            {
+                "id": 216248,
+                "logo_path": null,
+                "name": "Canarsie",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2007-01-15",
+        "revenue": 228738393,
+        "runtime": 114,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Long ago he made a deal to save someone he loved.",
+        "title": "Ghost Rider",
+        "video": false,
+        "vote_average": 5.574,
+        "vote_count": 6053
+    },
+    "Stranger Than Fiction13": {
+        "adult": false,
+        "backdrop_path": "/d9eONXYtCmQnPWw61w9pNMGlSzK.jpg",
+        "belongs_to_collection": null,
+        "budget": 30000000,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "https://www.sonypictures.com/movies/strangerthanfiction",
+        "id": 1262,
+        "imdb_id": "tt0420223",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Stranger Than Fiction",
+        "overview": "Harold Crick is a lonely IRS agent whose mundane existence is transformed when he hears a mysterious voice narrating his life.",
+        "popularity": 2.7855,
+        "poster_path": "/nCzcepubwShvZ4vbCsygQNgF2Z1.jpg",
+        "production_companies": [
+            {
+                "id": 1973,
+                "logo_path": null,
+                "name": "Three Strange Angels",
+                "origin_country": "GB"
+            },
+            {
+                "id": 771,
+                "logo_path": "/fQpEeXgCVsXQkVVFMMjrrkOFja3.png",
+                "name": "Mandate Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2006-09-09",
+        "revenue": 53653224,
+        "runtime": 113,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Harold Crick isn't ready to go. Period.",
+        "title": "Stranger Than Fiction",
+        "video": false,
+        "vote_average": 7.279,
+        "vote_count": 2338
+    },
+    "Yes Man14": {
+        "adult": false,
+        "backdrop_path": "/sNb17zdxApUSJ5cZNgvq2rlAseA.jpg",
+        "belongs_to_collection": null,
+        "budget": 70000000,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "https://www.warnerbros.com/movies/yes-man",
+        "id": 10201,
+        "imdb_id": "tt1068680",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Yes Man",
+        "overview": "Carl Allen, a guy whose life is going nowhere, signs up for a self-help program based on one simple covenant: say yes to everything\u2026and anything.",
+        "popularity": 9.2301,
+        "poster_path": "/16zVbgFLTUaUTG1wQHuGjfWNuDM.jpg",
+        "production_companies": [
+            {
+                "id": 174,
+                "logo_path": "/zhD3hhtKB5qyv7ZeL4uLpNxgMVU.png",
+                "name": "Warner Bros. Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 79,
+                "logo_path": "/at4uYdwAAgNRKhZuuFX8ShKSybw.png",
+                "name": "Village Roadshow Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 437,
+                "logo_path": "/nu20mtwbEIhUNnQ5NXVhHsNknZj.png",
+                "name": "Heyday Films",
+                "origin_country": "GB"
+            },
+            {
+                "id": 80,
+                "logo_path": "/i6B0AIrUESLt5Fm6MOPXmuPhsvA.png",
+                "name": "The Zanuck Company",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2008-12-09",
+        "revenue": 223200000,
+        "runtime": 104,
+        "spoken_languages": [
+            {
+                "english_name": "Estonian",
+                "iso_639_1": "et",
+                "name": "Eesti"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Korean",
+                "iso_639_1": "ko",
+                "name": "\ud55c\uad6d\uc5b4/\uc870\uc120\ub9d0"
+            }
+        ],
+        "status": "Released",
+        "tagline": "One word can change everything.",
+        "title": "Yes Man",
+        "video": false,
+        "vote_average": 6.678,
+        "vote_count": 6947
+    },
+    "Dracula15": {
+        "adult": false,
+        "backdrop_path": "/cemjdP7HrUyJAry85vRT19Hidbi.jpg",
+        "belongs_to_collection": {
+            "id": 221539,
+            "name": "Dracula (Universal) Collection",
+            "poster_path": "/hIOe14I3uVsTJvu9obaXaAzo8ri.jpg",
+            "backdrop_path": "/sdbStuQ5qEPZqqWUlNlBd0dPtBT.jpg"
+        },
+        "budget": 355000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "",
+        "id": 138,
+        "imdb_id": "tt0021814",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Dracula",
+        "overview": "British estate agent Renfield travels to Transylvania to meet the mysterious Count Dracula, who is interested in leasing a castle in London. After Dracula enslaves Renfield and drives him to insanity, the pair sail to London together and Dracula, a secret vampire, begins preying on London socialites.",
+        "popularity": 2.9273,
+        "poster_path": "/ueVSPt7vAba0XScHWTDWS5tNxYX.jpg",
+        "production_companies": [
+            {
+                "id": 33,
+                "logo_path": "/3wwjVpkZtnog6lSKzWDjvw2Yi00.png",
+                "name": "Universal Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1931-02-12",
+        "revenue": 700000,
+        "runtime": 74,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Hungarian",
+                "iso_639_1": "hu",
+                "name": "Magyar"
+            },
+            {
+                "english_name": "Latin",
+                "iso_639_1": "la",
+                "name": "Latin"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The story of the strangest passion the world has ever known!",
+        "title": "Dracula",
+        "video": false,
+        "vote_average": 7.151,
+        "vote_count": 1247
+    },
+    "Nosferatu16": {
+        "adult": false,
+        "backdrop_path": "/fYnEbgoNCxW9kL0IgOgtJb9JTBU.jpg",
+        "belongs_to_collection": null,
+        "budget": 50000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
+        ],
+        "homepage": "https://www.focusfeatures.com/nosferatu",
+        "id": 426063,
+        "imdb_id": "tt5040012",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Nosferatu",
+        "overview": "A gothic tale of obsession between a haunted young woman and the terrifying vampire infatuated with her, causing untold horror in its wake.",
+        "popularity": 37.5985,
+        "poster_path": "/5qGIxdEO841C0tdY8vOdLoRVrr0.jpg",
+        "production_companies": [
+            {
+                "id": 10146,
+                "logo_path": "/xnFIOeq5cKw09kCWqV7foWDe4AA.png",
+                "name": "Focus Features",
+                "origin_country": "US"
+            },
+            {
+                "id": 77863,
+                "logo_path": "/7z6YOzvdk70YY8OaRbn5mfxrvbO.png",
+                "name": "Studio 8",
+                "origin_country": "US"
+            },
+            {
+                "id": 41641,
+                "logo_path": null,
+                "name": "Maiden Voyage Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 239430,
+                "logo_path": null,
+                "name": "Birch Hill Road Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2024-12-25",
+        "revenue": 180928503,
+        "runtime": 133,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "German",
+                "iso_639_1": "de",
+                "name": "Deutsch"
+            },
+            {
+                "english_name": "Romanian",
+                "iso_639_1": "ro",
+                "name": "Rom\u00e2n\u0103"
+            },
+            {
+                "english_name": "Russian",
+                "iso_639_1": "ru",
+                "name": "P\u0443\u0441\u0441\u043a\u0438\u0439"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Espa\u00f1ol"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Succumb to the darkness.",
+        "title": "Nosferatu",
+        "video": false,
+        "vote_average": 6.705,
+        "vote_count": 2552
+    },
+    "30 Days of Night17": {
+        "adult": false,
+        "backdrop_path": "/w8VDpCcKezdBbXJEWMHwttI35mU.jpg",
+        "belongs_to_collection": {
+            "id": 91660,
+            "name": "30 Days of Night Collection",
+            "poster_path": "/d1uNuiyjtkx7fekKgT2BSNByCIX.jpg",
+            "backdrop_path": "/uKN4mENg8BVeKCxwWXGCvFeUim8.jpg"
+        },
+        "budget": 30000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "http://www.30daysofnight.com/",
+        "id": 4513,
+        "imdb_id": "tt0389722",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "30 Days of Night",
+        "overview": "This is the story of an isolated Alaskan town that is plunged into darkness for a month each year when the sun sinks below the horizon. As the last rays of light fade, the town is attacked by a bloodthirsty gang of vampires bent on an uninterrupted orgy of destruction. Only the small town's husband-and-wife Sheriff team stand between the survivors and certain destruction.",
+        "popularity": 8.8207,
+        "poster_path": "/7LwSrvFA0gz1KAlcrGcinoQPene.jpg",
+        "production_companies": [
+            {
+                "id": 24339,
+                "logo_path": null,
+                "name": "HorrorFlix",
+                "origin_country": ""
+            },
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 768,
+                "logo_path": "/mh0PD5vYwRIL5FoN9vgF2ULokSV.png",
+                "name": "Ghost House Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 552,
+                "logo_path": "/9dGdLfm3GteWeUDtD9c9tvlidUG.png",
+                "name": "Dark Horse Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 181992,
+                "logo_path": null,
+                "name": "Mandate International",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "NZ",
+                "name": "New Zealand"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2007-10-17",
+        "revenue": 80276156,
+        "runtime": 113,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "They're Coming!",
+        "title": "30 Days of Night",
+        "video": false,
+        "vote_average": 6.427,
+        "vote_count": 2839
+    },
+    "Blade18": {
+        "adult": false,
+        "backdrop_path": "/hZnnUq0mrUQ3e54SJVca4mf2oAQ.jpg",
+        "belongs_to_collection": {
+            "id": 735,
+            "name": "Blade Collection",
+            "poster_path": "/vTXwJm2UC0Z0HwXTRmsMecGJErc.jpg",
+            "backdrop_path": "/uYcffBKbVTII9SN9mJz7mE2DKcK.jpg"
+        },
+        "budget": 45000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            }
+        ],
+        "homepage": "https://www.warnerbros.com/movies/blade",
+        "id": 36647,
+        "imdb_id": "tt0120611",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Blade",
+        "overview": "The Daywalker known as \"Blade\" - a half-vampire, half-mortal man - becomes the protector of humanity against an underground army of vampires.",
+        "popularity": 10.852,
+        "poster_path": "/oWT70TvbsmQaqyphCZpsnQR7R32.jpg",
+        "production_companies": [
+            {
+                "id": 12,
+                "logo_path": "/2ycs64eqV5rqKYHyQK0GVoKGvfX.png",
+                "name": "New Line Cinema",
+                "origin_country": "US"
+            },
+            {
+                "id": 421,
+                "logo_path": null,
+                "name": "Amen Ra Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 11321,
+                "logo_path": null,
+                "name": "Imaginary Forces",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1998-08-21",
+        "revenue": 131183530,
+        "runtime": 121,
+        "spoken_languages": [
+            {
+                "english_name": "Russian",
+                "iso_639_1": "ru",
+                "name": "P\u0443\u0441\u0441\u043a\u0438\u0439"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Against an army of Immortals, one warrior must draw first blood.",
+        "title": "Blade",
+        "video": false,
+        "vote_average": 6.807,
+        "vote_count": 6174
+    },
+    "Pinocchio19": {
+        "adult": false,
+        "backdrop_path": "/iFPpb2KIWKwBfyqSJivE4JegFPP.jpg",
+        "belongs_to_collection": null,
+        "budget": 2600000,
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
+        ],
+        "homepage": "https://movies.disney.com/pinocchio",
+        "id": 10895,
+        "imdb_id": "tt0032910",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Pinocchio",
+        "overview": "A little wooden puppet yearns to become a real boy.",
+        "popularity": 9.279,
+        "poster_path": "/bnZJrLRnoQHpzEJdka1KYfsAF3N.jpg",
+        "production_companies": [
+            {
+                "id": 3166,
+                "logo_path": "/vyyv4Gy9nPqAZKElPm2izLlEaVS.png",
+                "name": "Walt Disney Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1940-02-23",
+        "revenue": 164000000,
+        "runtime": 88,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "When you wish upon a star, your dreams come true.",
+        "title": "Pinocchio",
+        "video": false,
+        "vote_average": 7.102,
+        "vote_count": 5935
+    },
+    "Pinocchio20": {
+        "adult": false,
+        "backdrop_path": "/nnUQqlVZeEGuCRx8SaoCU4XVHJN.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
+        ],
+        "homepage": "https://www.disneyplus.com/movies/pinocchio/5fzcpc295rQn",
+        "id": 532639,
+        "imdb_id": "tt4593060",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Pinocchio",
+        "overview": "A wooden puppet embarks on a thrilling adventure to become a real boy.",
+        "popularity": 6.3697,
+        "poster_path": "/g8sclIV4gj1TZqUpnL82hKOTK3B.jpg",
+        "production_companies": [
+            {
+                "id": 2,
+                "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+                "name": "Walt Disney Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 1473,
+                "logo_path": null,
+                "name": "Depth of Field",
+                "origin_country": "US"
+            },
+            {
+                "id": 11395,
+                "logo_path": "/5vSBzUwnCcaF90ZTchG3LwRKQ2M.png",
+                "name": "ImageMovers",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2022-09-07",
+        "revenue": 0,
+        "runtime": 105,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The timeless classic.",
+        "title": "Pinocchio",
+        "video": false,
+        "vote_average": 6.322,
+        "vote_count": 1630
+    },
+    "Cast Away21": {
+        "adult": false,
+        "backdrop_path": "/ioqaIhJSkwa9DGRHGtOOUTiGRs2.jpg",
+        "belongs_to_collection": null,
+        "budget": 90000000,
+        "genres": [
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
+        ],
+        "homepage": "",
+        "id": 8358,
+        "imdb_id": "tt0162222",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Cast Away",
+        "overview": "Chuck Nolan, a top international manager for FedEx, and Kelly, a Ph.D. student, are in love and heading towards marriage. Then Chuck's plane to Malaysia crashes at sea during a terrible storm. He's the only survivor, and finds himself marooned on a desolate island. With no way to escape, Chuck must find ways to survive in his new home.",
+        "popularity": 14.6329,
+        "poster_path": "/7lLJgKnAicAcR5UEuo8xhSMj18w.jpg",
+        "production_companies": [
+            {
+                "id": 25,
+                "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+                "name": "20th Century Fox",
+                "origin_country": "US"
+            },
+            {
+                "id": 7,
+                "logo_path": "/vru2SssLX3FPhnKZGtYw00pVIS9.png",
+                "name": "DreamWorks Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 11395,
+                "logo_path": "/5vSBzUwnCcaF90ZTchG3LwRKQ2M.png",
+                "name": "ImageMovers",
+                "origin_country": "US"
+            },
+            {
+                "id": 4171,
+                "logo_path": "/cdwjRVcXP9zws9gkiim0KkBNs9N.png",
+                "name": "Playtone",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2000-12-22",
+        "revenue": 429632142,
+        "runtime": 143,
+        "spoken_languages": [
+            {
+                "english_name": "Russian",
+                "iso_639_1": "ru",
+                "name": "P\u0443\u0441\u0441\u043a\u0438\u0439"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "At the edge of the world, his journey begins.",
+        "title": "Cast Away",
+        "video": false,
+        "vote_average": 7.658,
+        "vote_count": 11619
+    },
+    "The Man Who Laughs22": {
+        "adult": false,
+        "backdrop_path": "/sEACcNF5lUEJusfiCa8ExwGrbC5.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "",
+        "id": 27517,
+        "imdb_id": "tt0019130",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Man Who Laughs",
+        "overview": "Gwynplaine, son of Lord Clancharlie, has a permanent smile carved on his face by the King, in revenge for Gwynplaine's father's treachery. Gwynplaine is adopted by a travelling showman and becomes a popular idol. He falls in love with the blind Dea. The king dies, and his evil jester tries to destroy or corrupt Gwynplaine.",
+        "popularity": 2.1536,
+        "poster_path": "/iQXBMr4NzQst4X0rDU6MII6ZUOM.jpg",
+        "production_companies": [
+            {
+                "id": 33,
+                "logo_path": "/3wwjVpkZtnog6lSKzWDjvw2Yi00.png",
+                "name": "Universal Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1928-04-27",
+        "revenue": 0,
+        "runtime": 110,
+        "spoken_languages": [
+            {
+                "english_name": "No Language",
+                "iso_639_1": "xx",
+                "name": "No Language"
+            }
+        ],
+        "status": "Released",
+        "tagline": "THE BREAKING HEART BEHIND THE LAUGHING FACE.",
+        "title": "The Man Who Laughs",
+        "video": false,
+        "vote_average": 7.3,
+        "vote_count": 204
+    },
+    "The Wizard of Oz23": {
+        "adult": false,
+        "backdrop_path": "/qCU097AXMPAsmpVK4j9kzMTxt2d.jpg",
+        "belongs_to_collection": {
+            "id": 627517,
+            "name": "Oz Collection",
+            "poster_path": "/umgvqicCPZ31vqhJB7uTQ8RNhZ5.jpg",
+            "backdrop_path": "/zCWMNud0T5AW1ivXN2MQZ3XW04f.jpg"
+        },
+        "budget": 2777000,
+        "genres": [
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
+        ],
+        "homepage": "http://thewizardofoz.warnerbros.com/",
+        "id": 630,
+        "imdb_id": "tt0032138",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Wizard of Oz",
+        "overview": "Young Dorothy finds herself in a magical world where she makes friends with a lion, a scarecrow and a tin man as they make their way along the yellow brick road to talk with the Wizard and ask for the things they miss most in their lives. The Wicked Witch of the West is the only thing that could stop them.",
+        "popularity": 14.8092,
+        "poster_path": "/pfAZFD7I2hxW9HCChTuAzsdE6UX.jpg",
+        "production_companies": [
+            {
+                "id": 21,
+                "logo_path": "/usUnaYV6hQnlVAXP6r4HwrlLFPG.png",
+                "name": "Metro-Goldwyn-Mayer",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1939-08-15",
+        "revenue": 33754967,
+        "runtime": 102,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "We're off to see the Wizard, the wonderful Wizard of Oz!",
+        "title": "The Wizard of Oz",
+        "video": false,
+        "vote_average": 7.591,
+        "vote_count": 5722
+    },
+    "Ocean's Eleven24": {
+        "adult": false,
+        "backdrop_path": "/43BEez1EGdmNpg8rcPUFToujlii.jpg",
+        "belongs_to_collection": {
+            "id": 304,
+            "name": "Ocean's Collection",
+            "poster_path": "/oHUHccvraYF8lYp6BxRoujRtH8Q.jpg",
+            "backdrop_path": "/7WUSrq8DqSkVgv1vmhBvav5bPoB.jpg"
+        },
+        "budget": 85000000,
+        "genres": [
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 80,
+                "name": "Crime"
+            }
+        ],
+        "homepage": "http://www.warnerbros.co.uk/movies/oceans-eleven",
+        "id": 161,
+        "imdb_id": "tt0240772",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Ocean's Eleven",
+        "overview": "Less than 24 hours into his parole, charismatic thief Danny Ocean is already rolling out his next plan: In one night, Danny's hand-picked crew of specialists will attempt to steal more than $150 million from three Las Vegas casinos. But to score the cash, Danny risks his chances of reconciling with ex-wife, Tess.",
+        "popularity": 15.5131,
+        "poster_path": "/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg",
+        "production_companies": [
+            {
+                "id": 174,
+                "logo_path": "/zhD3hhtKB5qyv7ZeL4uLpNxgMVU.png",
+                "name": "Warner Bros. Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 79,
+                "logo_path": "/at4uYdwAAgNRKhZuuFX8ShKSybw.png",
+                "name": "Village Roadshow Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 172,
+                "logo_path": null,
+                "name": "NPV Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 2596,
+                "logo_path": "/755EAcJW7MqKFpCPgbWicsb2QV6.png",
+                "name": "Jerry Weintraub Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 129,
+                "logo_path": "/nmnWiA0Xf0uve4Hw3HKWdVE5tH1.png",
+                "name": "Section Eight",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2001-12-07",
+        "revenue": 450717150,
+        "runtime": 116,
+        "spoken_languages": [
+            {
+                "english_name": "Mandarin",
+                "iso_639_1": "zh",
+                "name": "\u666e\u901a\u8bdd"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Italian",
+                "iso_639_1": "it",
+                "name": "Italiano"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Are you in or out?",
+        "title": "Ocean's Eleven",
+        "video": false,
+        "vote_average": 7.445,
+        "vote_count": 11825
+    },
+    "The Polar Express25": {
+        "adult": false,
+        "backdrop_path": "/y8Mabq84N0d5fm83CWb9Zkltkwr.jpg",
+        "belongs_to_collection": {
+            "id": 1234824,
+            "name": "The Polar Express Collection",
+            "poster_path": "/a3WAqOvRUCmeWmdCakbAHBxu4a7.jpg",
+            "backdrop_path": null
+        },
+        "budget": 165000000,
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
+        ],
+        "homepage": "",
+        "id": 5255,
+        "imdb_id": "tt0338348",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Polar Express",
+        "overview": "When a doubting young boy takes an extraordinary train ride to the North Pole, he embarks on a journey of self-discovery that shows him that the wonder of life never fades for those who believe.",
+        "popularity": 9.6843,
+        "poster_path": "/e2UJ2Y67txlNVGSRU04emZ3GDQw.jpg",
+        "production_companies": [
+            {
+                "id": 1867,
+                "logo_path": "/j5HFzFmRrjOEpJg6jySl9z2QfLm.png",
+                "name": "Golden Mean",
+                "origin_country": ""
+            },
+            {
+                "id": 4171,
+                "logo_path": "/cdwjRVcXP9zws9gkiim0KkBNs9N.png",
+                "name": "Playtone",
+                "origin_country": "US"
+            },
+            {
+                "id": 11395,
+                "logo_path": "/5vSBzUwnCcaF90ZTchG3LwRKQ2M.png",
+                "name": "ImageMovers",
+                "origin_country": "US"
+            },
+            {
+                "id": 97,
+                "logo_path": "/7znWcbDd4PcJzJUlJxYqAlPPykp.png",
+                "name": "Castle Rock Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 2265,
+                "logo_path": "/Pt0geXD3kQs2H5WSTreYV8MzRe.png",
+                "name": "Shangri-La Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2004-11-10",
+        "revenue": 318432432,
+        "runtime": 100,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "This holiday season... believe.",
+        "title": "The Polar Express",
+        "video": false,
+        "vote_average": 6.719,
+        "vote_count": 6476
+    },
+    "Anora26": {
+        "adult": false,
+        "backdrop_path": "/4YN6AfYIKyfZ1aB0cYEWROv76nU.jpg",
+        "belongs_to_collection": null,
+        "budget": 6000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "https://anora.film",
+        "id": 1064213,
+        "imdb_id": "tt28607951",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Anora",
+        "overview": "A young sex worker from Brooklyn gets her chance at a Cinderella story when she meets and impulsively marries the son of an oligarch. Once the news reaches Russia, her fairytale is threatened as his parents set out to get the marriage annulled.",
+        "popularity": 51.1196,
+        "poster_path": "/7MrgIUeq0DD2iF7GR6wqJfYZNeC.jpg",
+        "production_companies": [
+            {
+                "id": 88152,
+                "logo_path": "/zm1yRe17jzOgEzXrNj6hd8gl89O.png",
+                "name": "Cre Film",
+                "origin_country": "US"
+            },
+            {
+                "id": 7493,
+                "logo_path": "/fHitYiGUCkRafgt6VPYQlXWLkdp.png",
+                "name": "FilmNation Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2024-10-14",
+        "revenue": 56286295,
+        "runtime": 139,
+        "spoken_languages": [
+            {
+                "english_name": "Armenian",
+                "iso_639_1": "hy",
+                "name": ""
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Russian",
+                "iso_639_1": "ru",
+                "name": "P\u0443\u0441\u0441\u043a\u0438\u0439"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Love is a hustle.",
+        "title": "Anora",
+        "video": false,
+        "vote_average": 7.054,
+        "vote_count": 2053
+    },
+    "Only Lovers Left Alive27": {
+        "adult": false,
+        "backdrop_path": "/nOWO66xzNdkslLlUhRfSo015hhP.jpg",
+        "belongs_to_collection": null,
+        "budget": 7000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "",
+        "id": 152603,
+        "imdb_id": "tt1714915",
+        "origin_country": [
+            "GB"
+        ],
+        "original_language": "en",
+        "original_title": "Only Lovers Left Alive",
+        "overview": "A depressed musician reunites with his lover in the desolate streets of Detroit. Though their romance has endured several centuries, it is tested by the arrival of her capricious and unpredictable younger sister.",
+        "popularity": 3.4102,
+        "poster_path": "/6xY2MhYjFPb4xU3KlBJcFAJmMsF.jpg",
+        "production_companies": [
+            {
+                "id": 11561,
+                "logo_path": "/8HB3TFUeo83keAPHfFfrNtN2MmA.png",
+                "name": "Recorded Picture Company",
+                "origin_country": "GB"
+            },
+            {
+                "id": 140,
+                "logo_path": "/ooz5b0ov3PLfBoOJyMmdoffVuHs.png",
+                "name": "Pandora Film",
+                "origin_country": "DE"
+            },
+            {
+                "id": 19244,
+                "logo_path": null,
+                "name": "Snow Wolf Produktion",
+                "origin_country": "DE"
+            },
+            {
+                "id": 19246,
+                "logo_path": "/4zrEZfTf94tyG4wRB599gRS0reU.png",
+                "name": "Faliro House Productions",
+                "origin_country": "GR"
+            },
+            {
+                "id": 2395,
+                "logo_path": "/pZz4qs03FtP6UGtZ3hjQ6qimcwi.png",
+                "name": "HanWay Films",
+                "origin_country": "GB"
+            },
+            {
+                "id": 5125,
+                "logo_path": "/t3oWTsVukmEzrZzvfr37XRBibo5.png",
+                "name": "Le Pacte",
+                "origin_country": "FR"
+            },
+            {
+                "id": 986,
+                "logo_path": "/qDV8nLH9pjElZSnPmg29mzzNlTo.png",
+                "name": "ARD Degeto",
+                "origin_country": "DE"
+            },
+            {
+                "id": 19245,
+                "logo_path": "/7RhKMuyqFDMq8LpiFCxTgZ8H4pT.png",
+                "name": "Lago Film",
+                "origin_country": "DE"
+            },
+            {
+                "id": 45,
+                "logo_path": "/tUkNOAjyTt9D56DUeQfmmAFvwYQ.png",
+                "name": "Road Movies",
+                "origin_country": "DE"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "DE",
+                "name": "Germany"
+            },
+            {
+                "iso_3166_1": "GR",
+                "name": "Greece"
+            },
+            {
+                "iso_3166_1": "FR",
+                "name": "France"
+            }
+        ],
+        "release_date": "2013-12-12",
+        "revenue": 7600000,
+        "runtime": 123,
+        "spoken_languages": [
+            {
+                "english_name": "Turkish",
+                "iso_639_1": "tr",
+                "name": "T\u00fcrk\u00e7e"
+            },
+            {
+                "english_name": "Arabic",
+                "iso_639_1": "ar",
+                "name": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "French",
+                "iso_639_1": "fr",
+                "name": "Fran\u00e7ais"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Only Lovers Left Alive",
+        "video": false,
+        "vote_average": 7.22,
+        "vote_count": 2245
+    },
+    "10 Things I Hate About You28": {
+        "adult": false,
+        "backdrop_path": "/yvPbncYhMu9FfTjDhq0N5lgnVkO.jpg",
+        "belongs_to_collection": null,
+        "budget": 16000000,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
+        ],
+        "homepage": "",
+        "id": 4951,
+        "imdb_id": "tt0147800",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "10 Things I Hate About You",
+        "overview": "On the first day at his new school, Cameron instantly falls for Bianca, the gorgeous girl of his dreams. The only problem is that Bianca is forbidden to date until her ill-tempered, completely un-dateable older sister Kat goes out, too. In an attempt to solve his problem, Cameron singles out the only guy who could possibly be a match for Kat: a mysterious bad boy with a nasty reputation of his own.",
+        "popularity": 21.9792,
+        "poster_path": "/ujERk3aKABXU3NDXOAxEQYTHe9A.jpg",
+        "production_companies": [
+            {
+                "id": 1757,
+                "logo_path": "/fc9qw5GoTbyWGa0QcfbsZFzuMKQ.png",
+                "name": "Mad Chance",
+                "origin_country": "US"
+            },
+            {
+                "id": 1783,
+                "logo_path": null,
+                "name": "Jaret Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1999-03-30",
+        "revenue": 53478166,
+        "runtime": 97,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "French",
+                "iso_639_1": "fr",
+                "name": "Fran\u00e7ais"
+            }
+        ],
+        "status": "Released",
+        "tagline": "How do I loathe thee? Let me count the ways.",
+        "title": "10 Things I Hate About You",
+        "video": false,
+        "vote_average": 7.593,
+        "vote_count": 8323
+    },
+    "Pride & Prejudice29": {
+        "adult": false,
+        "backdrop_path": "/x4OYcZVHggyZHOrvkCo2HH9kLkF.jpg",
+        "belongs_to_collection": null,
+        "budget": 28000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "http://www.prideandprejudicemovie.net/splash.html",
+        "id": 4348,
+        "imdb_id": "tt0414387",
+        "origin_country": [
+            "GB"
+        ],
+        "original_language": "en",
+        "original_title": "Pride & Prejudice",
+        "overview": "A story of love and life among the landed English gentry during the Georgian era. Mr. Bennet is a gentleman living in Hertfordshire with his overbearing wife and five daughters, but if he dies their house will be inherited by a distant cousin whom they have never met, so the family's future happiness and security is dependent on the daughters making good marriages.",
+        "popularity": 30.5975,
+        "poster_path": "/sGjIvtVvTlWnia2zfJfHz81pZ9Q.jpg",
+        "production_companies": [
+            {
+                "id": 33,
+                "logo_path": "/3wwjVpkZtnog6lSKzWDjvw2Yi00.png",
+                "name": "Universal Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 694,
+                "logo_path": "/5LEHONGkZBIoWvp1ygHOF8iyi1M.png",
+                "name": "StudioCanal",
+                "origin_country": "FR"
+            },
+            {
+                "id": 10163,
+                "logo_path": "/16KWBMmfPX0aJzDExDrPxSLj0Pg.png",
+                "name": "Working Title Films",
+                "origin_country": "GB"
+            },
+            {
+                "id": 7419,
+                "logo_path": "/xePgQxppZtgSMICGgnKAWlVobt7.png",
+                "name": "Scion Films",
+                "origin_country": "GB"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            },
+            {
+                "iso_3166_1": "FR",
+                "name": "France"
+            }
+        ],
+        "release_date": "2005-09-16",
+        "revenue": 124503070,
+        "runtime": 127,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Sometimes the last person on earth you want to be with is the one person you can't be without.",
+        "title": "Pride & Prejudice",
+        "video": false,
+        "vote_average": 8.1,
+        "vote_count": 8205
+    },
+    "Twilight30": {
+        "adult": false,
+        "backdrop_path": "/weAYfu6FfrNxEDJ3xH1XpgQcqUv.jpg",
+        "belongs_to_collection": {
+            "id": 33514,
+            "name": "The Twilight Collection",
+            "poster_path": "/aKAX2HO5V94JYeSIkOMFNlRI71E.jpg",
+            "backdrop_path": "/3be0BffeZTyMbj4Ndzo6Y877SBQ.jpg"
+        },
+        "budget": 37000000,
+        "genres": [
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "",
+        "id": 8966,
+        "imdb_id": "tt1099212",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Twilight",
+        "overview": "When Bella Swan moves to a small town in the Pacific Northwest, she falls in love with Edward Cullen, a mysterious classmate who reveals himself to be a 108-year-old vampire. Despite Edward's repeated cautions, Bella can't stay away from him, a fatal move that endangers her own life.",
+        "popularity": 30.3114,
+        "poster_path": "/3Gkb6jm6962ADUPaCBqzz9CTbn9.jpg",
+        "production_companies": [
+            {
+                "id": 491,
+                "logo_path": "/5LvDUt3KmvRnXQ4NrdWJYHeuA8J.png",
+                "name": "Summit Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 12292,
+                "logo_path": "/4GQTeqos2luopEtp3OgMQYusQ5c.png",
+                "name": "Temple Hill Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 4000,
+                "logo_path": null,
+                "name": "Maverick Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 5218,
+                "logo_path": "/dhb42ugM9DzSpDctTWCtABPVOW4.png",
+                "name": "Imprint Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 500,
+                "logo_path": "/yDDFvMZAEbLGAm90LxzmayEfvE5.png",
+                "name": "Goldcrest",
+                "origin_country": "GB"
+            },
+            {
+                "id": 234680,
+                "logo_path": null,
+                "name": "Aura Films",
+                "origin_country": "GB"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2008-11-20",
+        "revenue": 393616788,
+        "runtime": 122,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "When you can live forever, what do you live for?",
+        "title": "Twilight",
+        "video": false,
+        "vote_average": 6.288,
+        "vote_count": 13757
+    },
+    "Baby Geniuses31": {
+        "adult": false,
+        "backdrop_path": "/QAnuNwYnnttSkBkvUBwQYf8cKD.jpg",
+        "belongs_to_collection": {
+            "id": 632595,
+            "name": "Baby Geniuses Collection",
+            "poster_path": "/seAY5n2D0Yj5ff5TkC8oE6UwOFE.jpg",
+            "backdrop_path": null
+        },
+        "budget": 12000000,
+        "genres": [
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
+        ],
+        "homepage": "",
+        "id": 22345,
+        "imdb_id": "tt0118665",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Baby Geniuses",
+        "overview": "BabyCo is the world's leading manufacturer in baby products. However, what the public doesn't know, is that Drs Kinder and Heep, two of its most brilliant scientists, are tirelessly working in complete secrecy to crack the indecipherable code to 'baby talk': a highly sophisticated language, and the key to the secrets of the universe. Before long, problems arise when mischievous Sly, the smartest of the toddlers, escapes confinement, bent on uniting all babies to free those trapped in the laboratory. Now, Kinder and Heep must find Sly before it is too late.",
+        "popularity": 3.82,
+        "poster_path": "/7zvPhjHkz5YEMUMPyvANCR96RJA.jpg",
+        "production_companies": [
+            {
+                "id": 4077,
+                "logo_path": null,
+                "name": "Crystal Sky Worldwide",
+                "origin_country": ""
+            },
+            {
+                "id": 4078,
+                "logo_path": null,
+                "name": "Triumph",
+                "origin_country": ""
+            },
+            {
+                "id": 559,
+                "logo_path": "/eC0bWHVjnjUducyA6YFoEFqnPMC.png",
+                "name": "TriStar Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1999-03-12",
+        "revenue": 36450736,
+        "runtime": 97,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Think innocent. Think helpless. Think again. Naps are history.",
+        "title": "Baby Geniuses",
+        "video": false,
+        "vote_average": 4.124,
+        "vote_count": 384
+    },
+    "The Boss Baby32": {
+        "adult": false,
+        "backdrop_path": "/bTFeSwh07oX99ofpDI4O2WkiFJ.jpg",
+        "belongs_to_collection": {
+            "id": 519457,
+            "name": "The Boss Baby Collection",
+            "poster_path": "/fj4qkq5ZaMUhCQTY8DJ95MJOxmF.jpg",
+            "backdrop_path": "/8fu24PwKr1oq0QIZFbgeFGl0oDa.jpg"
+        },
+        "budget": 125000000,
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
+        ],
+        "homepage": "http://www.dreamworks.com/thebossbaby/",
+        "id": 295693,
+        "imdb_id": "tt3874544",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Boss Baby",
+        "overview": "A story about how a new baby's arrival impacts a family, told from the point of view of a delightfully unreliable narrator, a wildly imaginative 7 year old named Tim.",
+        "popularity": 5.062,
+        "poster_path": "/unPB1iyEeTBcKiLg8W083rlViFH.jpg",
+        "production_companies": [
+            {
+                "id": 521,
+                "logo_path": "/3BPX5VGBov8SDqTV7wC1L1xShAS.png",
+                "name": "DreamWorks Animation",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2017-03-23",
+        "revenue": 527965936,
+        "runtime": 97,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Born leader",
+        "title": "The Boss Baby",
+        "video": false,
+        "vote_average": 6.454,
+        "vote_count": 7180
+    },
+    "Lucky Number Slevin33": {
+        "adult": false,
+        "backdrop_path": "/ShDHEWiJ4NL6ldn4W2m3bEkIBr.jpg",
+        "belongs_to_collection": null,
+        "budget": 27000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 80,
+                "name": "Crime"
+            },
+            {
+                "id": 9648,
+                "name": "Mystery"
+            }
+        ],
+        "homepage": "",
+        "id": 186,
+        "imdb_id": "tt0425210",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Lucky Number Slevin",
+        "overview": "Slevin is mistakenly put in the middle of a personal war between the city\u2019s biggest criminal bosses. Under constant watch, Slevin must try not to get killed by an infamous assassin and come up with an idea of how to get out of his current dilemma.",
+        "popularity": 5.595,
+        "poster_path": "/x21s3p5wPww534nYj1cWakTcqz4.jpg",
+        "production_companies": [
+            {
+                "id": 308,
+                "logo_path": "/e8F3mQM7DkJ5SfYYDp8FYzPBOGX.png",
+                "name": "The Weinstein Company",
+                "origin_country": "US"
+            },
+            {
+                "id": 816,
+                "logo_path": null,
+                "name": "FilmEngine",
+                "origin_country": ""
+            },
+            {
+                "id": 826,
+                "logo_path": "/aqiR1prl8N00FfkC4FCJWsOpZIy.png",
+                "name": "Capitol Films",
+                "origin_country": "GB"
+            },
+            {
+                "id": 1204,
+                "logo_path": null,
+                "name": "Ascendant Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 2116,
+                "logo_path": "/j7grgeyXof8VBmqbBBSNaqVoOCb.png",
+                "name": "VIP Medienfonds 4",
+                "origin_country": "DE"
+            },
+            {
+                "id": 123780,
+                "logo_path": null,
+                "name": "Lucky Number Slevin Productions Inc.",
+                "origin_country": ""
+            },
+            {
+                "id": 123781,
+                "logo_path": null,
+                "name": "The Complex",
+                "origin_country": ""
+            },
+            {
+                "id": 4253,
+                "logo_path": "/qgFBsEmKTckDM0Fk6ZTB8RyW0Rc.png",
+                "name": "Don Carmody Productions",
+                "origin_country": "CA"
+            },
+            {
+                "id": 21,
+                "logo_path": "/usUnaYV6hQnlVAXP6r4HwrlLFPG.png",
+                "name": "Metro-Goldwyn-Mayer",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "CA",
+                "name": "Canada"
+            },
+            {
+                "iso_3166_1": "DE",
+                "name": "Germany"
+            },
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2006-02-24",
+        "revenue": 56300000,
+        "runtime": 110,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Wrong time. Wrong place. Wrong number.",
+        "title": "Lucky Number Slevin",
+        "video": false,
+        "vote_average": 7.481,
+        "vote_count": 4157
+    },
+    "Black Panther34": {
+        "adult": false,
+        "backdrop_path": "/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
+        "belongs_to_collection": {
+            "id": 529892,
+            "name": "Black Panther Collection",
+            "poster_path": "/VtMkk2s92SnDUt8eYyUyYaSJQK.jpg",
+            "backdrop_path": "/nsiBzWsmmerBMuD8TKHpYBTnfhD.jpg"
+        },
+        "budget": 200000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
+        ],
+        "homepage": "https://www.marvel.com/movies/black-panther",
+        "id": 284054,
+        "imdb_id": "tt1825683",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Black Panther",
+        "overview": "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
+        "popularity": 27.3326,
+        "poster_path": "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+        "production_companies": [
+            {
+                "id": 420,
+                "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+                "name": "Marvel Studios",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2018-02-13",
+        "revenue": 1349926083,
+        "runtime": 135,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Korean",
+                "iso_639_1": "ko",
+                "name": "\ud55c\uad6d\uc5b4/\uc870\uc120\ub9d0"
+            },
+            {
+                "english_name": "Swahili",
+                "iso_639_1": "sw",
+                "name": "Kiswahili"
+            },
+            {
+                "english_name": "Xhosa",
+                "iso_639_1": "xh",
+                "name": ""
+            }
+        ],
+        "status": "Released",
+        "tagline": "Long live the king.",
+        "title": "Black Panther",
+        "video": false,
+        "vote_average": 7.373,
+        "vote_count": 22506
+    },
+    "Blank Check35": {
+        "adult": false,
+        "backdrop_path": "/ddpmx0dH1bXOp3jQt18GHaLwbAX.jpg",
+        "belongs_to_collection": null,
+        "budget": 13000000,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
+        ],
+        "homepage": "",
+        "id": 13962,
+        "imdb_id": "tt0109287",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Blank Check",
+        "overview": "Bullied by his siblings and nagged by his parents, 11-year-old Preston is fed up with his family -- especially their frugality. But he gets his chance to teach them a lesson when a money-laundering criminal nearly bulldozes Preston with his car and gives the boy a blank check as compensation. Preston makes the check out for $1 million and goes on a spending spree he'll never forget. Maybe now, his family will take him seriously!",
+        "popularity": 2.6487,
+        "poster_path": "/qhsH1BGqeCDHoogt5ebxOgERJGb.jpg",
+        "production_companies": [
+            {
+                "id": 2,
+                "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+                "name": "Walt Disney Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1994-02-11",
+        "revenue": 30600000,
+        "runtime": 93,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Quick thinking landed him a million bucks... now everybody's after it!",
+        "title": "Blank Check",
+        "video": false,
+        "vote_average": 5.9,
+        "vote_count": 505
+    },
+    "Glass36": {
+        "adult": false,
+        "backdrop_path": "/iRJnw5OpueLhrYMnCxdydogVHUg.jpg",
+        "belongs_to_collection": null,
+        "budget": 20000000,
+        "genres": [
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
+        ],
+        "homepage": "https://www.glassmovie.com",
+        "id": 450465,
+        "imdb_id": "tt6823368",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Glass",
+        "overview": "In a series of escalating encounters, former security guard David Dunn uses his supernatural abilities to track Kevin Wendell Crumb, a disturbed man who has twenty-four personalities. Meanwhile, the shadowy presence of Elijah Price emerges as an orchestrator who holds secrets critical to both men.",
+        "popularity": 12.0746,
+        "poster_path": "/svIDTNUoajS8dLEo7EosxvyAsgJ.jpg",
+        "production_companies": [
+            {
+                "id": 12236,
+                "logo_path": "/bVu0qQm4GujSTCvZZz9S3rHDczA.png",
+                "name": "Blinding Edge Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 3172,
+                "logo_path": "/rzKluDcRkIwHZK2pHsiT667A2Kw.png",
+                "name": "Blumhouse Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 214539,
+                "logo_path": "/7gLb5n9flgH3aGn28Q0jNtPhlwx.png",
+                "name": "Perfect World Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2019-01-16",
+        "revenue": 246999039,
+        "runtime": 129,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Espa\u00f1ol"
+            }
+        ],
+        "status": "Released",
+        "tagline": "You Cannot Contain What You Are",
+        "title": "Glass",
+        "video": false,
+        "vote_average": 6.7,
+        "vote_count": 8628
+    }
+}

@@ -1,0 +1,15 @@
+return {
+	["show_art_undiscovered"] = false,
+	["unlock_challenges"] = false,
+	["disable_meltdown_color"] = false,
+	["lobcorp_music"] = false,
+	["disable_abno_text"] = false,
+	["first_time_passive"] = false,
+	["enable_crossovers"] = false,
+	["disable_ordeals"] = false,
+	["no_music"] = false,
+	["disable_unsettling_sfx"] = false,
+	["discover_all"] = false,
+	["first_time"] = true,
+	["no_sfx"] = false,
+}

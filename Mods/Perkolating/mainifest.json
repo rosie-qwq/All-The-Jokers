@@ -1,0 +1,13 @@
+{
+	"id": "Perkolator",
+	"name": "Perk-O-lating",
+	"display_name": "Perk-O-lating",
+	"author": ["UHadMeAtFood"],
+	"description": "Balatro but perkeo",
+	"prefix": "Perkolator",
+	"main_file": "main.lua",
+	"priority": -9999,
+	"version": "0.0.8",
+	"dependencies": [
+		"Steamodded (>=1.*)"]
+}

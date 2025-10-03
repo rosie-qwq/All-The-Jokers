@@ -1,0 +1,11 @@
+{
+	"id": "ChDp",
+	"name": "Challenger Deep",
+	"display_name": "Challenger Deep",
+	"author": ["Opal"],
+	"description": "Adds 100+ Custom Rules to be used in Challenges.",
+	"prefix": "chdp",
+	"priority": 10,
+	"main_file": "challengerdeep.lua",
+	"version": "1.4.2"
+}

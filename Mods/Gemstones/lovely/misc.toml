@@ -1,0 +1,96 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# Callback Gemstone pool to Ruby
+[[patches]]
+[patches.pattern]
+target = "functions/common_event.lua"
+pattern = '''elseif _type == 'Tag' then _pool[#_pool + 1] = "tag_handy"'''
+position = "after"
+payload = '''elseif _type == 'Gemstone' then _pool[#_pool + 1] = "c_gems_ruby"'''
+match_indent = true
+
+# Gemstone cards taking up 1/2 slot
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "self.config.card_count = #self.cards"
+position = "at"
+payload = '''
+if self == G.consumeables then
+    self.config.card_count = 0
+    
+    for i = 1, #self.cards do
+        local card = self.cards[i]
+        if card.ability.set == "Gemstone" then
+            self.config.card_count = self.config.card_count + 0.5
+        else
+            self.config.card_count = self.config.card_count + 1
+        end
+    end
+else
+    self.config.card_count = #self.cards
+end
+'''
+match_indent = true
+
+# Can add Tarot card from Purple Seal
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.seal == 'Purple' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then"
+position = "at"
+payload = '''
+local limit = 0
+for i = 1, #G.consumeables.cards do
+    local card = G.consumeables.cards[i]
+    if card.ability.set == "Gemstone" then
+        limit = limit + 0.5
+    else
+        limit = limit + 1
+    end
+end
+
+if self.seal == 'Purple' and (G.consumeables.config.card_limit - (limit + G.GAME.consumeable_buffer)) >= 1 then
+'''
+match_indent = true
+
+# Sticker compatability for Challenge Jokers
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if v.pinned then _joker.pinned = true end"
+position = "after"
+payload = "if v.gemslot then Gemstones.set_gemslot(_joker, v.gemslot) end"
+match_indent = true 
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if v.pinned then card.pinned = true end"
+position = "after"
+payload = "if v.gemslot then Gemstones.set_gemslot(card, v.gemslot) end"
+match_indent = true
+
+# No shop planets
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "elseif v.id == 'no_shop_jokers' then"
+position = "before"
+payload = """
+elseif v.id == 'gems_no_planets' then
+    self.GAME.planet_rate = 0
+"""
+match_indent = true
+
+# Joker Selection Limit at 2
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "{card_limit = self.GAME.starting_params.joker_slots, type = 'joker', highlight_limit = 1})"
+position = "at"
+payload = "{card_limit = self.GAME.starting_params.joker_slots, type = 'joker', highlight_limit = 2})"
+match_indent = true

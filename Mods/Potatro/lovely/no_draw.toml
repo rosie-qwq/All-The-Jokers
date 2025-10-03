@@ -1,0 +1,87 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'main.lua'
+pattern = "function love.draw()"
+position = "after"
+payload = '''
+if not G.__dynfps_fps_limit or G.__dynfps_fps_limit <= 0 then G.__dynfps_fps_limit = 60 end
+
+local expected_dt = 1 / G.__dynfps_fps_limit
+if not love.window.hasFocus() then love.timer.sleep(expected_dt) return end
+
+local actual_dt = love.timer.getTime() - G.__dynfps_last_draw
+local sleep_time = expected_dt - actual_dt
+
+if sleep_time > 0 then love.timer.sleep(sleep_time) end
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = 'main.lua'
+pattern = "G:draw()"
+position = "after"
+payload = '''
+G.__dynfps_last_draw = love.timer.getTime()
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = "love.graphics.clear({0,1,0,1})"
+position = "after"
+payload = '''
+elseif G.recording_mode then
+    love.graphics.clear(G.C.BLACK)
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = 'main.lua'
+pattern = "G.CANV_SCALE = 1"
+position = "before"
+payload = '''
+if not G.CANV_SCALE then
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = 'main.lua'
+pattern = "G.CANV_SCALE = 1"
+position = "after"
+payload = '''
+end
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = "love.graphics.draw(self.CANVAS, 0, 0)"
+position = "at"
+payload = """
+self.CANVAS:setFilter("nearest", "nearest")
+love.graphics.draw(self.CANVAS, 0, 0, 0, (G.CANV_SCALE and (1 / G.CANV_SCALE)) or 1, (G.CANV_SCALE and (1 / G.CANV_SCALE)) or 1)
+"""
+match_indent = false
+
+[[patches]]
+[patches.pattern]
+target = 'main.lua'
+pattern = "G.CANVAS:setFilter('linear', 'linear')"
+position = "at"
+payload = """G.CANVAS:setFilter("nearest", "nearest")"""
+match_indent = false

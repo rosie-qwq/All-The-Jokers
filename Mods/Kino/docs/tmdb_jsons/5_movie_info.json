@@ -1,0 +1,2647 @@
+{
+    "Kraven the Hunter1": {
+        "adult": false,
+        "backdrop_path": "/v9Du2HC3hlknAvGlWhquRbeifwW.jpg",
+        "belongs_to_collection": null,
+        "budget": 120000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "https://www.kravenmovie.com",
+        "id": 539972,
+        "imdb_id": "tt8790086",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Kraven the Hunter",
+        "overview": "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
+        "popularity": 78.386,
+        "poster_path": "/1GvBhRxY6MELDfxFrete6BNhBB5.jpg",
+        "production_companies": [
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 53462,
+                "logo_path": "/nx8B3Phlcse02w86RW4CJqzCnfL.png",
+                "name": "Matt Tolmach Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 14439,
+                "logo_path": null,
+                "name": "Arad Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2024-12-11",
+        "revenue": 59184643,
+        "runtime": 127,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Russian",
+                "iso_639_1": "ru",
+                "name": "P\u0443\u0441\u0441\u043a\u0438\u0439"
+            },
+            {
+                "english_name": "Turkish",
+                "iso_639_1": "tr",
+                "name": "T\u00fcrk\u00e7e"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Villains aren't born. They're made.",
+        "title": "Kraven the Hunter",
+        "video": false,
+        "vote_average": 6.61,
+        "vote_count": 1583
+    },
+    "Morbius2": {
+        "adult": false,
+        "backdrop_path": "/gG9fTyDL03fiKnOpf2tr01sncnt.jpg",
+        "belongs_to_collection": null,
+        "budget": 75000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
+        ],
+        "homepage": "https://www.sonypictures.com/movies/morbius",
+        "id": 526896,
+        "imdb_id": "tt5108870",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Morbius",
+        "overview": "Dangerously ill with a rare blood disorder, and determined to save others suffering his same fate, Dr. Michael Morbius attempts a desperate gamble. What at first appears to be a radical success soon reveals itself to be a remedy potentially worse than the disease.",
+        "popularity": 10.9074,
+        "poster_path": "/6JjfSchsU6daXk2AKX8EEBjO3Fm.jpg",
+        "production_companies": [
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 53462,
+                "logo_path": "/nx8B3Phlcse02w86RW4CJqzCnfL.png",
+                "name": "Matt Tolmach Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 14439,
+                "logo_path": null,
+                "name": "Arad Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2022-03-30",
+        "revenue": 167635712,
+        "runtime": 105,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Greek",
+                "iso_639_1": "el",
+                "name": "\u03b5\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac"
+            },
+            {
+                "english_name": "Norwegian",
+                "iso_639_1": "no",
+                "name": "Norsk"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Espa\u00f1ol"
+            }
+        ],
+        "status": "Released",
+        "tagline": "A new Marvel legend arrives.",
+        "title": "Morbius",
+        "video": false,
+        "vote_average": 5.974,
+        "vote_count": 4437
+    },
+    "The Number 233": {
+        "adult": false,
+        "backdrop_path": "/zBFbGxw22wY2VTNGbcknd84CIEf.jpg",
+        "belongs_to_collection": null,
+        "budget": 30000000,
+        "genres": [
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 9648,
+                "name": "Mystery"
+            },
+            {
+                "id": 80,
+                "name": "Crime"
+            }
+        ],
+        "homepage": "http://wwws.warnerbros.de/number23/",
+        "id": 3594,
+        "imdb_id": "tt0481369",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Number 23",
+        "overview": "Animal control officer Walter Sparrow becomes obsessed with a novel that he believes was written about him, as more and more similarities between himself and his literary alter ego seem to arise.",
+        "popularity": 5.4049,
+        "poster_path": "/iPJwdvgX3I5dEw9QhDOG3hxUvMp.jpg",
+        "production_companies": [
+            {
+                "id": 1838,
+                "logo_path": null,
+                "name": "Firm Films",
+                "origin_country": ""
+            },
+            {
+                "id": 12,
+                "logo_path": "/2ycs64eqV5rqKYHyQK0GVoKGvfX.png",
+                "name": "New Line Cinema",
+                "origin_country": "US"
+            },
+            {
+                "id": 1836,
+                "logo_path": null,
+                "name": "Contrafilm",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "DE",
+                "name": "Germany"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2007-02-23",
+        "revenue": 77677553,
+        "runtime": 98,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "First it takes hold of your mind...then it takes hold of your life.",
+        "title": "The Number 23",
+        "video": false,
+        "vote_average": 6.411,
+        "vote_count": 3278
+    },
+    "Ring4": {
+        "adult": false,
+        "backdrop_path": "/c4JSmNFAVtn0WNtWFoycKrIFbFT.jpg",
+        "belongs_to_collection": {
+            "id": 93369,
+            "name": "Ring Collection",
+            "poster_path": "/biJHrhd2pm2ppOYg3XD7MFQjkcI.jpg",
+            "backdrop_path": "/aS42DTtR6UYNLfKdKJBKYL1OS1U.jpg"
+        },
+        "budget": 1200000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "",
+        "id": 2671,
+        "imdb_id": "tt0178868",
+        "origin_country": [
+            "JP"
+        ],
+        "original_language": "ja",
+        "original_title": "\u30ea\u30f3\u30b0",
+        "overview": "A mysterious video has been linked to a number of deaths, and when an inquisitive journalist finds the tape and views it herself, she sets in motion a chain of events that puts her own life in danger.",
+        "popularity": 3.2098,
+        "poster_path": "/1YINof6kN5yRdePEbcU5360ejoq.jpg",
+        "production_companies": [
+            {
+                "id": 1194,
+                "logo_path": "/dwkHaFLgtA7CUNbgKK0wB6bospu.png",
+                "name": "KADOKAWA Shoten",
+                "origin_country": "JP"
+            },
+            {
+                "id": 1195,
+                "logo_path": null,
+                "name": "Omega Project",
+                "origin_country": "JP"
+            },
+            {
+                "id": 244498,
+                "logo_path": null,
+                "name": "Rasen Production Committee",
+                "origin_country": ""
+            },
+            {
+                "id": 882,
+                "logo_path": "/fRSWWjquvzcHjACbtF53utZFIll.png",
+                "name": "TOHO",
+                "origin_country": "JP"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "JP",
+                "name": "Japan"
+            }
+        ],
+        "release_date": "1998-01-31",
+        "revenue": 19400000,
+        "runtime": 96,
+        "spoken_languages": [
+            {
+                "english_name": "Japanese",
+                "iso_639_1": "ja",
+                "name": "\u65e5\u672c\u8a9e"
+            }
+        ],
+        "status": "Released",
+        "tagline": "One curse, one cure, one week to find it",
+        "title": "Ring",
+        "video": false,
+        "vote_average": 7.062,
+        "vote_count": 1478
+    },
+    "Thor5": {
+        "adult": false,
+        "backdrop_path": "/cDJ61O1STtbWNBwefuqVrRe3d7l.jpg",
+        "belongs_to_collection": {
+            "id": 131296,
+            "name": "Thor Collection",
+            "poster_path": "/1fGblAmaE2wU6ts2A83eWBgkmHs.jpg",
+            "backdrop_path": "/3KL8UNKFWgIKXzLHjwY0uwgjzYl.jpg"
+        },
+        "budget": 150000000,
+        "genres": [
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            }
+        ],
+        "homepage": "https://www.marvel.com/movies/thor",
+        "id": 10195,
+        "imdb_id": "tt0800369",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Thor",
+        "overview": "Against his father Odin's will, The Mighty Thor - a powerful but arrogant warrior god - recklessly reignites an ancient war. Thor is cast down to Earth and forced to live among humans as punishment. Once here, Thor learns what it takes to be a true hero when the most dangerous villain of his world sends the darkest forces of Asgard to invade Earth.",
+        "popularity": 15.4462,
+        "poster_path": "/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg",
+        "production_companies": [
+            {
+                "id": 420,
+                "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+                "name": "Marvel Studios",
+                "origin_country": "US"
+            },
+            {
+                "id": 7505,
+                "logo_path": "/837VMM4wOkODc1idNxGT0KQJlej.png",
+                "name": "Marvel Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2011-04-21",
+        "revenue": 449326618,
+        "runtime": 115,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Courage is immortal.",
+        "title": "Thor",
+        "video": false,
+        "vote_average": 6.769,
+        "vote_count": 21452
+    },
+    "The Blair Witch Project6": {
+        "adult": false,
+        "backdrop_path": "/xpTHHojJnJQgavgMw5OQYUzuNIU.jpg",
+        "belongs_to_collection": {
+            "id": 64750,
+            "name": "Blair Witch Collection",
+            "poster_path": "/rkud6YJeLvNr0l7wJKXRIrLs1v0.jpg",
+            "backdrop_path": "/e5GwLq0zBer3SuSJZodcNROnT6Z.jpg"
+        },
+        "budget": 60000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 9648,
+                "name": "Mystery"
+            }
+        ],
+        "homepage": "http://www.blairwitch.com/",
+        "id": 2667,
+        "imdb_id": "tt0185937",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Blair Witch Project",
+        "overview": "In October of 1994 three student filmmakers disappeared in the woods near Burkittsville, Maryland, while shooting a documentary. A year later their footage was found.",
+        "popularity": 11.6157,
+        "poster_path": "/9050VGrYjYrEjpOvDZVAngLbg1f.jpg",
+        "production_companies": [
+            {
+                "id": 15160,
+                "logo_path": "/nksfViwBwYdv73nkdn3Dk3OEINr.png",
+                "name": "Haxan Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 2188,
+                "logo_path": "/f1zrx8bIsS81AHoPQq4riJx68Lt.png",
+                "name": "Artisan Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1999-07-14",
+        "revenue": 248639099,
+        "runtime": 81,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Everything you've heard is true.",
+        "title": "The Blair Witch Project",
+        "video": false,
+        "vote_average": 6.35,
+        "vote_count": 4993
+    },
+    "50 First Dates7": {
+        "adult": false,
+        "backdrop_path": "/vUuMauTTlsp7LB9dN9phXA0i9Nd.jpg",
+        "belongs_to_collection": null,
+        "budget": 75000000,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "",
+        "id": 1824,
+        "imdb_id": "tt0343660",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "50 First Dates",
+        "overview": "Henry is a player skilled at seducing women. But when this veterinarian meets Lucy, a girl with a quirky problem when it comes to total recall, he realizes it's possible to fall in love all over again\u2026and again, and again. That's because the delightful Lucy has no short-term memory, so Henry must woo her day after day until he finally sweeps her off her feet.",
+        "popularity": 8.6849,
+        "poster_path": "/5NxTW4SS6aUKZYnbQzh7UYNivd.jpg",
+        "production_companies": [
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 10039,
+                "logo_path": "/b8w4LldQolMKiLZw4FQJBcXSDGI.png",
+                "name": "Anonymous Content",
+                "origin_country": "US"
+            },
+            {
+                "id": 19813,
+                "logo_path": null,
+                "name": "Flower Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 878,
+                "logo_path": "/e2AZdsQdkhN0qJhoN4TMYiVPLyb.png",
+                "name": "Happy Madison Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2004-02-13",
+        "revenue": 196482882,
+        "runtime": 99,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Imagine having to win over the girl of your dreams... every friggin' day.",
+        "title": "50 First Dates",
+        "video": false,
+        "vote_average": 6.9,
+        "vote_count": 7313
+    },
+    "GoodFellas8": {
+        "adult": false,
+        "backdrop_path": "/7TF4p86ZafnxFuNqWdhpHXFO244.jpg",
+        "belongs_to_collection": null,
+        "budget": 25000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 80,
+                "name": "Crime"
+            }
+        ],
+        "homepage": "http://www.warnerbros.com/goodfellas",
+        "id": 769,
+        "imdb_id": "tt0099685",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "GoodFellas",
+        "overview": "The true story of Henry Hill, a half-Irish, half-Sicilian Brooklyn kid who is adopted by neighbourhood gangsters at an early age and climbs the ranks of a Mafia family under the guidance of Jimmy Conway.",
+        "popularity": 44.5335,
+        "poster_path": "/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
+        "production_companies": [
+            {
+                "id": 8880,
+                "logo_path": "/fE7LBw7Jz8R29EABFGCvWNriZxN.png",
+                "name": "Winkler Films",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1990-09-12",
+        "revenue": 46800000,
+        "runtime": 145,
+        "spoken_languages": [
+            {
+                "english_name": "Italian",
+                "iso_639_1": "it",
+                "name": "Italiano"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Three decades of life in the mafia.",
+        "title": "GoodFellas",
+        "video": false,
+        "vote_average": 8.456,
+        "vote_count": 13302
+    },
+    "Guardians of the Galaxy Vol. 29": {
+        "adult": false,
+        "backdrop_path": "/aJn9XeesqsrSLKcHfHP4u5985hn.jpg",
+        "belongs_to_collection": {
+            "id": 284433,
+            "name": "Guardians of the Galaxy Collection",
+            "poster_path": "/kFWLxUwcSpiLzszZbxUIZT9g6WR.jpg",
+            "backdrop_path": "/sxyF4lVkEvOLVzr8jOF5K5nrMh3.jpg"
+        },
+        "budget": 200000000,
+        "genres": [
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            }
+        ],
+        "homepage": "https://www.marvel.com/movies/guardians-of-the-galaxy-vol-2",
+        "id": 283995,
+        "imdb_id": "tt3896198",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Guardians of the Galaxy Vol. 2",
+        "overview": "The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage.",
+        "popularity": 20.6052,
+        "poster_path": "/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
+        "production_companies": [
+            {
+                "id": 420,
+                "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+                "name": "Marvel Studios",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2017-04-19",
+        "revenue": 863756051,
+        "runtime": 137,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Anyone can save the galaxy once.",
+        "title": "Guardians of the Galaxy Vol. 2",
+        "video": false,
+        "vote_average": 7.612,
+        "vote_count": 21900
+    },
+    "Moneyball10": {
+        "adult": false,
+        "backdrop_path": "/y5PH2cM3mHt2Q74lMzhuqQi93sh.jpg",
+        "belongs_to_collection": null,
+        "budget": 50000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            }
+        ],
+        "homepage": "http://www.moneyball-movie.com",
+        "id": 60308,
+        "imdb_id": "tt1210166",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Moneyball",
+        "overview": "The story of Oakland Athletics general manager Billy Beane's successful attempt to put together a baseball team on a budget, by employing computer-generated analysis to draft his players.",
+        "popularity": 11.5818,
+        "poster_path": "/4yIQq1e6iOcaZ5rLDG3lZBP3j7a.jpg",
+        "production_companies": [
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 11370,
+                "logo_path": null,
+                "name": "Michael De Luca Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 737,
+                "logo_path": "/dK1GZ1u4our8sJW0Sts1JHeNSLn.png",
+                "name": "Sidney Kimmel Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 6403,
+                "logo_path": null,
+                "name": "Specialty Films",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2011-09-23",
+        "revenue": 110206216,
+        "runtime": 134,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "What are you really worth?",
+        "title": "Moneyball",
+        "video": false,
+        "vote_average": 7.281,
+        "vote_count": 5304
+    },
+    "The Rock11": {
+        "adult": false,
+        "backdrop_path": "/qDVdTL1KqGmGLGsy7UPA3vksku7.jpg",
+        "belongs_to_collection": null,
+        "budget": 75000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "",
+        "id": 9802,
+        "imdb_id": "tt0117500",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Rock",
+        "overview": "When vengeful General Francis X. Hummel seizes control of Alcatraz Island and threatens to launch missiles loaded with deadly chemical weapons into San Francisco, only a young FBI chemical weapons expert and notorious Federal prisoner have the skills to penetrate the impregnable island fortress and take him down.",
+        "popularity": 12.0406,
+        "poster_path": "/j5mxLNWjUlXUUk8weFBtnF4afIR.jpg",
+        "production_companies": [
+            {
+                "id": 10288,
+                "logo_path": "/Aszf09kIVXR6cwG9lwjZIawbYVS.png",
+                "name": "Don Simpson/Jerry Bruckheimer Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 915,
+                "logo_path": "/4neXXpjSJDZPBGBnfWtqysB5htV.png",
+                "name": "Hollywood Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1996-06-07",
+        "revenue": 335062621,
+        "runtime": 137,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Alcatraz. Only one man has ever broken out. Now five million lives depend on two men breaking in.",
+        "title": "The Rock",
+        "video": false,
+        "vote_average": 7.131,
+        "vote_count": 4814
+    },
+    "War of the Worlds12": {
+        "adult": false,
+        "backdrop_path": "/nH6hPhJq3EEv9CnBZgXU3IQnpJo.jpg",
+        "belongs_to_collection": null,
+        "budget": 132000000,
+        "genres": [
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
+        ],
+        "homepage": "https://amblin.com/movie/war-of-the-worlds/",
+        "id": 74,
+        "imdb_id": "tt0407304",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "War of the Worlds",
+        "overview": "Ray Ferrier is a divorced dockworker and less-than-perfect father. Soon after his ex-wife and her new husband drop off his teenage son and young daughter for a rare weekend visit, a strange and powerful lightning storm touches down.",
+        "popularity": 17.9977,
+        "poster_path": "/oZmJ6hD2dc6zLCIPgw8onPMo0QC.jpg",
+        "production_companies": [
+            {
+                "id": 4,
+                "logo_path": "/gz66EfNoYPqHTYI4q9UEN4CbHRc.png",
+                "name": "Paramount Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 7,
+                "logo_path": "/vru2SssLX3FPhnKZGtYw00pVIS9.png",
+                "name": "DreamWorks Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 56,
+                "logo_path": "/cEaxANEisCqeEoRvODv2dO1I0iI.png",
+                "name": "Amblin Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 44,
+                "logo_path": "/6Hs6K20Hz1W9W1Tiam5QN2Kpx8V.png",
+                "name": "Cruise/Wagner Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2005-06-13",
+        "revenue": 603873119,
+        "runtime": 117,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "They're already here.",
+        "title": "War of the Worlds",
+        "video": false,
+        "vote_average": 6.513,
+        "vote_count": 8547
+    },
+    "The Incredible Hulk13": {
+        "adult": false,
+        "backdrop_path": "/jPu8yiadqgzwFPGKJmGo637ASVP.jpg",
+        "belongs_to_collection": null,
+        "budget": 150000000,
+        "genres": [
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            }
+        ],
+        "homepage": "https://www.marvel.com/movies/the-incredible-hulk",
+        "id": 1724,
+        "imdb_id": "tt0800080",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Incredible Hulk",
+        "overview": "Scientist Bruce Banner scours the planet for an antidote to the unbridled force of rage within him: the Hulk. But when the military masterminds who dream of exploiting his powers force him back to civilization, he finds himself coming face to face with a new, deadly foe.",
+        "popularity": 19.1015,
+        "poster_path": "/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg",
+        "production_companies": [
+            {
+                "id": 420,
+                "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+                "name": "Marvel Studios",
+                "origin_country": "US"
+            },
+            {
+                "id": 11533,
+                "logo_path": "/tWM9pmzVYxok4GbQIttxdcml1yT.png",
+                "name": "Valhalla Motion Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 7505,
+                "logo_path": "/837VMM4wOkODc1idNxGT0KQJlej.png",
+                "name": "Marvel Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2008-06-12",
+        "revenue": 264770996,
+        "runtime": 114,
+        "spoken_languages": [
+            {
+                "english_name": "Portuguese",
+                "iso_639_1": "pt",
+                "name": "Portugu\u00eas"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Espa\u00f1ol"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "You'll like him when he's angry.",
+        "title": "The Incredible Hulk",
+        "video": false,
+        "vote_average": 6.219,
+        "vote_count": 12003
+    },
+    "A Nightmare on Elm Street14": {
+        "adult": false,
+        "backdrop_path": "/g9ROrZey0JYp7kf8DoAyZtKnObj.jpg",
+        "belongs_to_collection": {
+            "id": 8581,
+            "name": "A Nightmare on Elm Street Collection",
+            "poster_path": "/6ihRddI1Pg4wHFhkZwI9mERRrMd.jpg",
+            "backdrop_path": "/7UcPLgNneoemYmZcyUo5r3nwBbE.jpg"
+        },
+        "budget": 1800000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "",
+        "id": 377,
+        "imdb_id": "tt0087800",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "A Nightmare on Elm Street",
+        "overview": "Teenagers in a small town are dropping like flies, apparently in the grip of mass hysteria causing their suicides. A cop's daughter, Nancy Thompson, traces the cause to child molester Fred Krueger, who was burned alive by angry parents many years before. Krueger has now come back in the dreams of his killers' children, claiming their lives as his revenge. Nancy and her boyfriend, Glen, must devise a plan to lure the monster out of the realm of nightmares and into the real world...",
+        "popularity": 15.4126,
+        "poster_path": "/wGTpGGRMZmyFCcrY2YoxVTIBlli.jpg",
+        "production_companies": [
+            {
+                "id": 12,
+                "logo_path": "/2ycs64eqV5rqKYHyQK0GVoKGvfX.png",
+                "name": "New Line Cinema",
+                "origin_country": "US"
+            },
+            {
+                "id": 1531,
+                "logo_path": null,
+                "name": "Smart Egg Pictures",
+                "origin_country": "GB"
+            },
+            {
+                "id": 18329,
+                "logo_path": "/6WnB9RtZxmnUYIbBwWjnuORIcGg.png",
+                "name": "Media Home Entertainment",
+                "origin_country": ""
+            },
+            {
+                "id": 4764,
+                "logo_path": null,
+                "name": "Cinema 84",
+                "origin_country": "US"
+            },
+            {
+                "id": 176294,
+                "logo_path": null,
+                "name": "The Elm Street Venture",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            },
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            }
+        ],
+        "release_date": "1984-11-09",
+        "revenue": 57004513,
+        "runtime": 91,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "If Nancy doesn't wake up screaming she won't wake up at all.",
+        "title": "A Nightmare on Elm Street",
+        "video": false,
+        "vote_average": 7.3,
+        "vote_count": 5284
+    },
+    "Halloween15": {
+        "adult": false,
+        "backdrop_path": "/aRka9neADW1M0Zf9lF8kW2jEgXe.jpg",
+        "belongs_to_collection": {
+            "id": 91361,
+            "name": "Halloween Collection",
+            "poster_path": "/uCIMY95aqKEwIEwNuFq42UQkY9f.jpg",
+            "backdrop_path": "/d6uWYZe7h7M3F7h4IBjO1jgIkMh.jpg"
+        },
+        "budget": 325000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "http://www.theofficialjohncarpenter.com/halloween/",
+        "id": 948,
+        "imdb_id": "tt0077651",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Halloween",
+        "overview": "Fifteen years after murdering his sister on Halloween Night 1963, Michael Myers escapes from a mental hospital and returns to the small town of Haddonfield, Illinois to kill again.",
+        "popularity": 15.432,
+        "poster_path": "/wijlZ3HaYMvlDTPqJoTCWKFkCPU.jpg",
+        "production_companies": [
+            {
+                "id": 14323,
+                "logo_path": "/efnw45BcPQve9ACNchnDufgV1po.png",
+                "name": "Compass International Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 22814,
+                "logo_path": null,
+                "name": "Falcon International Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1978-10-24",
+        "revenue": 70260597,
+        "runtime": 91,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The Night He Came Home!",
+        "title": "Halloween",
+        "video": false,
+        "vote_average": 7.561,
+        "vote_count": 5753
+    },
+    "Friday the 13th16": {
+        "adult": false,
+        "backdrop_path": "/16zzKM5vDxnYiqG6Tg6wOkOLSmj.jpg",
+        "belongs_to_collection": {
+            "id": 9735,
+            "name": "Friday the 13th Collection",
+            "poster_path": "/p3fJC9R4pCj5Vw0gP7Di0GZts9Z.jpg",
+            "backdrop_path": "/yz9EdlfKU8bpN0hbdJMy6QkFBoN.jpg"
+        },
+        "budget": 550000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "",
+        "id": 4488,
+        "imdb_id": "tt0080761",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Friday the 13th",
+        "overview": "Camp counselors are stalked and murdered by an unknown assailant while trying to reopen a summer camp that was the site of a child's drowning.",
+        "popularity": 6.6591,
+        "poster_path": "/uGGpnWHOmWTARVN9wbC1nPxNgps.jpg",
+        "production_companies": [
+            {
+                "id": 17611,
+                "logo_path": null,
+                "name": "Sean S. Cunningham Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 4,
+                "logo_path": "/gz66EfNoYPqHTYI4q9UEN4CbHRc.png",
+                "name": "Paramount Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 16779,
+                "logo_path": null,
+                "name": "Georgetown Productions Inc.",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1980-05-09",
+        "revenue": 59754601,
+        "runtime": 95,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "They were warned...They are doomed...And on Friday the 13th, nothing will save them.",
+        "title": "Friday the 13th",
+        "video": false,
+        "vote_average": 6.4,
+        "vote_count": 3037
+    },
+    "Twelve Monkeys17": {
+        "adult": false,
+        "backdrop_path": "/1IWaKG7AWiYMhADxhGtnElDJAGI.jpg",
+        "belongs_to_collection": null,
+        "budget": 29000000,
+        "genres": [
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            },
+            {
+                "id": 9648,
+                "name": "Mystery"
+            }
+        ],
+        "homepage": "",
+        "id": 63,
+        "imdb_id": "tt0114746",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Twelve Monkeys",
+        "overview": "In the year 2035, convict James Cole reluctantly volunteers to be sent back in time to discover the origin of a deadly virus that wiped out nearly all of the earth's population and forced the survivors into underground communities. But when Cole is mistakenly sent to 1990 instead of 1996, he's arrested and locked up in a mental hospital. There he meets psychiatrist Dr. Kathryn Railly and the son of a famous virus expert who may hold the key to the Army of the 12 Monkeys; thought to be responsible for unleashing the killer disease.",
+        "popularity": 11.7444,
+        "poster_path": "/gt3iyguaCIw8DpQZI1LIN5TohM2.jpg",
+        "production_companies": [
+            {
+                "id": 33,
+                "logo_path": "/3wwjVpkZtnog6lSKzWDjvw2Yi00.png",
+                "name": "Universal Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 507,
+                "logo_path": "/aRmHe6GWxYMRCQljF75rn2B9Gv8.png",
+                "name": "Atlas Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 17031,
+                "logo_path": null,
+                "name": "Classico",
+                "origin_country": ""
+            },
+            {
+                "id": 207976,
+                "logo_path": null,
+                "name": "Twelve Monkeys Productions",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1995-12-29",
+        "revenue": 168841459,
+        "runtime": 129,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "French",
+                "iso_639_1": "fr",
+                "name": "Fran\u00e7ais"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The future is history.",
+        "title": "Twelve Monkeys",
+        "video": false,
+        "vote_average": 7.601,
+        "vote_count": 8536
+    },
+    "6 Underground18": {
+        "adult": false,
+        "backdrop_path": "/eFw5YSorHidsajLTayo1noueIxI.jpg",
+        "belongs_to_collection": null,
+        "budget": 150000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "https://www.netflix.com/title/81001887",
+        "id": 509967,
+        "imdb_id": "tt8106534",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "6 Underground",
+        "overview": "After faking his death, a tech billionaire recruits a team of international operatives for a bold and bloody mission to take down a brutal dictator.",
+        "popularity": 9.5173,
+        "poster_path": "/lnWkyG3LLgbbrIEeyl5mK5VRFe4.jpg",
+        "production_companies": [
+            {
+                "id": 82819,
+                "logo_path": "/gXfFl9pRPaoaq14jybEn1pHeldr.png",
+                "name": "Skydance Media",
+                "origin_country": "US"
+            },
+            {
+                "id": 6734,
+                "logo_path": "/u55FhlG6vFNzSVKLcmnFFwLb2cc.png",
+                "name": "Bay Films",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2019-12-10",
+        "revenue": 0,
+        "runtime": 128,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "They say no one can save the world. Meet no one.",
+        "title": "6 Underground",
+        "video": false,
+        "vote_average": 6.345,
+        "vote_count": 4846
+    },
+    "Seven Brides for Seven Brothers19": {
+        "adult": false,
+        "backdrop_path": "/rRY5VgnpT1Pm9eYIlsboCbUgn5z.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 37,
+                "name": "Western"
+            }
+        ],
+        "homepage": "",
+        "id": 16563,
+        "imdb_id": "tt0047472",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Seven Brides for Seven Brothers",
+        "overview": "In 1850 Oregon, when a backwoodsman brings a wife home to his farm, his six brothers decide that they want to get married too.",
+        "popularity": 1.9766,
+        "poster_path": "/8Z4W2oRQKkmt7lhqNPROcNru9yJ.jpg",
+        "production_companies": [
+            {
+                "id": 21,
+                "logo_path": "/usUnaYV6hQnlVAXP6r4HwrlLFPG.png",
+                "name": "Metro-Goldwyn-Mayer",
+                "origin_country": "US"
+            },
+            {
+                "id": 1460,
+                "logo_path": null,
+                "name": "Loew's Incorporated",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1954-07-22",
+        "revenue": 5000000,
+        "runtime": 103,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "SINGIN'! DANCIN'! ROMANCIN'!",
+        "title": "Seven Brides for Seven Brothers",
+        "video": false,
+        "vote_average": 7.152,
+        "vote_count": 541
+    },
+    "Cars20": {
+        "adult": false,
+        "backdrop_path": "/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
+        "belongs_to_collection": {
+            "id": 87118,
+            "name": "Cars Collection",
+            "poster_path": "/uq3N2SFj1Y06zA6LzCQPkmBdaaE.jpg",
+            "backdrop_path": "/5Y4nBvDDcBZmvuwxDYR3pvlm9aS.jpg"
+        },
+        "budget": 120000000,
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 35,
+                "name": "Comedy"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
+        ],
+        "homepage": "http://disney.go.com/disneyvideos/animatedfilms/cars/",
+        "id": 920,
+        "imdb_id": "tt0317219",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Cars",
+        "overview": "Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.",
+        "popularity": 16.3614,
+        "poster_path": "/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
+        "production_companies": [
+            {
+                "id": 3,
+                "logo_path": "/1TjvGVDMYsj6JBxOAkUHpPEwLf7.png",
+                "name": "Pixar",
+                "origin_country": "US"
+            },
+            {
+                "id": 2,
+                "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+                "name": "Walt Disney Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2006-06-08",
+        "revenue": 461983149,
+        "runtime": 117,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Italian",
+                "iso_639_1": "it",
+                "name": "Italiano"
+            },
+            {
+                "english_name": "Japanese",
+                "iso_639_1": "ja",
+                "name": "\u65e5\u672c\u8a9e"
+            },
+            {
+                "english_name": "Yiddish",
+                "iso_639_1": "yi",
+                "name": ""
+            }
+        ],
+        "status": "Released",
+        "tagline": "Ahhh... it's got that new movie smell.",
+        "title": "Cars",
+        "video": false,
+        "vote_average": 7.0,
+        "vote_count": 14262
+    },
+    "Clown21": {
+        "adult": false,
+        "backdrop_path": "/wCCvyjGuLpA67UsR3VtdTFNvCuU.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "",
+        "id": 112454,
+        "imdb_id": "tt1780798",
+        "origin_country": [
+            "US",
+            "CA"
+        ],
+        "original_language": "en",
+        "original_title": "Clown",
+        "overview": "A loving father finds a clown suit for his son's birthday party, only to realize the suit is part of an evil curse that turns its wearer into a killer.",
+        "popularity": 2.9768,
+        "poster_path": "/gp5QyaU49utfWVVL698BzlN2vMh.jpg",
+        "production_companies": [
+            {
+                "id": 37366,
+                "logo_path": null,
+                "name": "PS 260",
+                "origin_country": "US"
+            },
+            {
+                "id": 10246,
+                "logo_path": "/rREvQNWAxkDfY9CDn2c5YxEMPdP.png",
+                "name": "Cross Creek Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 4080,
+                "logo_path": "/ilixMe6cYiJYozxjiZnbWqpv6aO.png",
+                "name": "Zed Filmworks",
+                "origin_country": "CA"
+            },
+            {
+                "id": 18144,
+                "logo_path": null,
+                "name": "Vertebra Films",
+                "origin_country": ""
+            },
+            {
+                "id": 7405,
+                "logo_path": "/rfnws0uY8rsNAsrLbx3gEIcYXx3.png",
+                "name": "Dimension Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 18142,
+                "logo_path": null,
+                "name": "Dragonfly Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "CA",
+                "name": "Canada"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2014-11-13",
+        "revenue": 4381603,
+        "runtime": 99,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The kids aren't alright.",
+        "title": "Clown",
+        "video": false,
+        "vote_average": 5.776,
+        "vote_count": 1389
+    },
+    "Cronos22": {
+        "adult": false,
+        "backdrop_path": "/nR16suoZalsNzJvtkN8nxsTVwrR.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "",
+        "id": 11655,
+        "imdb_id": "tt0104029",
+        "origin_country": [
+            "MX"
+        ],
+        "original_language": "es",
+        "original_title": "Cronos",
+        "overview": "Faced with his own mortality, an ingenious alchemist tried to perfect an invention that would provide him with the key to eternal life. It was called the Cronos device. When he died more than 400 years later, he took the secrets of this remarkable device to the grave with him. Now, an elderly antiques dealer has found the hellish machine hidden in a statue and learns about its incredible powers. The more he uses the device, the younger he becomes...but nothing comes without a price. Life after death is just the beginning as this nerve-shattering thriller unfolds and the fountain of youth turns bloody.",
+        "popularity": 1.6109,
+        "poster_path": "/bRX8au50CnhC8hXr8AbsCNdb96G.jpg",
+        "production_companies": [
+            {
+                "id": 6566,
+                "logo_path": null,
+                "name": "CNCAIMC",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "MX",
+                "name": "Mexico"
+            }
+        ],
+        "release_date": "1993-11-05",
+        "revenue": 0,
+        "runtime": 94,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Espa\u00f1ol"
+            }
+        ],
+        "status": "Released",
+        "tagline": "An ancient device. A modern discovery. A terrifying tale of the eternal.",
+        "title": "Cronos",
+        "video": false,
+        "vote_average": 6.668,
+        "vote_count": 665
+    },
+    "A Trip to the Moon23": {
+        "adult": false,
+        "backdrop_path": "/g67r1eiQD3ERSEQFCFkSn7TeGw5.jpg",
+        "belongs_to_collection": null,
+        "budget": 5985,
+        "genres": [
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
+        ],
+        "homepage": "",
+        "id": 775,
+        "imdb_id": "tt0000417",
+        "origin_country": [
+            "FR"
+        ],
+        "original_language": "fr",
+        "original_title": "Le Voyage dans la Lune",
+        "overview": "Professor Barbenfouillis and five of his colleagues from the Academy of Astronomy travel to the Moon aboard a rocket propelled by a giant cannon. Once on the lunar surface, the bold explorers face the many perils hidden in the caves of the mysterious planet.",
+        "popularity": 3.4188,
+        "poster_path": "/9o0v5LLFk51nyTBHZSre6OB37n2.jpg",
+        "production_companies": [
+            {
+                "id": 7159,
+                "logo_path": null,
+                "name": "Star Film",
+                "origin_country": "FR"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "FR",
+                "name": "France"
+            }
+        ],
+        "release_date": "1902-06-15",
+        "revenue": 0,
+        "runtime": 15,
+        "spoken_languages": [
+            {
+                "english_name": "No Language",
+                "iso_639_1": "xx",
+                "name": "No Language"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "A Trip to the Moon",
+        "video": false,
+        "vote_average": 7.912,
+        "vote_count": 1830
+    },
+    "Starman24": {
+        "adult": false,
+        "backdrop_path": "/fny1B9hmVilFtU3RRjkMZffBjUi.jpg",
+        "belongs_to_collection": null,
+        "budget": 22000000,
+        "genres": [
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
+        ],
+        "homepage": "http://www.theofficialjohncarpenter.com/starman/",
+        "id": 9663,
+        "imdb_id": "tt0088172",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Starman",
+        "overview": "When an alien takes the form of a young widow's husband and asks her to drive him from Wisconsin to Arizona, the government tries to stop them.",
+        "popularity": 4.093,
+        "poster_path": "/cgDeFWkYi6e9FT5RiQPCbQ9HlXZ.jpg",
+        "production_companies": [
+            {
+                "id": 5,
+                "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+                "name": "Columbia Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 216075,
+                "logo_path": null,
+                "name": "Michael Douglas-Jarry J. Franco Productions",
+                "origin_country": ""
+            },
+            {
+                "id": 7585,
+                "logo_path": null,
+                "name": "Delphi II Productions",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1984-12-13",
+        "revenue": 28744356,
+        "runtime": 115,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "In 1977 Voyager II was launched into space, inviting all lifeforms in the universe to visit our planet. Get ready. Company's coming.",
+        "title": "Starman",
+        "video": false,
+        "vote_average": 6.9,
+        "vote_count": 890
+    },
+    "Guardians of the Galaxy25": {
+        "adult": false,
+        "backdrop_path": "/uLtVbjvS1O7gXL8lUOwsFOH4man.jpg",
+        "belongs_to_collection": {
+            "id": 284433,
+            "name": "Guardians of the Galaxy Collection",
+            "poster_path": "/kFWLxUwcSpiLzszZbxUIZT9g6WR.jpg",
+            "backdrop_path": "/sxyF4lVkEvOLVzr8jOF5K5nrMh3.jpg"
+        },
+        "budget": 170000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            }
+        ],
+        "homepage": "https://www.marvel.com/movies/guardians-of-the-galaxy",
+        "id": 118340,
+        "imdb_id": "tt2015381",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Guardians of the Galaxy",
+        "overview": "Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.",
+        "popularity": 12.0506,
+        "poster_path": "/jPrJPZKJVhvyJ4DmUTrDgmFN0yG.jpg",
+        "production_companies": [
+            {
+                "id": 420,
+                "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+                "name": "Marvel Studios",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2014-07-30",
+        "revenue": 772776600,
+        "runtime": 121,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "When things get bad, they'll do their worst.",
+        "title": "Guardians of the Galaxy",
+        "video": false,
+        "vote_average": 7.904,
+        "vote_count": 28454
+    },
+    "Lady and the Tramp26": {
+        "adult": false,
+        "backdrop_path": "/yGgEg4yimYQJLZrZg3Qhogp2raQ.jpg",
+        "belongs_to_collection": {
+            "id": 97460,
+            "name": "Lady and the Tramp Collection",
+            "poster_path": "/fvk72hTShONXVDDSdoTEVm7DJh0.jpg",
+            "backdrop_path": "/3nnYC4UeGaWT8ODIAGCHLbuguy6.jpg"
+        },
+        "budget": 4000000,
+        "genres": [
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "",
+        "id": 10340,
+        "imdb_id": "tt0048280",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Lady and the Tramp",
+        "overview": "Lady, a golden cocker spaniel, meets up with a mongrel dog who calls himself the Tramp. He is obviously from the wrong side of town, but happenings at Lady's home make her decide to travel with him for a while.",
+        "popularity": 8.0065,
+        "poster_path": "/340NcWz9SQXWQyf4oicMxjbrLOb.jpg",
+        "production_companies": [
+            {
+                "id": 3166,
+                "logo_path": "/vyyv4Gy9nPqAZKElPm2izLlEaVS.png",
+                "name": "Walt Disney Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1955-06-22",
+        "revenue": 36359037,
+        "runtime": 76,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "She's from the leash and license set... he's footloose and collar free!",
+        "title": "Lady and the Tramp",
+        "video": false,
+        "vote_average": 7.119,
+        "vote_count": 5364
+    },
+    "Child's Play27": {
+        "adult": false,
+        "backdrop_path": "/edghRD7vw1XgWEpMLpGt1VSGB5w.jpg",
+        "belongs_to_collection": {
+            "id": 10455,
+            "name": "Child's Play Collection",
+            "poster_path": "/fLWDbZziq47lcN28Q1ILnIMLHEC.jpg",
+            "backdrop_path": "/wGfs53K3NH9q4NolrmLWSahPVkf.jpg"
+        },
+        "budget": 9000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "",
+        "id": 10585,
+        "imdb_id": "tt0094862",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Child's Play",
+        "overview": "An innocent-looking doll is inhabited by the soul of a serial killer who refuses to die.",
+        "popularity": 6.5412,
+        "poster_path": "/wvpgvcWNkF2HLuTEMIM7K83MvZ.jpg",
+        "production_companies": [
+            {
+                "id": 60,
+                "logo_path": "/4YldLvCWQL9VIAHQ2Fu3Ffkh9Si.png",
+                "name": "United Artists",
+                "origin_country": "US"
+            },
+            {
+                "id": 11050,
+                "logo_path": null,
+                "name": "David Kirschner Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 21,
+                "logo_path": "/usUnaYV6hQnlVAXP6r4HwrlLFPG.png",
+                "name": "Metro-Goldwyn-Mayer",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1988-11-09",
+        "revenue": 44196684,
+        "runtime": 87,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "You'll wish it was only make-believe.",
+        "title": "Child's Play",
+        "video": false,
+        "vote_average": 6.717,
+        "vote_count": 3057
+    },
+    "Snow White and the Seven Dwarfs28": {
+        "adult": false,
+        "backdrop_path": "/n3pJwYuPnkw7JX7tOMbH0GRfBPn.jpg",
+        "belongs_to_collection": null,
+        "budget": 1488423,
+        "genres": [
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            }
+        ],
+        "homepage": "http://movies.disney.com/snow-white-and-the-seven-dwarfs",
+        "id": 408,
+        "imdb_id": "tt0029583",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Snow White and the Seven Dwarfs",
+        "overview": "A beautiful girl, Snow White, takes refuge in the forest in the house of seven dwarfs to hide from her stepmother, the wicked Queen. The Queen is jealous because she wants to be known as \"the fairest in the land,\" and Snow White's beauty surpasses her own.",
+        "popularity": 26.2762,
+        "poster_path": "/3VAHfuNb6Z7UiW12iYKANSPBl8m.jpg",
+        "production_companies": [
+            {
+                "id": 3166,
+                "logo_path": "/vyyv4Gy9nPqAZKElPm2izLlEaVS.png",
+                "name": "Walt Disney Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1938-01-14",
+        "revenue": 184925486,
+        "runtime": 83,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The Happiest, Dopiest, Grumpiest, Sneeziest movie of the year.",
+        "title": "Snow White and the Seven Dwarfs",
+        "video": false,
+        "vote_average": 7.1,
+        "vote_count": 7572
+    },
+    "The Founder29": {
+        "adult": false,
+        "backdrop_path": "/5WparwIlAtSZW0tcWbK2NHEZJC6.jpg",
+        "belongs_to_collection": null,
+        "budget": 15000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 36,
+                "name": "History"
+            }
+        ],
+        "homepage": "",
+        "id": 310307,
+        "imdb_id": "tt4276820",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Founder",
+        "overview": "The true story of how Ray Kroc, a salesman from Illinois, met Mac and Dick McDonald, who were running a burger operation in 1950s Southern California. Kroc was impressed by the brothers\u2019 speedy system of making the food and saw franchise potential. He maneuvered himself into a position to be able to pull the company from the brothers and create a billion-dollar empire.",
+        "popularity": 13.615,
+        "poster_path": "/8gLIksu5ggdfBL1UbeTeonHquxl.jpg",
+        "production_companies": [
+            {
+                "id": 86024,
+                "logo_path": null,
+                "name": "Speedie Distribution",
+                "origin_country": "US"
+            },
+            {
+                "id": 7493,
+                "logo_path": "/fHitYiGUCkRafgt6VPYQlXWLkdp.png",
+                "name": "FilmNation Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 19246,
+                "logo_path": "/4zrEZfTf94tyG4wRB599gRS0reU.png",
+                "name": "Faliro House Productions",
+                "origin_country": "GR"
+            },
+            {
+                "id": 27450,
+                "logo_path": "/mZI9ZCAveJPEFRXlTcxlZKYrw2m.png",
+                "name": "The Combine",
+                "origin_country": "US"
+            },
+            {
+                "id": 308,
+                "logo_path": "/e8F3mQM7DkJ5SfYYDp8FYzPBOGX.png",
+                "name": "The Weinstein Company",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "GR",
+                "name": "Greece"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2016-11-24",
+        "revenue": 24121245,
+        "runtime": 115,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "He took someone else's idea and America ate it up.",
+        "title": "The Founder",
+        "video": false,
+        "vote_average": 7.13,
+        "vote_count": 5049
+    },
+    "Treasure Planet30": {
+        "adult": false,
+        "backdrop_path": "/30XLt1HzwOsdciWVaYVxlJq3cjH.jpg",
+        "belongs_to_collection": null,
+        "budget": 140000000,
+        "genres": [
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 16,
+                "name": "Animation"
+            },
+            {
+                "id": 10751,
+                "name": "Family"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            },
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            }
+        ],
+        "homepage": "",
+        "id": 9016,
+        "imdb_id": "tt0133240",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Treasure Planet",
+        "overview": "When space galleon cabin boy Jim Hawkins discovers a map to an intergalactic \"loot of a thousand worlds,\" a cyborg cook named John Silver teaches him to battle supernovas and space storms on their journey to find treasure.",
+        "popularity": 10.6576,
+        "poster_path": "/zMKatZ0c0NCoKzfizaCzVUcbKMf.jpg",
+        "production_companies": [
+            {
+                "id": 2,
+                "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+                "name": "Walt Disney Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 171656,
+                "logo_path": "/4UBohOtIr9DtxylH48Qsg6aDow6.png",
+                "name": "Walt Disney Feature Animation",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2002-11-26",
+        "revenue": 109578115,
+        "runtime": 95,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Find your place in the universe.",
+        "title": "Treasure Planet",
+        "video": false,
+        "vote_average": 7.554,
+        "vote_count": 4299
+    },
+    "West Side Story31": {
+        "adult": false,
+        "backdrop_path": "/swYJtp5GISfsCMZ46y2WNBBwJsq.jpg",
+        "belongs_to_collection": null,
+        "budget": 6000000,
+        "genres": [
+            {
+                "id": 80,
+                "name": "Crime"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 10749,
+                "name": "Romance"
+            }
+        ],
+        "homepage": "",
+        "id": 1725,
+        "imdb_id": "tt0055614",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "West Side Story",
+        "overview": "In the slums of the upper West Side of Manhattan, tensions are high as a gang of Polish-Americans compete against a gang of recently immigrated Puerto Ricans, but this doesn't stop two romantics from each gang falling in love.",
+        "popularity": 3.4972,
+        "poster_path": "/nzCMu6D5q60i2bVrIQ0DxlRSgCZ.jpg",
+        "production_companies": [
+            {
+                "id": 516,
+                "logo_path": "/ibZFDcpmcpY0emmO8mo1HCenlGk.png",
+                "name": "Seven Arts Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 219,
+                "logo_path": null,
+                "name": "The Mirisch Company",
+                "origin_country": "US"
+            },
+            {
+                "id": 60,
+                "logo_path": "/4YldLvCWQL9VIAHQ2Fu3Ffkh9Si.png",
+                "name": "United Artists",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1961-12-13",
+        "revenue": 43700000,
+        "runtime": 153,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Espa\u00f1ol"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The screen achieves one of the great entertainments in the history of motion pictures.",
+        "title": "West Side Story",
+        "video": false,
+        "vote_average": 7.2,
+        "vote_count": 1917
+    },
+    "Evil Dead32": {
+        "adult": false,
+        "backdrop_path": "/zL8Xa10zuG97oz31yJorOCCVuZP.jpg",
+        "belongs_to_collection": null,
+        "budget": 17000000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            }
+        ],
+        "homepage": "http://www.evildead-movie.com/",
+        "id": 109428,
+        "imdb_id": "tt1288558",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Evil Dead",
+        "overview": "Mia, a drug addict, is determined to kick the habit. To that end, she asks her brother, David, his girlfriend, Natalie and their friends Olivia and Eric to accompany her to their family's remote forest cabin to help her through withdrawal. Eric finds a mysterious Book of the Dead at the cabin and reads aloud from it, awakening an ancient demon. All hell breaks loose when the malevolent entity possesses Mia.",
+        "popularity": 8.1789,
+        "poster_path": "/1gDV0Lm9y8ufIKzyf0h0GBgb9Zj.jpg",
+        "production_companies": [
+            {
+                "id": 559,
+                "logo_path": "/eC0bWHVjnjUducyA6YFoEFqnPMC.png",
+                "name": "TriStar Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 7263,
+                "logo_path": "/auaadhBBcvvTDtmW2iJzOrEjfgO.png",
+                "name": "FilmDistrict",
+                "origin_country": "US"
+            },
+            {
+                "id": 768,
+                "logo_path": "/mh0PD5vYwRIL5FoN9vgF2ULokSV.png",
+                "name": "Ghost House Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2013-04-05",
+        "revenue": 99010045,
+        "runtime": 91,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Welsh",
+                "iso_639_1": "cy",
+                "name": "Cymraeg"
+            }
+        ],
+        "status": "Released",
+        "tagline": "The most terrifying film you will ever experience.",
+        "title": "Evil Dead",
+        "video": false,
+        "vote_average": 6.6,
+        "vote_count": 4709
+    },
+    "The Wolf Man33": {
+        "adult": false,
+        "backdrop_path": "/hwMWJ8G5173SGCHzrm0mVjvESaY.jpg",
+        "belongs_to_collection": {
+            "id": 259027,
+            "name": "The Wolf Man Collection",
+            "poster_path": "/21VZbRUCJF9ONarFCVHgm3zKud9.jpg",
+            "backdrop_path": "/8DcHcYH0P9de2j8HPRYq9wXNaIf.jpg"
+        },
+        "budget": 180000,
+        "genres": [
+            {
+                "id": 27,
+                "name": "Horror"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
+        ],
+        "homepage": "",
+        "id": 13666,
+        "imdb_id": "tt0034398",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "The Wolf Man",
+        "overview": "After his brother's death, Larry Talbot returns home to his father and the family estate. Events soon take a turn for the worse when Larry is bitten by a werewolf.",
+        "popularity": 1.8929,
+        "poster_path": "/vG8fu5syTtQLzK1hQXyi3ugOPNF.jpg",
+        "production_companies": [
+            {
+                "id": 33,
+                "logo_path": "/3wwjVpkZtnog6lSKzWDjvw2Yi00.png",
+                "name": "Universal Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1941-12-12",
+        "revenue": 0,
+        "runtime": 70,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "His hideous howl a dirge of death!",
+        "title": "The Wolf Man",
+        "video": false,
+        "vote_average": 7.0,
+        "vote_count": 623
+    },
+    "Apollo 1334": {
+        "adult": false,
+        "backdrop_path": "/AfGp6Ev3BVdEd7L99kGQzOzsqRb.jpg",
+        "belongs_to_collection": null,
+        "budget": 52000000,
+        "genres": [
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 36,
+                "name": "History"
+            }
+        ],
+        "homepage": "",
+        "id": 568,
+        "imdb_id": "tt0112384",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Apollo 13",
+        "overview": "The true story of technical troubles that scuttle the Apollo 13 lunar mission in 1970, risking the lives of astronaut Jim Lovell and his crew, with the failed journey turning into a thrilling saga of heroism. Drifting more than 200,000 miles from Earth, the astronauts work furiously with the ground crew to avert tragedy.",
+        "popularity": 10.3086,
+        "poster_path": "/oYUZHYMwNKnE1ef4WE5Hw2a9OAY.jpg",
+        "production_companies": [
+            {
+                "id": 23,
+                "logo_path": "/bJOFo2ufq7iFC1F4qZm8aLxF5aS.png",
+                "name": "Imagine Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 33,
+                "logo_path": "/3wwjVpkZtnog6lSKzWDjvw2Yi00.png",
+                "name": "Universal Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1995-06-30",
+        "revenue": 355237933,
+        "runtime": 140,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "\"Houston, we have a problem.\"",
+        "title": "Apollo 13",
+        "video": false,
+        "vote_average": 7.451,
+        "vote_count": 5516
+    },
+    "Commando35": {
+        "adult": false,
+        "backdrop_path": "/gvao0WZchzudp2oMF5sjgzwHY0q.jpg",
+        "belongs_to_collection": {
+            "id": 1149208,
+            "name": "Commando Collection",
+            "poster_path": "/bSCfU5rfBZuNbhHHlx0OSSJheAD.jpg",
+            "backdrop_path": null
+        },
+        "budget": 10000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 53,
+                "name": "Thriller"
+            }
+        ],
+        "homepage": "",
+        "id": 10999,
+        "imdb_id": "tt0088944",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Commando",
+        "overview": "John Matrix, the former leader of a special commando strike force that always got the toughest jobs done, is forced back into action when his young daughter is kidnapped. To find her, Matrix has to fight his way through an array of punks, killers, one of his former commandos, and a fully equipped private army. With the help of a feisty stewardess and an old friend, Matrix has only a few hours to overcome his greatest challenge: finding his daughter before she's killed.",
+        "popularity": 6.991,
+        "poster_path": "/ollPAAAgZ7euU8VisfqU3cuXhZ6.jpg",
+        "production_companies": [
+            {
+                "id": 396,
+                "logo_path": "/5iNXO7nAiSsms7ur1Qy2UwuwcDP.png",
+                "name": "SLM Production Group",
+                "origin_country": "US"
+            },
+            {
+                "id": 1885,
+                "logo_path": "/xlvoOZr4s1PygosrwZyolIFe5xs.png",
+                "name": "Silver Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 25,
+                "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+                "name": "20th Century Fox",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1985-10-03",
+        "revenue": 57500000,
+        "runtime": 90,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Somewhere, somehow, someone's going to pay.",
+        "title": "Commando",
+        "video": false,
+        "vote_average": 6.691,
+        "vote_count": 2878
+    },
+    "Steel36": {
+        "adult": false,
+        "backdrop_path": "/61Wj1C1hrOyu6mAHARS8J5ShOzq.jpg",
+        "belongs_to_collection": null,
+        "budget": 16000000,
+        "genres": [
+            {
+                "id": 878,
+                "name": "Science Fiction"
+            },
+            {
+                "id": 28,
+                "name": "Action"
+            },
+            {
+                "id": 12,
+                "name": "Adventure"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 80,
+                "name": "Crime"
+            },
+            {
+                "id": 14,
+                "name": "Fantasy"
+            }
+        ],
+        "homepage": "",
+        "id": 8854,
+        "imdb_id": "tt0120207",
+        "origin_country": [
+            "US"
+        ],
+        "original_language": "en",
+        "original_title": "Steel",
+        "overview": "When a renegade military reject puts new superweapons in dangerous hands, John Henry Irons becomes Steel. Wearing body armor, wielding a fearsome electrohammer and riding a gadget-packed motorcycle, he's ready to wage war... if he can fix the untimely glitches in his untested gear.",
+        "popularity": 3.0265,
+        "poster_path": "/hbH8oXJZPwcYxaa1JrUMq4ogg7G.jpg",
+        "production_companies": [
+            {
+                "id": 2554,
+                "logo_path": null,
+                "name": "Quincy Jones-David Salzman Entertainment",
+                "origin_country": ""
+            },
+            {
+                "id": 174,
+                "logo_path": "/zhD3hhtKB5qyv7ZeL4uLpNxgMVU.png",
+                "name": "Warner Bros. Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "1997-08-15",
+        "revenue": 1686429,
+        "runtime": 97,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Heroes don't come any bigger.",
+        "title": "Steel",
+        "video": false,
+        "vote_average": 4.284,
+        "vote_count": 261
+    }
+}

@@ -1,0 +1,137 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "      G.GAME.consumeable_usage_total = G.GAME.consumeable_usage_total or {tarot = 0, planet = 0, spectral = 0, tarot_planet = 0, all = 0}"
+position = "after"
+payload = """G.GAME.consumeable_usage_total.akyrs_umbral = G.GAME.consumeable_usage_total.akyrs_umbral or 0
+if card.config.center.set == 'Umbral' then 
+G.GAME.consumeable_usage_total = G.GAME.consumeable_usage_total or {}
+G.GAME.consumeable_usage_total.akyrs_umbral = (G.GAME.consumeable_usage_total.akyrs_umbral or 0) + 1
+G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+        G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+        G.GAME.akyrs_last_umbral = card.config.center_key
+                return true
+        end
+        }))
+        return true
+        end
+}))
+end
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "        local _atlas, _pos = get_front_spriteinfo(_front)"
+position = "after"
+payload = """
+_atlas, _pos = AKYRS.sprite_info_override(_center, _front, self, _atlas, _pos)
+"""
+overwrite = true
+match_indent = true
+
+
+# thanks steamodded
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "        local _atlas, _pos = get_front_spriteinfo(_front)"
+position = "after"
+payload = """
+_atlas, _pos = AKYRS.sprite_info_override(_center, _front, self, _atlas, _pos)
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "                localize{type = 'other', key = 'playing_card', set = 'Other', nodes = full_UI_table.name, vars = {localize(specific_vars.value, 'ranks'), localize(specific_vars.suit, 'suits_plural'), colours = {specific_vars.colour}}}"
+position = "before"
+payload = """
+if AKYRS.should_playing_card_loc_hooks(_c,card) then
+    AKYRS.playing_card_loc_hooks(_c,full_UI_table,specific_vars,card)
+else
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "                localize{type = 'other', key = 'playing_card', set = 'Other', nodes = full_UI_table.name, vars = {localize(specific_vars.value, 'ranks'), localize(specific_vars.suit, 'suits_plural'), colours = {specific_vars.colour}}}"
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "            localize{type = 'other', key = 'card_chips', nodes = desc_nodes, vars = {specific_vars.nominal_chips}}"
+position = "before"
+payload = """
+if AKYRS.should_score_chips(_c, card) then
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "            localize{type = 'other', key = 'card_chips', nodes = desc_nodes, vars = {specific_vars.nominal_chips}}"
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "    elseif _c.set == 'Enhanced' then "
+position = "before"
+payload = """
+AKYRS.mod_card_displays(_c,card,desc_nodes,specific_vars)
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = "        self.GAME.starting_deck_size = #G.playing_cards"
+position = "before"
+payload = """
+AKYRS.mod_playing_cards(self)
+"""
+overwrite = true
+match_indent = true
+

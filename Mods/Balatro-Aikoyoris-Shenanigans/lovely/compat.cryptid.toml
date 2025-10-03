@@ -1,0 +1,15 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/content.lua"]'
+pattern = '''bogus patch lol aikoyori was here no patching '''
+position = "before"
+payload = """xdxdxd"""
+overwrite = true
+match_indent = true

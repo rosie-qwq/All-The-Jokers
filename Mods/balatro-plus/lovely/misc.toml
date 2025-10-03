@@ -1,0 +1,278 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Change SPLASH_LOGO
+[[patches]]
+[patches.regex]
+target = "game.lua"
+pattern = '''[ \t]*G\.SPLASH_LOGO = Sprite\(0, 0, 
+[ \t]*13\*SC_scale, 
+[ \t]*13\*SC_scale\*\(G.ASSET_ATLAS\["balatro"\]\.py/G.ASSET_ATLAS\["balatro"\]\.px\),
+[ \t]*G\.ASSET_ATLAS\["balatro"\], \{x=0,y=0\}\)'''
+position = "at"
+payload = '''
+local key = "balatro"
+if BPlus.config.replace_splash_logo then
+  key = "bplus_balatro_plus"
+end
+
+G.SPLASH_LOGO = Sprite(0, 0, 
+  13*SC_scale, 
+  13*SC_scale*(G.ASSET_ATLAS[key].py/G.ASSET_ATLAS[key].px),
+  G.ASSET_ATLAS[key], {x=0,y=0})
+'''
+
+# Call modify_effect function when main scoring on played cards
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "-- TARGET: main scoring on played cards"
+position = "after"
+match_indent = true
+payload = """
+if card.config.center.modify_effect then
+  card.config.center:modify_effect(card, context, ret.playing_card)
+end
+"""
+
+# Add some colors to loc_colour function
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.ARGS.LOC_COLOURS = G.ARGS.LOC_COLOURS or {"
+position = "after"
+match_indent = true
+payload = """
+  eternal = G.C.ETERNAL,
+  rental = G.C.RENTAL,
+  bplus_sigil = G.C.SET.sigil,
+"""
+
+# Remove metatable from G.GAME.probabities for save table
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.culled_table =  recursive_table_cull{"
+position = "before"
+match_indent = true
+payload = """
+local probabilities = G.GAME.probabilities
+G.GAME.probabilities = G.GAME.real_probabilities
+G.GAME.real_probabilities = nil
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "G.ARGS.save_run = G.culled_table"
+position = "before"
+match_indent = true
+payload = """
+G.GAME.real_probabilities = G.GAME.probabilities
+G.GAME.probabilities = probabilities
+"""
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "function Game:start_run(args)"
+position = "after"
+match_indent = true
+payload = """
+if args and args.savetext then
+  BPlus.apply_metatable_to_probabilities(args.savetext.GAME)
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if amt > 0 or amt < 0 then"
+position = "before"
+match_indent = true
+payload = """
+if extra then text = extra.message or text end
+"""
+
+# Add 'bplus_enhance' context for trigger
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "local old_center = self.config.center"
+position = "before"
+match_indent = true
+payload = """
+if not initial then
+  if G.jokers and not self._bplus_copying_card and self.config.card and self.config.card.name and center ~= G.P_CENTERS.c_base then
+    SMODS.calculate_context { bplus_enhance = true, other_card = self, from = self.config.center, to = center }
+  end
+end
+"""
+
+# Prevent copy_card to triggering 'bplus_enhance' context for trigger
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "new_card:set_ability(other.config.center)"
+position = "at"
+match_indent = true
+payload = """
+new_card._bplus_copying_card = true
+new_card:set_ability(other.config.center)
+new_card._bplus_copying_card = nil
+"""
+
+# Add 'repetition' for discard
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "-- TARGET: pre_discard"
+position = "after"
+match_indent = true
+payload = """
+local reps = {0}
+for _, card in ipairs(G.hand.highlighted) do
+  local rep = card:calculate_seal { repetition = true }
+  if rep and rep.repetitions and rep.repetitions > 0 then
+    for _ = 1, rep.repetitions do
+      if not rep.card then rep.card = card end
+      reps[#reps+1] = rep
+    end
+  end
+end
+
+for _, joker in ipairs(G.jokers.cards) do
+  local rep = joker:calculate_joker { bplus_discard_repetition = true }
+  if rep and rep.repetitions and rep.repetitions > 0 then
+    for _ = 1, rep.repetitions do
+      reps[#reps+1] = rep
+    end
+  end
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local removed = false"
+position = "at"
+match_indent = true
+payload = ""
+
+# TODO: don't show 'Again!' message if nothing is triggered
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "for i=1, highlighted_count do"
+position = "after"
+match_indent = true
+payload = """
+local removed = false
+for _, rep in ipairs(reps) do
+  if removed then break end
+  if rep ~= 0 then
+    card_eval_status_text(rep.card or G.hand.highlighted[i], 'extra', nil, nil, nil, {
+      message = rep.message or localize('k_again_ex'),
+      colour = rep.colour or G.C.ORANGE,
+    })
+  end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "table.insert(cards, G.hand.highlighted[i])"
+position = "after"
+match_indent = true
+payload = """
+end
+"""
+
+# Add 'bplus_joker_destroyed' context for trigger
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''(?<indent>[ \t])*G\.E_MANAGER:add_event\(Event\(\{
+[ \t]*trigger = 'immediate',
+[ \t]*func = function\(\)
+[ \t]*G\.STATE = G\.STATES\.DRAW_TO_HAND
+'''
+line_prepend = "$indent"
+position = "before"
+payload = """
+local destroyed_jokers = {}
+for _, card in ipairs(G.jokers.cards) do
+  if BPlus.u.getting_destroyed(card) then
+    destroyed_jokers[#destroyed_jokers + 1] = card
+  end
+end
+
+if next(destroyed_jokers) then
+  SMODS.calculate_context { bplus_joker_destroyed = true, destroyed_cards = destroyed_jokers }
+end
+
+"""
+
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = '''(?<indent>[ \t])*G\.E_MANAGER:add_event\(Event\(\{trigger = 'before', delay = 0\.75, func = function\(\)
+[ \t]*for k, v in pairs\(deletable_jokers\) do
+'''
+line_prepend = "$indent"
+position = "before"
+payload = """
+SMODS.calculate_context { bplus_joker_destroyed = true, destroyed_cards = deletable_jokers }
+"""
+
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = '''[ \t]*for k, v in pairs\(G\.jokers\.cards\) do
+[ \t]*if v ~= eligible_card and \(not v\.ability\.eternal\) then v:start_dissolve\(nil, _first_dissolve\);_first_dissolve = true end
+[ \t]*end
+'''
+position = "at"
+payload = """
+local destroyed_jokers = {}
+for k, v in pairs(G.jokers.cards) do
+  if v ~= eligible_card and (not v.ability.eternal) then
+    destroyed_jokers[#destroyed_jokers + 1] = v
+  end
+end
+
+SMODS.calculate_context { bplus_joker_destroyed = true, destroyed_cards = destroyed_jokers }
+G.E_MANAGER:add_event(Event {
+  func = function()
+    for _, card in ipairs(destroyed_jokers) do
+      card:start_dissolve(nil, _first_dissolve)
+      _first_dissolve = true
+    end
+    return true
+  end
+})
+"""
+
+# Trigger effect when destroyed playing card on hand
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.FUNCS.draw_from_hand_to_discard()"
+position = "before"
+match_indent = true
+payload = """
+local destroyed_cards = {}
+for _, c in ipairs(G.hand.cards) do
+  if BPlus.u.getting_destroyed(c) then
+    destroyed_cards[#destroyed_cards + 1] = c
+  end
+end
+if next(destroyed_cards) then
+  for i = 1, #G.jokers.cards do
+    G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
+  end
+end
+
+"""

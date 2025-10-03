@@ -1,0 +1,13 @@
+return {
+	["tags_enabled"] = true,
+	["blinds_enabled"] = true,
+	["vouchers_enabled"] = true,
+	["minor_arcana_enabled"] = true,
+	["plague_doctor_quotes_enabled"] = true,
+	["editions_enabled"] = true,
+	["suits_enabled"] = true,
+	["spectrals_enabled"] = true,
+	["ranks_enabled"] = true,
+	["enhancements_enabled"] = true,
+	["paperclips_enabled"] = true,
+}

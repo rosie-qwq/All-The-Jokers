@@ -1,0 +1,80 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "    boot_timer('prep stage', 'splash prep',1)"
+position = "before"
+payload = """assert(AKYRS,[[ 
+
+(X^X)
+
+Hey! If you're reading this message, that means Aikoyori's Shenanigans has crashed :<
+
+Update your **Steamodded** and **Lovely Injector** to latest stable version.
+
+P.S. If you report the crash to me and I see either of those being outdated you are going to be strapped on a rocket to Mars >:>
+
+======================================================================================================================================================
+]])
+AKYRS.aiko_mod_startup(self)"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "        for k, v in ipairs(card_protos) do"
+position = "before"
+payload = """
+card_protos = customDeckHooks(self,card_protos)
+
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """                if G.GAME.blind and G.GAME.blind.config.blind then """
+position = "before"
+payload = """
+        G.GAME.word_todo = nil
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''            card_eval_status_text(card, 'debuff')'''
+position = "after"
+payload = '''
+SMODS.score_card(card, context)
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''engine/event.lua'''
+pattern = '''        other = {}'''
+position = "after"
+payload = ''',
+akyrs_desc = {}
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/common_events.lua'''
+pattern = '''func = (function(t) return math.floor(t) end)'''
+position = "at"
+payload = '''func = (function(t) return AKYRS.adjust_rounding(t) end)
+'''
+match_indent = true

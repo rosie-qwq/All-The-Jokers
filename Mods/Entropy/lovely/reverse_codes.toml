@@ -1,0 +1,181 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = " elseif config.name == 'hands' then"
+position = "before"
+payload = '''
+elseif config.name == 'hands' and G.GAME.RootKit then
+table.insert(left_text, {n=G.UIT.T, config={text = config.disp or config.dollars, scale = 0.8*scale, colour = G.C.RED, shadow = true, juice = true}})
+table.insert(left_text, {n=G.UIT.O, config={object = DynaText({string = {" "..localize{type = 'variable', key = 'remaining_hand_money', vars = {(G.GAME.modifiers.money_per_hand or 1)*G.GAME.RootKit}}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, pop_in = 0, scale = 0.4*scale, silent = true})}})
+G.GAME.RootKit = nil
+'''
+match_indent = true
+
+# Payload - cash out
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if G.GAME.current_round.hands_left > 0 and not G.GAME.modifiers.no_extra_hand_money then"
+position = "at"
+payload = '''
+if G.GAME.current_round.hands_left > 0 and not G.GAME.modifiers.no_extra_hand_money and G.GAME.RootKit then
+        add_round_eval_row({dollars = G.GAME.current_round.hands_left*(G.GAME.modifiers.money_per_hand or 1)*(G.GAME.RootKit or 1), disp = G.GAME.current_round.hands_left, bonus = true, name='hands', pitch = pitch})
+        pitch = pitch + 0.06
+        dollars = dollars + G.GAME.current_round.hands_left*(G.GAME.modifiers.money_per_hand or 1)*(G.GAME.RootKit or 1)
+elseif G.GAME.current_round.hands_left > 0 and not G.GAME.modifiers.no_extra_hand_money then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "add_round_eval_row({name = 'bottom', dollars = dollars})"
+position = "before"
+payload = '''
+local mult = G.GAME.providence and 1 or 0.5
+local true_mult = 1 + (mult * #Entropy.find_runes("rune_entr_uruz"))
+if (G.GAME.round_resets.blind_states.Big == "Upcoming" or G.GAME.round_resets.blind_states.Big == "Select") and Entropy.has_rune("rune_entr_dreams") then
+    true_mult = 0
+end
+local rugpull_mult = 1
+if next(SMODS.find_card("j_entr_rugpull")) then
+    rugpull_mult = 0
+    for i, v in pairs(SMODS.find_card("j_entr_rugpull")) do
+        SMODS.scale_card(v, {
+            ref_table = v.ability,
+            ref_value = "extra_value",
+            scalar_table = {extra = dollars * (G.GAME.InterferencePayoutMod or 1) * true_mult * v.ability.multiplier},
+            scalar_value = "extra",
+            scaling_message = {
+                message = localize('k_val_up'),
+                colour = G.C.MONEY
+            }
+        })
+        v:set_cost()
+    end
+end
+dollars = dollars * (G.GAME.InterferencePayoutMod or 1) * true_mult * rugpull_mult
+for i, v in pairs(Entropy.find_runes("rune_entr_uruz")) do
+    G.E_MANAGER:add_event(Event{
+        func = function()
+                v:yep("+", G.C.PURPLE, function()
+                    return true
+                end)
+            return true
+        end
+    })
+end
+G.GAME.InterferencePayoutMod = nil
+if G.GAME.RedBlindStates then
+        for i, v in pairs(G.GAME.RedBlindStates) do G.GAME.round_resets.blind_states[i] = v end
+        G.GAME.RedBlindStates = nil
+        G.GAME.round_resets.blind_states['Red'] = nil
+end
+if G.GAME.round_resets.blind_states.Boss == "Defeated" then
+        G.GAME.round_resets.blind_choices.Small = "bl_small"
+        G.GAME.round_resets.blind_choices.Big = "bl_big"
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext1').config.object.pop_delay = 0
+        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext1').config.object:pop_out(5)
+        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext2').config.object.pop_delay = 0
+        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext2').config.object:pop_out(5) 
+        '''
+position = "at"
+payload = '''
+if G.blind_prompt_box and G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext1') then
+        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext1').config.object.pop_delay = 0
+        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext1').config.object:pop_out(5)
+        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext2').config.object.pop_delay = 0
+        G.blind_prompt_box:get_UIE_by_ID('prompt_dynatext2').config.object:pop_out(5) 
+end
+'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.hands[text].played = G.GAME.hands[text].played + 1"
+position = "before"
+payload = '''
+if not G.GAME.hands[text] then
+        text = "High Card"
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+                c = G.shop_jokers:remove_card(G.shop_jokers.cards[i])
+                c:remove()
+                c = nil
+'''
+position = "at"
+payload = '''
+            if not c.ability.entr_pinned or c.ability.entr_pinned_round ~= G.GAME.round then
+                c = G.shop_jokers:remove_card(G.shop_jokers.cards[i])
+                c:remove()
+                c = nil
+            end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.shop_jokers:emplace(create_card_for_shop(G.shop_jokers))"
+position = "at"
+payload = '''
+local pinned = nil
+if G.GAME.entr_pinned_cards then
+    for i2, v in pairs(G.GAME.entr_pinned_cards) do
+        if v.area == "shop_jokers" and v.pos == i then
+            pinned = v
+        end
+    end
+end
+if pinned then
+    local card = create_card_for_shop(G.shop_jokers)
+    card:set_ability(G.P_CENTERS[pinned.card])
+    card.area = G.shop_jokers
+    table.insert(G.shop_jokers.cards, card)
+else
+    G.shop_jokers:emplace(create_card_for_shop(G.shop_jokers))
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.CONTROLLER:snap_to({node = G.shop:get_UIE_by_ID('next_round_button')})"
+position = "before"
+payload = '''
+if G.GAME.entr_pinned_cards then
+    for i, v in pairs(G.GAME.entr_pinned_cards) do
+        if v.area ~= "shop_jokers" then
+            local area = G[v.area]
+            area.cards[v.pos]:start_dissolve()
+            local card = create_card_for_shop(area)
+            card:set_ability(G.P_CENTERS[v.card])
+            card.area = area
+            area.cards[v.pos] = card
+        end
+    end
+end
+G.GAME.entr_pinned_cards = nil
+'''
+match_indent = true

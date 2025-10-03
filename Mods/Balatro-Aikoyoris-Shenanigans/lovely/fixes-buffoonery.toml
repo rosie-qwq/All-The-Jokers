@@ -1,0 +1,15 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Buffoonery "Buffoonery.lua"]'
+pattern = """		if not v.boss then"""
+position = "at"
+payload = """if v.in_pool and not v.in_pool(v) then
+elseif not v.boss then"""
+overwrite = true
+match_indent = true
+

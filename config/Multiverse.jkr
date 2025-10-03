@@ -1,0 +1,14 @@
+return {
+	["debug"] = false,
+	["crossmod"] = true,
+	["joke"] = true,
+	["music"] = {
+		["Hammer of Justice"] = true,
+		["Prophecy"] = true,
+		["Sneaky Snitch"] = true,
+		["Life Will Change"] = true,
+		["Presage"] = true,
+		["Pigstep"] = true,
+		["Battle Against a True Hero"] = true,
+	},
+}

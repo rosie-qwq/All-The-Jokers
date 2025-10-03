@@ -1,0 +1,14 @@
+{
+	"id": "mxfj",
+	"name": "MmmmmJokers",
+	"author": ["FlameThrowerFIM", "HarmoniousJoker", "SDM_0", "queen of stupid", "GhostSalt"],
+	"description": "A Balatro mod dedicated to FlameThrowerFIM (and Company) adding whatever comes to mind!",
+	"prefix": "mxfj",
+	"main_file": "main.lua",
+	"badge_colour": "6E0FBE",
+	"badge_text_colour": "d027b8",
+	"version": "1.1.0b",
+	"dependencies": [
+		"Steamodded (>=1.0.0~ALPHA-0827a)"
+	]
+}

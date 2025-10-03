@@ -1,0 +1,16 @@
+{
+    "id": "Multiverse",
+    "name": "Multiverse",
+    "author": [
+        "ThunderEdge73"
+    ],
+    "description": "",
+    "prefix": "mul",
+    "main_file": "Multiverse.lua",
+    "priority": -1000000,
+    "badge_colour": "063970",
+    "version": "0.0.7~PRERELEASE",
+    "dependencies": [
+        "Steamodded (>=1.0.0~BETA-0827c)"
+    ]
+}

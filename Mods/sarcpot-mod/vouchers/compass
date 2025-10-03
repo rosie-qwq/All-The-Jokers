@@ -1,0 +1,29 @@
+if SARC.config.consumables_enabled then
+    SMODS.Voucher {
+        key = 'compass',
+        atlas = 'vouchers',
+        pos = {
+            x = 2,
+            y = 0
+        },
+        unlocked = true,
+        discovered = false,
+        available = true,
+        loc_vars = function(self, info_queue)
+            info_queue[#info_queue + 1] = G.P_TAGS.tag_sarc_cardinal
+            return {
+                vars = {
+                    colours = {G.SP.C.travel_2}
+                }
+            }
+        end,
+
+        calculate = function(self, card, context)
+            if context.end_of_round and context.main_eval and G.GAME.blind.boss then
+                add_tag(Tag("tag_sarc_cardinal"))
+                play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+                play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+            end
+        end
+    }
+end

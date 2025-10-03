@@ -1,0 +1,112 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "play_sound('whoosh1', 0.4, 0.8)"
+position = "before"
+payload = "togabalatro.execstartupsfx()"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if G.SETTINGS.skip_splash == 'Yes' then"
+position = "before"
+payload = "togabalatro.updatecollectionitems()"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "check_for_unlock({type = 'run_card_replays'})"
+position = "before"
+payload = "if togabalatro then togabalatro.playextracards() end"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS MoreFluff "MoreFluff.lua"]'
+pattern = "G.do_colour_end_of_round_stuff = false"
+position = "before"
+payload = '''
+togabalatro.mf_displayproperties()
+'''
+match_indent = true
+
+# These feel a bit destructive because they are.
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "for _, card in ipairs(context.cardarea.cards) do"
+position = "before"
+payload = "local curcards = togabalatro.preprocess(context)"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "for _, card in ipairs(context.cardarea.cards) do"
+position = "at"
+payload = '''
+if not curcards then return end
+for _, card in ipairs(curcards) do
+'''
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "for i, card in ipairs(context.cardarea.cards) do"
+position = "before"
+payload = "local curcards = togabalatro.preprocess(context)"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "for i, card in ipairs(context.cardarea.cards) do"
+position = "at"
+payload = "for i, card in ipairs(curcards) do"
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'main.lua'
+pattern = "love.audio.stop()"
+position = "after"
+payload = "if togabalatro then togabalatro.errorhandler() end"
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.regex]
+target = 'main.lua'
+pattern = "Oops! The game crashed"
+position = "at"
+payload = "A problem has been detected and Balatro has been stopped"
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "for _, area in ipairs(SMODS.get_card_areas('jokers')) do for _, _card in ipairs(area.cards) do"
+position = "at"
+payload = "local areas = togabalatro.areaprocess(SMODS.get_card_areas('jokers')); for _, area in ipairs(areas) do local curcards = togabalatro.areaprocess(area.cards); for _, _card in ipairs(curcards) do"
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do"
+position = "at"
+payload = "local playingcardareas = togabalatro.areaorderprocess(SMODS.get_card_areas('playing_cards')); for _, v in ipairs(playingcardareas) do"
+overwrite = true
+match_indent = true

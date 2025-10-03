@@ -1,0 +1,81 @@
+SMODS.Joker {
+
+
+    key = 'witch_dice',
+
+    config = {
+        extra = {
+            n = 1,
+            d = 6,
+            chips = 0,
+            chips_mod = 5
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        local n, d = SMODS.get_probability_vars(card, card.ability.extra.n,  card.ability.extra.d, 'witch_dice')
+        return {
+            vars = {n, d, card.ability.extra.chips_mod, card.ability.extra.chips}
+        }
+    end,
+    rarity = 1,
+    atlas = 'sarcpot_atlas',
+    pos = { x = 0, y = 3 },
+    cost = 5,
+
+    calculate = function(self, card, context)
+        if context.pre_discard and not context.blueprint then
+            for _, v in pairs(context.full_hand) do
+                if SMODS.pseudorandom_probability(card, 'witch_dice_discard', card.ability.extra.n, card.ability.extra.d, 'witch_dice') then
+                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        blockable = true,
+                        blocking = false,
+                        delay = 0.5,
+                        func = function()
+                            card:juice_up(0.5, 0.5)
+                            play_sound('other1')
+                            return true
+                        end
+                    }))
+                    return{
+                        message = localize('sarc_throw'),
+                        colour = G.C.PURPLE,
+                    }
+                end
+            end
+        end
+        if context.before and not context.blueprint then
+            for _, v in pairs(context.full_hand) do
+                if SMODS.pseudorandom_probability(card, 'witch_dice_play', card.ability.extra.n, card.ability.extra.d, 'witch_dice') then
+                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        blockable = true,
+                        blocking = false,
+                        delay = 0.5,
+                        func = function()
+                            card:juice_up(0.5, 0.5)
+                            play_sound('other1')
+                            return true
+                        end
+                    }))
+                    return{
+                        message = localize('sarc_throw'),
+                        colour = G.C.PURPLE,
+                    }
+                end
+                
+            end
+        end
+        if context.joker_main then
+            return {
+                
+                chips = card.ability.extra.chips,
+                
+            }
+        end
+    end
+
+
+}

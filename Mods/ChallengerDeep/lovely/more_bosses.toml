@@ -1,0 +1,238 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# COMMON_EVENTS.LUA 
+
+# prepare for boss blind 2
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}"
+position = "at"
+match_indent = true
+payload = "G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', ChDp_Boss2 = G.GAME.modifiers.chdp_third_boss and 'Upcoming' or 'Hide', ChDp_Boss = G.GAME.modifiers.second_boss and 'Upcoming' or 'Hide', Boss = 'Upcoming'}"
+
+# CHDP BOSS BLIND?
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.GAME.round_resets.blind_states.Boss = 'Upcoming'"
+position = "after"
+match_indent = true
+payload = """G.GAME.round_resets.blind_states.ChDp_Boss = G.GAME.modifiers.second_boss and 'Upcoming' or 'Hide'
+G.GAME.round_resets.blind_states.ChDp_Boss2 = G.GAME.modifiers.chdp_third_boss and 'Upcoming' or 'Hide'
+G.GAME.round_resets.blind_choices.ChDp_Boss = get_new_boss()
+G.GAME.round_resets.blind_choices.ChDp_Boss2 = get_new_boss()
+G.GAME.last_chdp_blind = G.GAME.round_resets.blind_choices.ChDp_Boss
+G.GAME.last_chdp2_blind = G.GAME.round_resets.blind_choices.ChDp_Boss2
+if G.GAME.round_resets.blind_states.ChDp_Boss ~= 'Hide' and not G.GAME.modifiers.second_boss then
+   G.GAME.round_resets.blind_states.ChDp_Boss = 'Hide'
+   G.GAME.round_resets.blind_states.Boss = 'Current'
+   G.GAME.blind_on_deck = 'Boss'
+end"""
+
+# UI_DEFINITIONS.LUA
+
+# put the second boss blind on deck
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "not (G.GAME.round_resets.blind_states.Big == 'Defeated' or G.GAME.round_resets.blind_states.Big == 'Skipped'or G.GAME.round_resets.blind_states.Big == 'Hide') and 'Big' or "
+position = "after"
+match_indent = true
+payload = '''not (G.GAME.round_resets.blind_states.ChDp_Boss2 == 'Defeated' or G.GAME.round_resets.blind_states.ChDp_Boss2 == 'Skipped'or G.GAME.round_resets.blind_states.ChDp_Boss2 == 'Hide') and 'ChDp_Boss2' or 
+not (G.GAME.round_resets.blind_states.ChDp_Boss == 'Defeated' or G.GAME.round_resets.blind_states.ChDp_Boss == 'Skipped'or G.GAME.round_resets.blind_states.ChDp_Boss == 'Hide') and 'ChDp_Boss' or'''
+
+# more UI stuff - sets second boss
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local t = {n=G.UIT.ROOT, config = {align = 'tm',minw = width, r = 0.15, colour = G.C.CLEAR}, nodes={"
+position = "before"
+match_indent = true
+payload = '''if G.GAME.modifiers.chdp_third_boss then
+    if G.GAME.round_resets.blind_choices.ChDp_Boss2 == nil then
+        G.GAME.round_resets.blind_choices.ChDp_Boss2 = get_new_boss()
+        G.GAME.last_chdp2_blind = G.GAME.round_resets.blind_choices.ChDp_Boss2
+    end
+    G.blind_select_opts.chdp_boss2 = G.GAME.round_resets.blind_states["ChDp_Boss2"] ~= "Hide" and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice("ChDp_Boss2")},false,get_blind_main_colour("ChDp_Boss2"), mix_colours(G.C.BLACK, get_blind_main_colour("ChDp_Boss2"), 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil 
+end
+if G.GAME.modifiers.second_boss then G.blind_select_opts.chdp_boss = G.GAME.round_resets.blind_states["ChDp_Boss"] ~= "Hide" and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice("ChDp_Boss")},false,get_blind_main_colour("ChDp_Boss"), mix_colours(G.C.BLACK, get_blind_main_colour("ChDp_Boss"), 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil end'''
+
+# more UI stuff - creates current_blinds section for chdp
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "create_UIBox_blind_choice('Big', true)"
+position = "after"
+match_indent = true
+payload = """}} or nil,
+(G.GAME.round_resets.blind_states['ChDp_Boss2'] and G.GAME.round_resets.blind_states['ChDp_Boss2'] ~= 'Hide') and {n=G.UIT.C, config={align = 'tm', padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
+    create_UIBox_blind_choice('ChDp_Boss2', true)
+}} or nil,
+(G.GAME.round_resets.blind_states['ChDp_Boss'] and G.GAME.round_resets.blind_states['ChDp_Boss'] ~= 'Hide') and {n=G.UIT.C, config={align = 'tm', padding = 0.1, outline = 2, r = 0.1, line_emboss = 0.2, outline_colour = G.C.BLACK}, nodes={
+    create_UIBox_blind_choice('ChDp_Boss', true)"""
+
+# more UI stuff - shows blind option
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '{n=G.UIT.R, config={align = "cm", padding = 0.5}, nodes={'
+position = "at"
+match_indent = true
+payload = """{n=G.UIT.R, config={align = 'cm', padding = (G.GAME.modifiers.chdp_third_boss or G.GAME.modifiers.second_boss) and 0.2 or 0.5}, nodes= G.GAME.modifiers.chdp_third_boss and {
+    G.GAME.round_resets.blind_states['Small'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.small}} or nil,
+    G.GAME.round_resets.blind_states['Big'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.big}} or nil,
+    G.GAME.round_resets.blind_states['ChDp_Boss2'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.chdp_boss2}} or nil,
+    G.GAME.round_resets.blind_states['ChDp_Boss'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.chdp_boss}} or nil,
+    G.GAME.round_resets.blind_states['Boss'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.boss}} or nil,
+} or G.GAME.modifiers.second_boss and {
+    G.GAME.round_resets.blind_states['Small'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.small}} or nil,
+    G.GAME.round_resets.blind_states['Big'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.big}} or nil,
+    G.GAME.round_resets.blind_states['ChDp_Boss'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.chdp_boss}} or nil,
+    G.GAME.round_resets.blind_states['Boss'] ~= 'Hide' and {n=G.UIT.O, config={align = 'cm', object = G.blind_select_opts.boss}} or nil,
+} or {"""
+
+# more UI stuff - beating chdp blind should not up ante
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "elseif type == 'Big' then"
+position = "before"
+match_indent = true
+payload = """elseif type == 'ChDp_Boss' or type == 'ChDp_Boss2' then"""
+
+# BUTTON_CALLBACKS.LUA
+
+# Skip to ChDp Boss from Big
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.blind_on_deck == 'Small' and 'Big' or G.GAME.blind_on_deck == 'Big' and 'Boss' or 'Boss'"
+position = "at"
+match_indent = true
+payload = "G.GAME.blind_on_deck == 'Small' and 'Big' or (G.GAME.blind_on_deck == 'Big' and G.GAME.modifiers.chdp_third_boss) and 'ChDp_Boss2' or (G.GAME.blind_on_deck == 'Big' and G.GAME.modifiers.second_boss) and 'ChDp_Boss' or G.GAME.blind_on_deck == 'Big' and 'Boss' or 'Boss'"
+
+# MISC_FUNCTIONS.LUA
+
+# more UI stuff - allows get_blind_main_colour to include chdp boss
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = " if blind == 'Boss' or blind == 'Small' or blind == 'Big' then"
+position = "at"
+match_indent = true
+payload = "if blind == 'Boss' or blind == 'Small' or blind == 'Big' or blind == 'ChDp_Boss' or blind == 'ChDp_Boss2' then"
+
+# STATE_EVENTS.LUA
+
+# Stop CHDP blind from upping the ante
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if G.GAME.blind:get_type() == 'Boss' then"
+position = "at"
+match_indent = true
+payload = "if G.GAME.blind:get_type() == 'Boss' and G.GAME.round_resets.blind ~= G.P_BLINDS[G.GAME.last_chdp_blind] and G.GAME.round_resets.blind ~= G.P_BLINDS[G.GAME.last_chdp2_blind] then"
+
+# BLIND.LUA
+
+# stop stuff detecting the chdp bosses as THE boss blind (using check G.GAME.last_blind.boss)
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "self.boss = blind and not not blind.boss"
+position = "after"
+match_indent = true
+payload = """
+if G.GAME.round_resets.blind and (G.GAME.round_resets.blind.key == G.GAME.last_chdp_blind or G.GAME.round_resets.blind.key == G.GAME.last_chdp2_blind) then
+    self.boss = false
+end"""
+
+# appear please
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "elseif self.name and self.name ~= '' then"
+position = "before"
+match_indent = true
+payload = """elseif G.GAME.round_resets.blind_states.ChDp_Boss == 'Upcoming' then
+    return 'ChDp_Boss2'
+    elseif G.GAME.round_resets.blind_states.Boss == 'Upcoming' then
+    return 'ChDp_Boss'"""
+
+# GAME.LUA
+
+#
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.prev_large_state = G.GAME.round_resets.blind_states.Big"
+position = "after"
+match_indent = true
+payload = """G.prev_chdp2_state = G.GAME.round_resets.blind_states.ChDp_Boss2
+G.prev_chdp_state = G.GAME.round_resets.blind_states.ChDp_Boss"""
+
+#
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.GAME.round_resets.loc_blind_states.Big = localize(G.GAME.round_resets.blind_states.Big,'blind_states')"
+position = "after"
+match_indent = true
+payload = """G.GAME.round_resets.loc_blind_states.ChDp_Boss2 = G.GAME.modifiers.second_boss and localize(G.GAME.round_resets.blind_states.ChDp_Boss2,'blind_states')
+G.GAME.round_resets.loc_blind_states.ChDp_Boss = G.GAME.modifiers.second_boss and localize(G.GAME.round_resets.blind_states.ChDp_Boss,'blind_states')"""
+
+
+# NEXT ANTE PREVIEW 
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS AntePreview "main.lua"]'
+pattern = '''for _, choice in ipairs({ "Small", "Big", "Boss" }) do'''
+position = "at"
+match_indent = true
+payload = '''local blinds = (G.GAME.modifiers.chdp_third_boss and {"Small","Big","ChDp_Boss2", "ChDp_Boss","Boss"}) or (G.GAME.modifiers.second_boss and {"Small","Big","ChDp_Boss","Boss"}) or {"Small","Big","Boss"}
+for _, choice in ipairs(blinds) do'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS AntePreview "main.lua"]'
+pattern = '''local boss = get_new_boss()'''
+position = "before"
+match_indent = true
+payload = '''local chdp_boss2 = get_new_boss()
+chdp_boss = get_new_boss()'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS AntePreview "main.lua"]'
+pattern = '''G.GAME.bosses_used[boss] = G.GAME.bosses_used[boss] - 1'''
+position = "after"
+match_indent = true
+payload = '''G.GAME.bosses_used[chdp_boss2] = G.GAME.bosses_used[chdp_boss2] - 1
+G.GAME.bosses_used[chdp_boss] = G.GAME.bosses_used[chdp_boss] - 1
+if G.GAME.modifiers.chdp_third_boss then
+    return { Small = { blind = "bl_small", tag = small_tag }, Big = { blind = "bl_big", tag = big_tag }, Chdp_Boss2 = {blind = chdp_boss2}, ChDp_Boss = { blind = chdp_boss}, Boss = { blind = boss } }
+end
+if G.GAME.modifiers.second_boss then
+    return { Small = { blind = "bl_small", tag = small_tag }, Big = { blind = "bl_big", tag = big_tag }, ChDp_Boss = { blind = chdp_boss}, Boss = { blind = boss } }
+end'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS AntePreview "main.lua"]'
+pattern = '''* blind.mult * G.GAME.starting_params.ante_scaling'''
+position = "at"
+match_indent = true
+payload = '''* blind.mult * G.GAME.starting_params.ante_scaling * ((G.GAME.modifiers.second_boss and choice == "Boss") and 1.5 or 1)'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS AntePreview "main.lua"]'
+pattern = '''local tag = prediction[choice].tag'''
+position = "at"
+match_indent = true
+payload = '''local tag = not(G.GAME.modifiers.disable_skipping) and prediction[choice].tag or nil'''

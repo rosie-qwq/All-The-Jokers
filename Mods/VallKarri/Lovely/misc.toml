@@ -1,0 +1,34 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = """=[SMODS _ "src/utils.lua"]"""
+pattern = "return 5"
+position = "before"
+payload = '''
+if next(SMODS.find_card('j_valk_tau_fingers')) then
+    return 3
+end
+if G.GAME.strush_override then
+    return G.GAME.strush_override
+end
+'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = """=[SMODS multiverse "misc/hooks.lua"]"""
+pattern = '''G.GAME.chips = G.GAME.chips - G.GAME.blind.chips / 10'''
+position = "before"
+payload = '''
+if G.GAME.blind and G.GAME.blind.name == "bl_valk_fuck" then
+    G.FUNCS.DT_lose_game()
+    Multiverse.in_undyne = false
+    Multiverse.undyne_spears = {}
+end
+'''
+match_indent = true

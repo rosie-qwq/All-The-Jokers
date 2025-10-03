@@ -1,0 +1,14 @@
+{
+    "id": "BfJ",
+    "name": "Battle for Jimbo",
+    "author": ["WusGud", "Nitro"],
+    "description": "A Balatro mod themed around BFDI which adds 75 brand new jokers to the game!",
+    "prefix": "BfJ",
+    "main_file": "main.lua",
+    "badge_colour": "138720",
+    "dependencies": [
+        "Steamodded (>=1.0.0~BETA-0711a)",
+        "Talisman"
+    ],
+    "version": "1.1.0"
+}

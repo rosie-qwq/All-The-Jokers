@@ -1,0 +1,50 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+    # Prevent reset function calls if stop sign is in hand
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+reset_idol_card()
+reset_mail_rank()
+reset_ancient_card()
+reset_castle_card()                        
+for _, mod in ipairs(SMODS.mod_list) do
+    if mod.reset_game_globals and type(mod.reset_game_globals) == 'function' then
+        mod.reset_game_globals(false)
+    end
+end
+'''
+position = "at"
+payload = '''
+if not next(SMODS.find_card('j_mxms_stop_sign')) then
+    reset_idol_card()
+    reset_mail_rank()
+    reset_ancient_card()
+    reset_castle_card()                 
+    for _, mod in ipairs(SMODS.mod_list) do
+        if mod.reset_game_globals and type(mod.reset_game_globals) == 'function' then
+            mod.reset_game_globals(false)
+        end
+    end
+end
+'''
+match_indent = true
+
+
+    # Hook into To Do List
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.name == 'To Do List' and not context.blueprint then
+'''
+position = "at"
+payload = '''
+if self.ability.name == 'To Do List' and not context.blueprint and (not next(SMODS.find_card('j_mxms_stop_sign')) and G.GAME.round ~= 1) then
+'''
+match_indent = true
+times = 1

@@ -1,0 +1,26 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -2
+
+# Defeat ChDp Boss blind properly
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "elseif G.GAME.round_resets.blind == G.P_BLINDS.bl_big then"
+position = "before"
+match_indent = true
+payload = '''elseif G.GAME.round_resets.blind == G.P_BLINDS[G.GAME.last_chdp2_blind] then
+G.GAME.round_resets.blind_states.ChDp_Boss2 = "Defeated"
+elseif G.GAME.round_resets.blind == G.P_BLINDS[G.GAME.last_chdp_blind] then
+G.GAME.round_resets.blind_states.ChDp_Boss = "Defeated"
+'''
+
+# disable small blind
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.GAME.round_resets.blind_states.Small = 'Upcoming'"
+position = "at"
+match_indent = true
+payload = "G.GAME.round_resets.blind_states.Small = (G.GAME.modifiers.disable_small or (G.GAME.modifiers.disable_small_ante > -1 and G.GAME.modifiers.disable_small_ante <= G.GAME.round_resets.ante) or G.GAME.modifiers.cry_no_small_blind) and 'Hide' or 'Upcoming'"

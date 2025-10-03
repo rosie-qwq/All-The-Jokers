@@ -1,0 +1,48 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# Remove non-legendary kitys from pool when using The Bitz and The Wand
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "            if add and not G.GAME.banned_keys[v.key] then"
+position = "before"
+payload = '''
+        if _type == "kity" then
+            --if add then MINTY.say("Joker Boy Allowed 1", "TRACE") else MINTY.say("No Joker Allowed 1", "TRACE") end
+            --MINTY.say("key == "..v.key.."; rarity == "..v.rarity, "TRACE")
+            if (_legendary and v.rarity ~= 4) then
+                add = nil
+            end
+            if (not _legendary) and v.rarity == 4 then
+                add = nil
+            end
+            if SMODS.Rarities[v.rarity] and SMODS.Rarities[v.rarity].default_weight == 0 then add = nil end --Crude, current weight would be better but idk how to get that
+            --if add then MINTY.say("Joker Boy Allowed 2", "TRACE") else MINTY.say("No Joker Allowed 2", "TRACE") end
+        end
+'''
+match_indent = true
+
+# Count lucky triggers (disabled atm cause our one thing is no longer counting globally)
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+position = "after"
+pattern = "self.lucky_trigger = true"
+payload =  "--MINTY.luckyCount()"
+match_indent = true
+
+# Count all-time large discards
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+position = "after"
+pattern = "-- TARGET: pre_discard"
+payload = '''
+if highlighted_count > 5 then
+     inc_career_stat('minty_large_discards', 1)
+     check_for_unlock({type = "career_stat", statname = "minty_large_discards"})
+end
+'''
+match_indent = true

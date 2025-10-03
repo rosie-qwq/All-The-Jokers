@@ -1,0 +1,50 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# hidden challenges
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = 'if k > G.CHALLENGE_PAGE_SIZE*(_page or 0) and k <= G.CHALLENGE_PAGE_SIZE*((_page or 0) + 1) then'
+position = 'at'
+payload = 'if (k > G.CHALLENGE_PAGE_SIZE*(_page or 0) and k <= G.CHALLENGE_PAGE_SIZE*((_page or 0) + 1)) and not v.hidden then'
+match_indent = true
+
+# hide hidden challenges
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = 'local _ch_comp, _ch_tot = 0,#G.CHALLENGES'
+position = 'after'
+match_indent = true
+payload = '''for k, v in ipairs(G.CHALLENGES) do
+    if v.hidden then
+        _ch_tot = _ch_tot - 1
+    end
+end'''
+
+# hide hidden challenges pt. 2
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = ' local _ch_tab = {comp = _ch_comp, unlocked = G.PROFILES[G.SETTINGS.profile].challenges_unlocked}'
+position = 'after'
+match_indent = true
+payload = '''for k, v in ipairs(G.CHALLENGES) do
+    if v.hidden then
+        _ch_tab.unlocked = _ch_tab.unlocked - 1
+    end
+end'''
+
+# nothing rules
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value}}}'''
+position = 'at'
+match_indent = true
+payload = '''if v.id ~= "chdp_nothing" then
+game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value}}}
+end'''

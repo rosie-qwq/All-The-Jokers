@@ -1,0 +1,20 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+    # Prevent reset function calls if stop sign is in hand
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+G.STATE = G.STATES.SHOP
+'''
+position = "at"
+payload = '''
+G.STATE = next(SMODS.find_card('j_mxms_severed_floor')) and G.STATES.BLIND_SELECT or G.STATES.SHOP
+if next(SMODS.find_card('j_mxms_severed_floor')) then
+    G.CONTROLLER.locks.toggle_shop = nil
+end
+'''
+match_indent = true

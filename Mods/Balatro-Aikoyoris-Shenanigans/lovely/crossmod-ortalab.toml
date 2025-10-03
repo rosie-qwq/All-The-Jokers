@@ -1,0 +1,14 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS ortalab "objects/zodiac.lua"]'
+pattern = """    -- Add a zodiac to the indicator area"""
+position = "after"
+payload = """SMODS.calculate_context({akyrs_ortalab_zodiac_added = true, zodiac_key = _tag.key})"""
+overwrite = true
+match_indent = true
+

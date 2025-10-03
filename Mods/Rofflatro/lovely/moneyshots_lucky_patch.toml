@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self.lucky_trigger = true
+            ret = ret +  self.ability.p_dollars'''
+position = "after"
+payload = '''self.money_shot = true
+else
+    self.money_shot = false
+'''
+
+match_indent = true
+times = 1

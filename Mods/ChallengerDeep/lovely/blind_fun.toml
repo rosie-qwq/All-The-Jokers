@@ -1,0 +1,111 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# disable big blind
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.GAME.round_resets.blind_states.Big = 'Upcoming'"
+position = "at"
+match_indent = true
+payload = "G.GAME.round_resets.blind_states.Big = (G.GAME.modifiers.disable_big or (G.GAME.modifiers.disable_big_ante > -1 and G.GAME.modifiers.disable_big_ante <= G.GAME.round_resets.ante)) and 'Hide' or 'Upcoming'"
+
+# disable skipping blinds
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if not G.GAME.round_resets.blind_tags[blind_choice] then return nil end"
+position = "at"
+match_indent = true
+payload = "if G.GAME.modifiers.disable_skipping or not G.GAME.round_resets.blind_tags[blind_choice] then return nil end"
+
+# I LOOOOOVE THE PILLAR!!!!
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "if self.name == 'The Pillar' and card.ability.played_this_ante then"
+position = "before"
+match_indent = true
+payload = '''if G.GAME.modifiers.chdp_pillar and card.ability.played_this_ante then
+    card:set_debuff(true)
+    return
+end
+if card.ability.opal_stacked and card.ability.played_this_ante then
+    card:set_debuff(true)
+    return
+end'''
+
+# Display Blackjack goal
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = """{n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, padding = 0.2}, nodes={"""
+position = "after"
+match_indent = true
+payload = '''G.GAME.modifiers.chdp_blackjack > 0 and {n=G.UIT.R, config = {align = "cm", maxw = 1}, nodes={
+    {n=G.UIT.O, config={object = DynaText({scale = 0.35, string = "Cards in Hand must add up to "..G.GAME.modifiers.chdp_blackjack, maxw = 9, colours = {G.C.WHITE},float = true, shadow = true, silent = true, pop_in = 0, pop_in_rate = 6})}},
+}} or nil,'''
+
+# NAP and Cryptid compat 1
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/cross-mod.lua"]'
+pattern = '''predictions.Small.tag = "tag_cry_cat"'''
+position = "at"
+match_indent = true
+payload = '''if predictions.Small then
+    predictions.Small.tag = "tag_cry_cat"
+end'''
+
+# NAP and Cryptid compat 2
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/cross-mod.lua"]'
+pattern = '''predictions.Big.tag = "tag_cry_cat"'''
+position = "at"
+match_indent = true
+payload = '''if predictions.Big then
+    predictions.Big.tag = "tag_cry_cat"
+end'''
+
+# NAP and Cryptid compat 3
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/cross-mod.lua"]'
+pattern = '''predictions.Small.blind = small'''
+position = "at"
+match_indent = true
+payload = '''if predictions.Small then
+    predictions.Small.blind = small
+end'''
+
+# NAP and Cryptid compat 4
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/cross-mod.lua"]'
+pattern = '''predictions.Big.blind = big'''
+position = "at"
+match_indent = true
+payload = '''if predictions.Big then
+    predictions.Big.blind = big
+end'''
+
+# NAP and Cryptid compat 5
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/cross-mod.lua"]'
+pattern = '''if G.P_BLINDS[predictions.Small.blind].boss then'''
+position = "at"
+match_indent = true
+payload = '''if predictions.Small and G.P_BLINDS[predictions.Small.blind].boss then'''
+
+# NAP and Cryptid compat 6
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/cross-mod.lua"]'
+pattern = '''if G.P_BLINDS[predictions.Big.blind].boss then'''
+position = "at"
+match_indent = true
+payload = '''if predictions.Big and G.P_BLINDS[predictions.Big.blind].boss then'''

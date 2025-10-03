@@ -1,0 +1,7 @@
+{
+    "workspace.library": ["../smods", "../../BalatroSRC"],
+    "workspace.ignoreDir": [
+        ".vscode",
+        "./func/words"
+    ]
+}

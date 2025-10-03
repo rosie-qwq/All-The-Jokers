@@ -1,0 +1,96 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Purple Deck
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "for i = #G.shop_jokers.cards,1, -1 do"
+position = "before"
+payload = """
+if G.GAME.selected_back.name == "b_bplus_purple" then
+  for i = #G.shop_booster.cards, 1, -1 do
+    local b = G.shop_booster:remove_card(G.shop_booster.cards[i])
+    b:remove()
+    b = nil
+  end
+end
+"""
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "for i = 1, G.GAME.shop.joker_max - #G.shop_jokers.cards do"
+position = "before"
+match_indent = true
+payload = """
+if G.GAME.selected_back.name == "b_bplus_purple" then
+  local card = Card(
+    G.shop_booster.T.x + G.shop_booster.T.w/2,
+    G.shop_booster.T.y,
+    G.CARD_W * 1.27,
+    G.CARD_H * 1.27,
+    G.P_CARDS.empty,
+    get_pack('shop_pack'),
+    { bypass_discovery_center = true, bypass_discovery_ui = true }
+  )
+  create_shop_card_ui(card, 'Booster', G.shop_booster)
+  card.ability.booster_pos = i
+  card:start_materialize()
+  G.shop_booster:emplace(card)
+end
+"""
+
+# Jokered Deck
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.blind_select.alignment.offset.x = 0"
+position = "after"
+match_indent = true
+payload = """
+if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_jokered" and G.GAME.selected_back.effect.open_pack then
+  G.GAME.selected_back.effect.open_pack = nil
+  G.E_MANAGER:add_event(Event{
+    trigger = 'after',
+    delay = 0.5,
+    func = function()
+      BPlus.u.open_pack(G.P_CENTERS["b_bplus_jokered"].config.booster_pack)
+      return true
+    end,
+  })
+end
+"""
+
+# Illusion Deck
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.base.suit_nominal_original = suit_base_nominal_original or suit.suit_nominal or 0"
+position = "after"
+match_indent = true
+payload = """
+if G.GAME.selected_back and G.GAME.selected_back.name == "b_bplus_illusion" and self.base.nominal then
+  self.base.nominal = self.base.nominal * G.GAME.selected_back.effect.config.card_nominal_mult
+end
+
+"""
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "for k, v in ipairs(card_protos) do"
+position = "before"
+match_indent = true
+payload = """
+if G.GAME.selected_back.name == "b_bplus_illusion" then
+  for i = 1, G.GAME.selected_back.effect.config.destroyed_cards do
+    local idx = pseudorandom("b_bplus_illusion_card_destroy", 1, #card_protos)
+    table.remove(card_protos, idx)
+  end
+end
+
+"""

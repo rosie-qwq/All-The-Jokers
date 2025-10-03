@@ -1,0 +1,28 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = """                if self.greyed then"""
+position = "before"
+payload = """AKYRS.aikoyori_draw_extras(self, layer)"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "      ease_value(card.T, 'scale',v[2] and 0.25 or -0.15,nil,'REAL',true,0.2)"
+position = "after"
+payload = """
+if v['akyrs_letter'] then card:set_letters(v['akyrs_letter']) card.ability.forced_letter_render = true end
+if v.is_null then card.is_null = true end
+"""
+overwrite = true
+match_indent = true

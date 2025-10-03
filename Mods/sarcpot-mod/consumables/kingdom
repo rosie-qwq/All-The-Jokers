@@ -1,0 +1,25 @@
+SMODS.Consumable({
+    key = 'kingdom',
+    set = 'travel',
+    atlas = 'consumables',
+    pos = { x = 2, y = 2},
+    discovered = false,
+    config = { money = 4,money_cap = 32},
+    loc_vars = function(self, info_queue)
+        return { vars = { self.config.money,self.config.money_cap} }
+    end,
+    cost = 3,
+    calculate = function(self, card, context)
+    end,
+    can_use = function(self, card)
+        return true
+    end,
+    use = function(self, card, area, copier)
+        local total = self.config.money*G.GAME.round_resets.ante
+    if total>self.config.money_cap then
+        total = self.config.money_cap
+    end
+    ease_dollars(total)
+    end
+
+})

@@ -1,0 +1,541 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# [------------------------------------------------------------------- JOKERS -------------------------------------------------------------------]
+
+    # Cavendish
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Gros Michel' then G.GAME.pool_flags.gros_michel_extinct = true end"
+position = "at"
+payload = '''
+if self.ability.name == 'Gros Michel' then G.GAME.pool_flags.gros_michel_extinct = true
+elseif self.ability.name == 'Cavendish' and not CrackerConfig.disable_upgradedfood then G.GAME.pool_flags.cavendish_extinct = true
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''j_cavendish=        {order = 61,  unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 4, name = "Cavendish", pos = {x=5,y=11}, set = "Joker", cost_mult = 1.0, config = {extra = {odds = 1000, Xmult = 3}}, yes_pool_flag = 'gros_michel_extinct'},'''
+position = "at"
+payload = '''j_cavendish=        {order = 61,  unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 4, name = "Cavendish", pos = {x=5,y=11}, set = "Joker", cost_mult = 1.0, config = {extra = {odds = 1000, Xmult = 3}}, yes_pool_flag = 'gros_michel_extinct', no_pool_flag = 'cavendish_extinct'},'''
+match_indent = true
+times = 1
+
+    # Buttered Popcorn
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.ability.name == 'Popcorn' and not context.blueprint then
+if self.ability.mult - self.ability.extra <= 0 then '''
+position = "after"
+payload = '''
+if not CrackerConfig.disable_upgradedfood then
+    G.GAME.pool_flags.popcorn_eaten = true
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''j_popcorn=          {order = 97,   unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 5, name = "Popcorn",set = "Joker", config = {mult = 20, extra = 4}, pos = {x=1,y=15}},'''
+position = "at"
+payload = '''
+j_popcorn=          {order = 97,   unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 5, name = "Popcorn",set = "Joker", config = {mult = 20, extra = 4}, pos = {x=1,y=15}, no_pool_flag = 'popcorn_eaten'},
+'''
+match_indent = true
+times = 1
+
+    # Frozen Custard
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.ability.name == 'Ice Cream' and not context.blueprint then
+if self.ability.extra.chips - self.ability.extra.chip_mod <= 0 then '''
+position = "after"
+payload = '''
+if not CrackerConfig.disable_upgradedfood then
+    G.GAME.pool_flags.ice_cream_eaten = true
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''j_ice_cream=        {order = 50,  unlocked = true,  discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 5, name = 'Ice Cream', pos = {x = 4, y = 10}, set = 'Joker', config = {extra = {chips = 100, chip_mod = 5}}},'''
+position = "at"
+payload = '''
+j_ice_cream=        {order = 50,  unlocked = true,  discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 5, name = 'Ice Cream', pos = {x = 4, y = 10}, set = 'Joker', config = {extra = {chips = 100, chip_mod = 5}}, no_pool_flag = 'ice_cream_eaten'},
+'''
+match_indent = true
+times = 1
+
+
+    # Hard Seltzer
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.ability.name == 'Seltzer' and not context.blueprint then
+if self.ability.extra - 1 <= 0 then '''
+position = "after"
+payload = '''
+if not CrackerConfig.disable_upgradedfood then
+    G.GAME.pool_flags.seltzer_drank = true
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''j_selzer=           {order = 102,  unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 2, cost = 6, name = "Seltzer",set = "Joker", config = {extra = 10}, pos = {x=3,y=15}},'''
+position = "at"
+payload = '''
+j_selzer=           {order = 102,  unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 2, cost = 6, name = "Seltzer",set = "Joker", config = {extra = 10}, pos = {x=3,y=15}, no_pool_flag='seltzer_drank'},
+'''
+match_indent = true
+times = 1
+
+
+    # Turtle Bean
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.ability.name == 'Turtle Bean' and not context.blueprint then
+if self.ability.extra.h_size - self.ability.extra.h_mod <= 0 then '''
+position = "after"
+payload = '''
+if not CrackerConfig.disable_upgradedfood then
+    G.GAME.pool_flags.turtle_bean_eaten = true
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''j_turtle_bean=      {order = 80,  unlocked = true,  discovered = false, blueprint_compat = false, perishable_compat = true, eternal_compat = false, rarity = 2, cost = 6, name = "Turtle Bean",set = "Joker", config = {extra = {h_size = 5, h_mod = 1}}, pos = {x=4,y=13}},'''
+position = "at"
+payload = '''
+j_turtle_bean=      {order = 80,  unlocked = true,  discovered = false, blueprint_compat = false, perishable_compat = true, eternal_compat = false, rarity = 2, cost = 6, name = "Turtle Bean",set = "Joker", config = {extra = {h_size = 5, h_mod = 1}}, pos = {x=4,y=13}, no_pool_flag='turtle_bean_eaten'},
+'''
+match_indent = true
+times = 1
+
+
+    # Tsukemen
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.ability.name == 'Ramen' and not context.blueprint then
+if self.ability.x_mult - self.ability.extra <= 1 then '''
+position = "after"
+payload = '''
+if not CrackerConfig.disable_upgradedfood then
+    G.GAME.pool_flags.ramen_eaten = true
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''j_ramen=            {order = 100,  unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 2, cost = 6, name = "Ramen",set = "Joker", config = {Xmult = 2, extra = 0.01}, pos = {x=2,y=15}},'''
+position = "at"
+payload = '''
+j_ramen=            {order = 100,  unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 2, cost = 6, name = "Ramen",set = "Joker", config = {Xmult = 2, extra = 0.01}, pos = {x=2,y=15}, no_pool_flag = 'ramen_eaten'},
+'''
+match_indent = true
+times = 1
+
+
+    # Freezer
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self.ability.perish_tally = self.ability.perish_tally - 1
+card_eval_status_text(self, 'extra', nil, nil, nil, {message = localize{type='variable',key='a_remaining',vars={self.ability.perish_tally}},colour = G.C.FILTER, delay = 0.45})'''
+position = "at"
+payload = '''
+if G.GAME.food_multiplier > 0 then
+    self.ability.perish_tally = self.ability.perish_tally - 1
+    card_eval_status_text(self, 'extra', nil, nil, nil, {message = localize{type='variable',key='a_remaining',vars={self.ability.perish_tally}},colour = G.C.FILTER, delay = 0.45})
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.ability.perish_tally == 1 then'''
+position = "at"
+payload = '''
+if self.ability.perish_tally == 1 and G.GAME.food_multiplier > 0 then
+'''
+match_indent = true
+times = 1
+
+
+    # Freezer - Ice Cream
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.extra.chips - self.ability.extra.chip_mod <= 0 then "
+position = "at"
+payload = "if self.ability.extra.chips - (self.ability.extra.chip_mod * G.GAME.food_multiplier) <= 0 then"
+match_indent = true
+times = 1
+
+    # Freezer - Turtle Bean
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.extra.h_size - self.ability.extra.h_mod <= 0 then"
+position = "at"
+payload = "if self.ability.extra.h_size - (self.ability.extra.h_mod * G.GAME.food_multiplier) <= 0 then"
+match_indent = true
+times = 1
+
+    # Freezer - Popcorn
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.mult - self.ability.extra <= 0 then"
+position = "at"
+payload = "if self.ability.mult - (self.ability.extra * G.GAME.food_multiplier) <= 0 then "
+match_indent = true
+times = 1
+
+    # Freezer - Ramen
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.x_mult - self.ability.extra <= 1 then"
+position = "at"
+payload = "if self.ability.x_mult - (self.ability.extra * G.GAME.food_multiplier) <= 1 then"
+match_indent = true
+times = 1
+
+    # Freezer - Seltzer
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.extra - 1 <= 0 then "
+position = "at"
+payload = "if self.ability.extra - (1 * G.GAME.food_multiplier) <= 0 then "
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.ability.extra = self.ability.extra - 1"
+position = "at"
+payload = "self.ability.extra = self.ability.extra - (1 * G.GAME.food_multiplier)"
+match_indent = true
+times = 1
+
+
+# [------------------------------------------------------------------- VOUCHERS ---------------------------------------------------------------------]
+
+
+
+
+
+# [------------------------------------------------------------------- MAIN ---------------------------------------------------------------------]
+
+
+
+    # Guaranteed
+#[[patches]]
+#[patches.pattern]
+#target = "functions/common_events.lua"
+#pattern = '''return full_UI_table'''
+#position = "before"
+#payload = '''
+#if 0 == 1 then
+#    for i = 1, #full_UI_table.main do
+#        for j = 1, #full_UI_table.main[i] do
+#            if full_UI_table.main[i][j] and full_UI_table.main[i][j].config.text then
+#                local text = full_UI_table.main[i][j].config.text
+#                local first_number, second_number = text:match("(%d+) in ([%d,]+)")
+#                
+#                if first_number and second_number then
+#                    first_number = tonumber(first_number)
+#                    second_number = tonumber((second_number:gsub(",", "")))
+#                    
+#                    if first_number >= second_number then
+#                        full_UI_table.main[i][j].config.text = "Guaranteed"
+#                    end
+#                end
+#            end
+#        end
+#    end
+#end
+#'''
+#match_indent = true
+#times = 1
+
+    # Start
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''function love.load()'''
+position = "before"
+payload = '''
+Cracker = {}
+Cracker.food = {}
+'''
+match_indent = true
+times = 1
+
+    # Patchwork deck requires voucher override
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''if v.requires then '''
+position = "at"
+payload = '''
+if not G.GAME.modifiers.voucher_override and v.patchwork then
+    include = false
+elseif G.GAME.modifiers.voucher_override and not v.patchwork then 
+    include = false
+elseif v.requires then
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif _type == 'Voucher' then _pool[#_pool + 1] = "v_blank"'''
+position = "at"
+payload = '''
+elseif _type == 'Voucher' then _pool[#_pool + 1] = ((G.GAME.modifiers.voucher_override and "v_cracker_pw_erratic") or "v_blank")
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''for _,_ in pairs(G.GAME.current_round.voucher.spawn) do vouchers_to_spawn = vouchers_to_spawn + 1 end
+if vouchers_to_spawn < G.GAME.starting_params.vouchers_in_shop + (G.GAME.modifiers.extra_vouchers or 0) then
+    SMODS.get_next_vouchers(G.GAME.current_round.voucher)
+end
+for _, key in ipairs(G.GAME.current_round.voucher or {}) do
+    if G.P_CENTERS[key] and G.GAME.current_round.voucher.spawn[key] then
+        SMODS.add_voucher_to_shop(key)
+    end
+end'''
+position = "at"
+payload = '''
+if G.GAME.current_round.voucher and G.GAME.current_round.voucher.spawn then
+    if (G.GAME.modifiers.voucher_restock_antes == nil or G.GAME.round_resets.ante % G.GAME.modifiers.voucher_restock_antes == 1) then
+        for _,_ in pairs(G.GAME.current_round.voucher.spawn) do vouchers_to_spawn = vouchers_to_spawn + 1 end
+        if vouchers_to_spawn < G.GAME.starting_params.vouchers_in_shop + (G.GAME.modifiers.extra_vouchers or 0) then
+            SMODS.get_next_vouchers(G.GAME.current_round.voucher)
+        end
+    end
+    for _, key in ipairs(G.GAME.current_round.voucher or {}) do
+        if G.P_CENTERS[key] and G.GAME.current_round.voucher.spawn[key] then
+            SMODS.add_voucher_to_shop(key)
+        end
+    end
+end'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''G.GAME.current_round.voucher = SMODS.get_next_vouchers()'''
+position = "at"
+payload = '''
+if (G.GAME.modifiers.voucher_restock_antes == nil or G.GAME.round_resets.ante % G.GAME.modifiers.voucher_restock_antes == 1) then
+    G.GAME.current_round.voucher = SMODS.get_next_vouchers()
+end'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.shop_voucher then G.GAME.current_round.voucher.spawn[self.config.center_key] = false end 
+if self.from_tag then G.GAME.current_round.voucher.spawn[G.GAME.current_round.voucher[1]] = false end'''
+position = "at"
+payload = '''
+if G.GAME.current_round.voucher and G.GAME.current_round.voucher.spawn then
+    if self.shop_voucher then G.GAME.current_round.voucher.spawn[self.config.center_key] = false end 
+    if self.from_tag then G.GAME.current_round.voucher.spawn[G.GAME.current_round.voucher[1]] = false end
+end
+'''
+match_indent = true
+times = 1
+
+    # New scoring context
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+pattern = '''if self.seal == 'Red' then'''
+position = 'after'
+payload = '''
+for i=1, #G.jokers.cards do
+    eval_card(G.jokers.cards[i], {cardarea = G.jokers, seal_trigger = true})
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+pattern = '''if self.seal == 'Purple' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then'''
+position = 'after'
+payload = '''
+for i=1, #G.jokers.cards do
+    eval_card(G.jokers.cards[i], {cardarea = G.jokers, seal_trigger = true})
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+pattern = '''if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and not self.ability.extra_enhancement then'''
+position = 'after'
+payload = '''
+for i=1, #G.jokers.cards do
+    eval_card(G.jokers.cards[i], {cardarea = G.jokers, seal_trigger = true})
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+pattern = '''elseif self.seal == 'Gold' and not self.ability.extra_enhancement then'''
+position = 'after'
+payload = '''
+for i=1, #G.jokers.cards do
+    eval_card(G.jokers.cards[i], {cardarea = G.jokers, seal_trigger = true})
+end
+'''
+
+
+    # The End challenge
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "elseif v.id == 'no_shop_jokers' then"
+position = "before"
+payload = """
+elseif v.id == 'ante_39' then
+    self.GAME.win_ante = 38
+    self.GAME.modifiers['forced_boss'] = 8
+elseif v.id == 'plasma_2' then
+    G.GAME.starting_params.ante_scaling = 2
+"""
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local eligible_bosses = {}
+for k, v in pairs(G.P_BLINDS) do'''
+position = "before"
+payload = '''local thunk = G.GAME.win_ante
+if G.GAME.modifiers['forced_boss'] then
+    thunk = G.GAME.modifiers['forced_boss']
+end
+'''
+match_indent = true
+times = 1
+
+
+    # patchwork plasma deck
+[[patches]]
+[patches.pattern]
+target = "back.lua"
+pattern = '''if self.name == 'Plasma Deck' and args.context == 'final_scoring_step' then'''
+position = "at"
+payload = '''if (self.name == 'Plasma Deck' or G.GAME.modifiers['plasma'] or G.GAME.used_vouchers['v_cracker_pw_plasma']) and args.context == 'final_scoring_step' then'''
+match_indent = true
+times = 1
+
+
+    # boss always shows up on multiplies of 8 in endless, as well as the winning ante
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif not v.boss.showdown and (v.boss.min <= math.max(1, G.GAME.round_resets.ante) and ((math.max(1, G.GAME.round_resets.ante))%G.GAME.win_ante ~= 0 or G.GAME.round_resets.ante < 2)) then
+    eligible_bosses[k] = true
+elseif v.boss.showdown and (G.GAME.round_resets.ante)%G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
+    eligible_bosses[k] = true'''
+position = "at"
+payload = '''elseif not v.boss.showdown and (v.boss.min <= math.max(1, G.GAME.round_resets.ante) and ((math.max(1, G.GAME.round_resets.ante))%thunk ~= 0 or G.GAME.round_resets.ante < 2)) then
+    eligible_bosses[k] = true
+elseif v.boss.showdown and (G.GAME.round_resets.ante)%thunk == 0 and G.GAME.round_resets.ante >= 2 then
+    eligible_bosses[k] = true
+'''
+match_indent = true
+times = 1
+
+    # New scoring context
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''if card.children.use_button then card.children.use_button:remove(); card.children.use_button = nil end'''
+match_indent = true
+position = 'before'
+payload = '''
+if card.area == G.pack_cards then
+    for i=1, #G.jokers.cards do
+        eval_card(G.jokers.cards[i], {taking_booster_card = true})
+    end
+end'''
+
+    # smods patches
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "SMODS.destroy_cards(self, nil, nil, true)"
+position = "at"
+payload = "SMODS.destroy_cards(self, nil, true, true, true)"
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = "function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim)"
+position = "at"
+payload = "function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim, is_internal)"
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = "card.skip_destroy_animation = skip_anim"
+position = "before"
+payload = "card.internal_destruction = is_internal"
+match_indent = true
+times = 1

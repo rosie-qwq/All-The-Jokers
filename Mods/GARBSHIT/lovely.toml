@@ -1,0 +1,452 @@
+[manifest]
+version = "2.0"
+dump_lua = true
+priority = 27
+
+# Archives cardarea
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+match_indent = true
+position = 'before'
+pattern = 'self.hand = CardArea('
+payload = '''
+G.garb_archived = CardArea(
+	G.deck.T.x,
+    G.deck.T.y,
+	G.deck.T.w,
+    G.deck.T.h,
+  { type = "discard", card_limit = 1e100 }
+)
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+match_indent = true
+position = 'after'
+pattern = 'G.deck.T.y = G.TILE_H - G.deck.T.h'
+payload = '''
+G.garb_archived.T.x = G.TILE_W - G.deck.T.w - 0.5
+G.garb_archived.T.y = G.TILE_H - G.deck.T.h
+'''
+
+# Poker Hand display can have enhancements
+# This patch was made by MathIsFun0
+# https://github.com/MathIsFun0/Cryptid/blob/00bdde94b2aa4554147c65a792d404585dde167c/lovely/Misc.toml#L394
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local card = Card(0,0, 0.5*G.CARD_W, 0.5*G.CARD_H, G.P_CARDS[v[1]], G.P_CENTERS[v.enhancement or 'c_base'])'''
+position = "at"
+payload = '''local card = Card(0,0, 0.5*G.CARD_W, 0.5*G.CARD_H, G.P_CARDS[v[1]], G.P_CENTERS[v[3] or 'c_base'])'''
+match_indent = true
+
+# Flame On (Stolen from CardSauce)
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if G.ARGS.score_intensity.earned_score >= G.ARGS.score_intensity.required_score and G.ARGS.score_intensity.required_score > 0 then"
+position = "after"
+payload = '''
+if G.STATE == G.STATES.HAND_PLAYED and not G.GAME.FLAME_ON then
+    G.GAME.FLAME_ON = true
+end
+'''
+match_indent = true
+overwrite = false
+
+# Flame On (FUCK TALISMAN)
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if to_big(G.ARGS.score_intensity.earned_score) >= to_big(G.ARGS.score_intensity.required_score) and to_big(G.ARGS.score_intensity.required_score) > to_big(0) then"
+position = "after"
+payload = '''
+if G.STATE == G.STATES.HAND_PLAYED and not G.GAME.FLAME_ON then
+    G.GAME.FLAME_ON = true
+end
+'''
+match_indent = true
+overwrite = false
+
+# Flame Off
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "_F.intensity = 0"
+position = "after"
+payload = '''
+G.GAME.FLAME_ON = false
+'''
+match_indent = true
+overwrite = false
+
+
+# Valoky Tags
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.round_resets.blind_tags.Small = get_next_tag_key()"
+position = "at"
+payload = '''
+G.GAME.round_resets.blind_tags.Small = next(SMODS.find_card("j_garb_valoky")) and 'tag_garb_carnival' or get_next_tag_key() 
+'''
+match_indent = true
+times = 1
+overwrite = true
+
+# Jump Cards
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'local ranks = {}'
+position = "after"
+payload = 'local jumps = {}'
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = '''local id = card:get_id()'''
+position = "after"
+payload = '''
+if SMODS.has_enhancement(card, 'm_garb_jump') then
+    id = 0
+    table.insert(jumps, card)
+end
+'''
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'if next(ranks[k]) then'
+position = "at"
+payload = 'if next(ranks[k]) or #jumps >= 1 then'
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'tuples[#tuples+1] = {k}'
+position = "after"
+payload = 'tuples[#tuples].jumps_remaining = #jumps - (next(ranks[k]) and 0 or 1)'
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'if i ~= #hand+1 then'
+position = "at"
+payload = 'if i + tuple.jumps_remaining ~= #hand+1 then'
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'if next(ranks[l]) then'
+position = "at"
+payload = 'if next(ranks[l]) or #jumps >= 1 then'
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'local new_tuple = {}'
+position = "after"
+payload = 'new_tuple.jumps_remaining = tuple.jumps_remaining - (next(ranks[l]) and 0 or 1)'
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'if i > min_length and not any_tuple then'
+position = "at"
+payload = 'if i + tuple.jumps_remaining > min_length and not any_tuple then'
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'ret[#ret+1] = straight'
+position = "before"
+payload = '''
+for _, card in ipairs(jumps) do
+    straight[#straight+1] = card
+end'''
+match_indent = true
+
+
+# Golden Carrot
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local rarity = _rarity or SMODS.poll_rarity("Joker", 'rarity'..G.GAME.round_resets.ante..(_append or ''))'''
+position = "after"
+payload = '''
+if G.jokers and next(SMODS.find_card("j_garb_goldcarrot")) and _type == 'Joker' then
+    for i = 1, (3*#SMODS.find_card("j_garb_goldcarrot")) do
+        if rarity < 3 then
+            rarity = SMODS.poll_rarity("Joker", 'rarity'..G.GAME.round_resets.ante..(_append or ''))
+        end
+    end
+end
+'''
+match_indent = true
+
+# Backtrack
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+G.GAME.skips = (G.GAME.skips or 0) + 1
+'''
+position = "after"
+payload = '''
+if next(SMODS.find_card("j_garb_backtrack")) then
+        G.E_MANAGER:add_event(Event({
+          trigger = 'before', delay = 0.2,
+          func = function()
+            G.blind_prompt_box.alignment.offset.y = -10
+            G.blind_select.alignment.offset.y = 40
+            G.blind_select.alignment.offset.x = 0
+            return true
+        end}))
+    G.E_MANAGER:add_event(Event({
+        trigger = "immediate",
+        func = function()
+            G.GAME.current_round.jokers_purchased = 0
+            G.STATE = G.STATES.SHOP
+            G.STATE_COMPLETE = false
+
+            G.GAME.shop_free = nil
+            G.GAME.shop_d6ed = nil
+            G.GAME.current_round.used_packs = {}
+
+            G.blind_select:remove()
+            G.blind_prompt_box:remove()
+            G.blind_select = nil
+            delay(0.2)    
+            return true
+            end,
+        }))
+end
+'''
+match_indent = true
+times = 1
+
+# Title Screen - Colors
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = '''
+RENTAL = HEX('b18f43'),
+'''
+position = "after"
+payload = '''
+GARB_T1 = HEX("FF87DB"),
+GARB_T2 = HEX("B670D8"),
+'''
+match_indent = true
+times = 1
+
+# Temp Hands - Defined
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "temp_handsize = nil,"
+position = "after"
+payload = '''
+temp_hands = nil,
+'''
+match_indent = true
+
+# Temp Hands
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if G.GAME.round_resets.temp_handsize then G.hand:change_size(-G.GAME.round_resets.temp_handsize); G.GAME.round_resets.temp_handsize = nil end"
+position = "after"
+payload = '''
+if G.GAME.round_resets.temp_hands then G.GAME.round_resets.hands = G.GAME.round_resets.hands - G.GAME.round_resets.temp_hands; G.GAME.round_resets.temp_hands = nil end
+'''
+match_indent = true
+
+# Temp Discards
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if G.GAME.round_resets.temp_handsize then G.hand:change_size(-G.GAME.round_resets.temp_handsize); G.GAME.round_resets.temp_handsize = nil end"
+position = "after"
+payload = '''
+if G.GAME.round_resets.temp_discards then G.GAME.round_resets.discards = G.GAME.round_resets.discards - G.GAME.round_resets.temp_discards; G.GAME.round_resets.temp_discards = nil end
+'''
+match_indent = true
+
+# Tangerine Deck - Probabilities
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_pool[#_pool + 1] = v.key"
+position = "before"
+payload = '''
+if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_garb_garbdeck" or 
+    (G.GAME.selected_sleeve and G.GAME.selected_sleeve == "sleeve_garb_tangerine") then
+    if string.sub(v.key, 1, 6) == 'j_garb' then
+        for i=1, 2 do
+            _pool[#_pool + 1] = v.key
+            _pool_size = _pool_size + 1
+        end
+    end
+end
+
+if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_garb_garbdeck" and 
+    (G.GAME.selected_sleeve and G.GAME.selected_sleeve == "sleeve_garb_tangerine") then
+    if string.sub(v.key, 1, 6) == 'j_garb' then
+        for i=1, 32 do
+            _pool[#_pool + 1] = v.key
+            _pool_size = _pool_size + 1
+        end
+    end
+end
+'''
+match_indent = true
+
+# Colorful Joker - Unlock
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:add_to_deck(from_debuff)"
+position = "after"
+payload = '''
+    local suit_jokers = {"j_greedy_joker", "j_lusty_joker", "j_wrathful_joker", "j_gluttenous_joker"}
+    local have_jokers = {}
+    for i = 1, #suit_jokers do
+        if self.config.center.key == suit_jokers[i] then
+            for m = 1, #suit_jokers do
+                if m ~= i then
+                    if next(SMODS.find_card(suit_jokers[m])) then have_jokers[m] = suit_jokers[i] else have_jokers = {} end
+                end  
+            end
+        end
+        if #have_jokers == 3 then
+            check_for_unlock({ type = "colorful_jonk" })
+        end
+    end
+    '''
+match_indent = false
+overwrite = false
+
+# Two of Cups - Unlock
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:add_to_deck(from_debuff)"
+position = "after"
+payload = '''
+    local vteller_jokers = {"j_fortune_teller", "j_vagabond"}
+    local v_have_jokers = {}
+    for i = 1, #vteller_jokers do
+        if self.config.center.key == vteller_jokers[i] then
+            for m = 1, #vteller_jokers do
+                if m ~= i then
+                    if next(SMODS.find_card(vteller_jokers[m])) then v_have_jokers[m] = vteller_jokers[i] else v_have_jokers = {} end
+                end  
+            end
+        end
+        if #v_have_jokers == 1 then
+            check_for_unlock({ type = "vteller" })
+        end
+    end
+    '''
+match_indent = false
+overwrite = false
+
+
+# Black Hole - Unlock
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Black Hole' then"
+position = "after"
+payload = '''check_for_unlock({ type = "black_hole" })'''
+match_indent = true
+overwrite = false
+
+# Quadrant Hands - Telescope
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if _hand then"
+position = "before"
+payload = '''
+local quadrant_hands = {"garb_blush", "garb_caliginous", "garb_ashen", "garb_pale"}
+for i = 1, #quadrant_hands do
+    if _hand == quadrant_hands[i] then _hand = "Flush" end
+end
+'''
+match_indent = true
+overwrite = false
+
+# Quadrant Hands - Blue Seal
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "local card = create_card(card_type,G.consumeables, nil, nil, nil, nil, _planet, 'blusl')"
+position = "before"
+payload = '''
+local quadrant_hands = {"garb_blush", "garb_caliginous", "garb_ashen", "garb_pale"}
+for i = 1, #quadrant_hands do
+    if G.GAME.last_hand_played == quadrant_hands[i] then _planet = "c_jupiter" end
+end
+'''
+match_indent = true
+overwrite = false
+
+# Angel of Salt - Unlock
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "for i = 1, self.ability.extra.destroy do destroyed_cards[#destroyed_cards+1] = temp_hand[i] end"
+position = "after"
+payload = '''
+            local stones = {}
+            for i = 1, #destroyed_cards do if destroyed_cards[i].ability.name == 'Stone Card' then stones[#stones+1] = destroyed_cards[i] end end
+            if #stones == 5 then check_for_unlock({ type = "salt" }) end
+'''
+match_indent = true
+overwrite = false
+
+# Title Screen - Cryptid Compatibility
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.S_A, G.P_CENTERS.c_base)"
+position = "at"
+payload = '''
+if next(SMODS.find_mod("Cryptid")) then
+    replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.S_A, G.P_CENTERS.c_base)
+elseif config.title then
+	replace_card = SMODS.create_card({
+		set = "Joker",
+		area = G.title_top,
+		key = "j_garb_ratboyTITLE",
+		no_edition = true
+	})
+    replace_card.T.scale = 1.32
+else 
+    replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.S_A, G.P_CENTERS.c_base)
+end
+'''
+match_indent = true
+overwrite = true
+
+# Splash - THE SURGE
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_joker'])"
+
+position = "at"
+payload = '''
+if config.title then
+SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_garb_surgeTITLE'])
+else
+SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_joker'])
+end
+'''
+match_indent = true
+overwrite = true

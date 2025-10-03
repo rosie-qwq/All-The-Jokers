@@ -1,0 +1,74 @@
+SMODS.Joker {
+
+	discovered = true,
+	key = 'jester_dice',
+
+
+
+	 config = {
+        extra = {
+            n = 1,
+            d = 6
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        local n, d = SMODS.get_probability_vars(card, card.ability.extra.n,  card.ability.extra.d, 'jester_dice')
+        return {
+            vars = {n, d}
+        }
+    end,
+	rarity = 1,
+	atlas = 'sarcpot_atlas',
+	pos = { x = 1, y = 3 },
+	cost = 5,
+	
+	calculate = function(self, card, context)
+		local count = {}
+				local found = false
+		
+			if context.before and context.scoring_hand then
+				 if SMODS.pseudorandom_probability(card, 'jester_dice_play', card.ability.extra.n, card.ability.extra.d, 'jester_dice') then
+
+				for _, v in pairs(context.full_hand) do
+					if not SMODS.has_enhancement(v, "m_stone") then
+						local rank = v:get_id()
+						count[rank] = (count[rank] or 0) + 1
+
+						if count[rank] > 1 then
+							found = true
+						end
+					end
+				end
+
+				if found then
+					ease_hands_played(1)
+					return {
+						message = localize('sarc_snap')
+					}
+				end		
+			end
+		end
+			if context.pre_discard then
+			 if SMODS.pseudorandom_probability(card, 'jester_dice_discard', card.ability.extra.n, card.ability.extra.d, 'jester_dice') then
+				for _, v in pairs(context.full_hand) do
+
+					if not SMODS.has_enhancement(v, "m_stone") then
+						local rank = v:get_id()
+						count[rank] = (count[rank] or 0) + 1
+
+						if count[rank] > 1 then
+							found = true
+						end
+					end
+				end
+					if found then
+						ease_hands_played(1)
+						return {
+							message = localize('sarc_snap'),
+							
+						}
+					end
+				end
+			end
+	end
+}

@@ -1,0 +1,371 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """                if _ch.restrictions.banned_other then
+                    for k, v in ipairs(_ch.restrictions.banned_other) do
+                        G.GAME.banned_keys[v.id] = true
+                    end
+                end
+            end"""
+position = "before"
+payload = """
+            if _ch.akyrs_events_after then
+                for i, k in ipairs(_ch.akyrs_events_after) do
+                    G.E_MANAGER:add_event(Event{trigger = "after", func = k})
+                end
+            end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """                            if v.pinned then _joker.pinned = true end"""
+position = "after"
+payload = """if v.akyrs_sigma then _joker.ability.akyrs_sigma = true end
+if v.akyrs_card_ability then 
+    for i,k in pairs(v.akyrs_card_ability) do
+        _joker.ability[i] = k
+    end
+    if v.akyrs_sell_cost then _joker.sell_cost = v.akyrs_sell_cost end
+end
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      if v.pinned then card.pinned = true end"""
+position = "after"
+payload = """if v.akyrs_sigma then card.ability.akyrs_sigma = true end
+if v.akyrs_card_ability then 
+    for i,k in pairs(v.akyrs_card_ability) do
+        card.ability[i] = k
+    end
+    if v.akyrs_sell_cost then card.sell_cost = v.akyrs_sell_cost end
+end
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "back.lua"
+pattern = """    return 
+    {n=G.UIT.ROOT, config={align = "cm", minw = min_dims*5, minh = min_dims*2.5, id = self.name, colour = G.C.CLEAR}, nodes={
+        name_to_check == 'Challenge Deck' and UIBox_button({button = 'deck_view_challenge', label = {localize(challenge.id, 'challenge_names')},  minw = 2.2, minh = 1, scale = 0.6, id = challenge})
+        or desc_from_rows(loc_nodes, true, min_dims*5)
+    }}"""
+position = "before"
+payload = """
+if name_to_check == "Hardcore Challenge Deck" then
+    return 
+    {n=G.UIT.ROOT, config={align = "cm", minw = min_dims*5, minh = min_dims*2.5, id = self.name, colour = G.C.CLEAR}, nodes={
+        UIBox_button({button = 'akyrs_hc_challenge_deck_view_challenge', label = {localize(challenge.id, 'hardcore_challenge_names')},  minw = 2.2, minh = 1, scale = 0.6, id = challenge})
+    }}
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "back.lua"
+pattern = """challenge = G.CHALLENGES[get_challenge_int_from_id(challenge or '') or ''] or {name = 'ERROR'}"""
+position = "after"
+payload = """
+if name_to_check == "Hardcore Challenge Deck" then
+    challenge = AKYRS.HC_CHALLENGES[AKYRS.get_hc_challenge_int_from_id(old_challenge or '')] or {name = 'ERROR'}
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "back.lua"
+pattern = """challenge = G.CHALLENGES[get_challenge_int_from_id(challenge or '') or ''] or {name = 'ERROR'}"""
+position = "before"
+payload = """
+local old_challenge = challenge
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """              chosen = _challenge_chosen
+            } or nil,"""
+position = "at"
+payload = """            } or {
+              label = localize('b_akyrs_hc_challenges'),
+              tab_definition_function = AKYRS.UIDEF.hc_challenges,
+              tab_definition_function_args = from_game_over,
+              chosen = _challenge_chosen
+            },
+            G.STAGE == G.STAGES.MAIN_MENU and {
+              label = localize('b_akyrs_hc_challenges'),
+              tab_definition_function = AKYRS.UIDEF.hc_challenges,
+              tab_definition_function_args = from_game_over,
+              chosen = _challenge_chosen
+            } or nil,
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  if _achievement == 'b_challenge' then subtext = localize('k_challenges') end"""
+position = "after"
+payload = """  if _achievement == 'b_akyrs_hardcore_challenges' then subtext = localize('b_akyrs_hc_challenges_full_txt') end"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  local challenge = G.CHALLENGES[_id]"""
+position = "after"
+payload = """if is_hardcore then challenge = AKYRS.HC_CHALLENGES[_id] end
+if challenge and challenge.difficulty then AKYRS.current_hc_difficulty = challenge.difficulty else AKYRS.current_hc_difficulty = nil end
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  local joker_size = 0.6"""
+position = "before"
+payload = """
+local stake = 1
+if challenge.stake then stake = challenge.stake end
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  local joker_size = 0.6"""
+position = "before"
+payload = """
+local stake = 1
+if challenge.stake then stake = challenge.stake end
+"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """function G.UIDEF.challenge_description(_id, daily, is_row)"""
+position = "at"
+payload = """function G.UIDEF.challenge_description(_id, daily, is_row, is_hardcore)"""
+overwrite = true
+match_indent = true
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """  for k, v in ipairs(nu_base_modifiers) do"""
+position = "before"
+payload = """
+if challenge.stake and challenge.stake ~= 1 and AKYRS.find_stake_from_level(challenge.stake) then
+    modded_starts = modded_starts or {}
+    local stake_key, stake_obj = AKYRS.find_stake_from_level(challenge.stake)
+    modded_starts[#modded_starts + 1] = {
+        n = G.UIT.R,
+        config = { align = "cl", maxw = 3.5 },
+        nodes =
+        {
+            {
+                n = G.UIT.T,
+                config = {
+                    text = localize { type = 'name_text', set = 'Stake', key = stake_key },
+                    colour = get_stake_col(SMODS.Stakes[stake_key].order),
+                    scale = 0.4
+                }
+            }
+        }
+    }
+end
+
+"""
+overwrite = true
+match_indent = true
+
+
+
+# so it passes is_hardcore to the descriptions
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """                tab_definition_function_args = {_id = _id, _tab = 'Rules'}"""
+position = "at"
+payload = """                tab_definition_function_args = {_id = _id, _tab = 'Rules', _hc = is_hardcore}"""
+overwrite = true
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """                tab_definition_function_args = {_id = _id, _tab = 'Restrictions'}"""
+position = "at"
+payload = """                tab_definition_function_args = {_id = _id, _tab = 'Restrictions', _hc = is_hardcore}"""
+overwrite = true
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """                tab_definition_function_args = {_id = _id, _tab = 'Deck'}"""
+position = "at"
+payload = """                tab_definition_function_args = {_id = _id, _tab = 'Deck', _hc = is_hardcore}"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """local challenge = G.CHALLENGES[args._id]"""
+position = "after"
+payload = """if args._hc then challenge = AKYRS.HC_CHALLENGES[args._id] end"""
+overwrite = true
+match_indent = true
+
+# IN CASE OF ENTROPY
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """local challenge = G.CHALLENGES[args._id] or Entropy.GetDailyChallenge()"""
+position = "after"
+payload = """if args._hc then challenge = AKYRS.HC_CHALLENGES[args._id] end"""
+overwrite = true
+match_indent = true
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """      {n=G.UIT.R, config={align = "cm", padding = 0.1, minh = 0.7, minw = 9, r = 0.1, hover = true, colour = G.C.BLUE, button = "start_challenge_run", shadow = true, id = _id}, nodes={"""
+position = "at"
+payload = """      {n=G.UIT.R, config={align = "cm", padding = 0.1, minh = 0.7, minw = 9, r = 0.1, hover = true, colour = G.C.BLUE, button = is_hardcore and "akys_start_hc_challenge_run" or "start_challenge_run", shadow = true, id = _id, stake = stake}, nodes={"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """
+        challenge_progress = {"""
+position = "before"
+payload = """
+akyrs_hc_challenge_progress = {
+            completed = {},
+            unlocked = {}
+        },"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """    selected_back = get_deck_from_name(selected_back)"""
+position = "before"
+payload = """
+if args.challenge and args.challenge.akyrs_is_hardcore and not (args.challenge.deck and args.challenge.deck.type) then selected_back = 'Hardcore Challenge Deck' end"""
+overwrite = true
+match_indent = true
+
+
+
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """            if add and not G.GAME.banned_keys[v.key] then """
+position = "before"
+payload = """if G.GAME and G.GAME.modifiers.akyrs_allow_duplicates and v.unlocked then add = true end
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''          game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value}}}'''
+position = "before"
+payload = """
+if v.akyrs_localized_value then
+    game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {localize(v.akyrs_localized_value)}}}
+else
+"""
+overwrite = true
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''          game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value}}}'''
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true

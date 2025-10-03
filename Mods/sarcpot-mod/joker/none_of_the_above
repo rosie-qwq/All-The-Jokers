@@ -1,0 +1,80 @@
+SMODS.Joker {
+    discovered = true,
+    key = 'none_of_the_above',
+
+    config = {
+        extra = {
+            n = 1,
+            d = 2,
+            mult = 4,
+            chips = 30,
+            money = 3,
+            xmult = 1.2,
+            retriggers = 1
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
+        local n, d = SMODS.get_probability_vars(card, card.ability.extra.n, card.ability.extra.d, 'none_of_the_above')
+        return {
+            vars = {n, d, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.money,
+                    card.ability.extra.xmult}
+        }
+    end,
+    rarity = 1,
+    atlas = 'sarcpot_atlas',
+    pos = {
+        x = 1,
+        y = 1
+    },
+    cost = 5,
+    in_pool = function(self, args)
+        if G.playing_cards then
+            for i = 1, #G.playing_cards do
+                if G.playing_cards[i].config.center.key == 'm_wild' then
+                    return true
+                end
+            end
+        end
+
+        return false
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if context.other_card.ability.name == "Wild Card" then
+                local mult = nil
+                local chips = nil
+                local money = nil
+                local xmult = nil
+
+                if SMODS.pseudorandom_probability(card, 'nota_mult', card.ability.extra.n, card.ability.extra.d,
+                    'none_of_the_above') then
+                    mult = card.ability.extra.mult
+
+                end
+                if SMODS.pseudorandom_probability(card, 'nota_chips', card.ability.extra.n, card.ability.extra.d,
+                    'none_of_the_above') then
+                    chips = card.ability.extra.chips
+
+                end
+                if SMODS.pseudorandom_probability(card, 'nota_money', card.ability.extra.n, card.ability.extra.d,
+                    'none_of_the_above') then
+                    money = card.ability.extra.money
+
+                    if SMODS.pseudorandom_probability(card, 'nota_xmult', card.ability.extra.n, card.ability.extra.d,
+                        'none_of_the_above') then
+                        xmult = card.ability.extra.xmult
+
+                    end
+                    return {
+                        mult = mult,
+                        chips = chips,
+                        dollars = money,
+                        x_mult = xmult,
+                        card = card
+                    }
+                end
+            end
+        end
+    end
+}

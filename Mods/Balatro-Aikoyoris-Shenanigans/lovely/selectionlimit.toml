@@ -1,0 +1,39 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = """    self.config.highlighted_limit = config.highlight_limit or 5"""
+position = "at"
+payload = """    self.config.highlighted_limit = config.highlight_limit or G.GAME.aiko_cards_playable or 5"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = """    if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > 5 then """
+position = "at"
+payload = """    if #G.hand.highlighted <= 0 then"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = """if getmetatable(self) == CardArea then """
+position = "before"
+payload = """
+if G.GAME and G.GAME.aiko_cards_playable then 
+    self.config.highlighted_limit = math.max(self.config.highlighted_limit, G.GAME.aiko_cards_playable) or 5
+end
+if Cryptid and G.GAME and G.GAME.modifiers and G.GAME.modifiers.cry_highlight_limit then 
+    self.config.highlighted_limit = math.max(self.config.highlighted_limit, G.GAME.modifiers.cry_highlight_limit) or 5
+end
+"""
+overwrite = true
+match_indent = true

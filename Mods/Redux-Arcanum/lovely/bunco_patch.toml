@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 11 # Go after Bunco
+
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "elseif used_tarot.edition.polychrome then"
+position = 'at'
+match_indent = true
+payload = 'elseif used_tarot.edition.polychrome and used_tarot.ability.set ~= "Alchemical" then'

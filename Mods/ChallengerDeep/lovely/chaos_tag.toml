@@ -1,0 +1,151 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# display that a chaos rule will be created
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={id = 'tag_'..blind_choice, align = "cm", r = 0.1, padding = 0.1, minw = 1, can_collide = true, ref_table = _tag_sprite}, nodes={'''
+position = "before"
+match_indent = true
+payload = '''G.GAME.modifiers.chaos_engine_skip and {n=G.UIT.R, config={align = 'tm'}, nodes={
+    {n=G.UIT.T, config = {text = 'Skipping will create a rule!', colour = G.C.RED, scale = 0.25}}
+}} or nil,'''
+
+# create a chaos rule when a blind is skipped
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.CONTROLLER.locks.skip_blind = true"
+position = "after"
+match_indent = true
+payload = '''if G.GAME.modifiers.chaos_engine_skip then --i can do anything!
+    local challenge = G.GAME.challenge_index
+    local chaos_number = pseudorandom('chaos_engine')
+    disabledContaining = G.GAME.modifiers.disable_hand_containing
+    disabledHands = G.GAME.modifiers.disable_hand
+                        for k, v in ipairs(G.GAME.chaos_engine_rules) do
+                            if chaos_number < k/#G.GAME.chaos_engine_rules then
+                                print("ADDING "..v.id)
+                                if v.value then
+                                    print("VALUE: "..v.value)
+                                end
+                                if v.tag then
+                                    print("TAG: "..v.tag)
+                                end
+                                if v.hand then
+                                    print("HAND: "..v.hand)
+                                end
+                                if v.id == 'enable_eternal_jokers' then
+                                    G.GAME.modifiers.enable_eternals_in_shop = true
+                                    G.GAME.chaos_engine_rules[#G.GAME.chaos_engine_rules+1] = {id = 'all_eternal'}
+                                elseif v.id == 'all_eternal' then
+                                    G.GAME.modifiers.all_eternal = true
+                                    for kk, vv in ipairs(G.jokers.cards) do
+                                        vv:set_eternal(true)
+                                    end
+                                elseif v.id == 'enable_rental_jokers' then
+                                    G.GAME.modifiers.enable_rentals_in_shop = true
+                                    G.GAME.chaos_engine_rules[#G.GAME.chaos_engine_rules+1] = {id = 'all_rental_jokers'}
+                                    local rnd_num = pseudorandom('rule')
+                                    G.GAME.chaos_engine_rules[#G.GAME.chaos_engine_rules+1] = {id = 'rental_rate', value = math.ceil(2 + rnd_num*4)}
+                                elseif v.id == 'all_rental_jokers' then    
+                                    G.GAME.modifiers.all_rental_jokers = true
+                                    for kk, vv in ipairs(G.jokers.cards) do
+                                        vv:set_rental(true)
+                                    end
+                                elseif v.id == 'enable_perishable_jokers' then
+                                    G.GAME.modifiers.enable_perishables_in_shop = true
+                                    G.GAME.chaos_engine_rules[#G.GAME.chaos_engine_rules+1] = {id = 'all_perishable_jokers'}
+                                elseif v.id == 'all_perishable_jokers' then
+                                    G.GAME.modifiers.all_perishable_jokers = true
+                                    for kk, vv in ipairs(G.jokers.cards) do
+                                        vv:set_perishable(true)
+                                    end
+                                elseif v.id == 'enable_scattering_jokers' then
+                                    G.GAME.modifiers.enable_scattering_in_shop = true
+                                elseif v.id == 'enable_reactive_jokers' then
+                                    G.GAME.modifiers.enable_reactive_in_shop = true
+                                elseif v.id == 'enable_hindered_jokers' then
+                                    G.GAME.modifiers.enable_hindered_in_shop = true
+                                elseif v.id == 'enable_shrouded_jokers' then
+                                    G.GAME.modifiers.enable_shroudeds_in_shop = true
+                                elseif v.id == 'anaglyph' then
+                                    G.GAME.modifiers.anaglyph[#G.GAME.modifiers.anaglyph+1] = v.tag
+                                    local chaos_number = pseudorandom('chaos_engine')
+                                    for k, v in ipairs(G.GAME.chaos_tags) do --choose a random tag to add as anaglyph rule to the chaos engine
+                                        if chaos_number < k/#G.GAME.chaos_tags then
+                                            G.GAME.chaos_engine_rules[#G.GAME.chaos_engine_rules+1] = {id = 'anaglyph', value = localize{type = 'name_text', set = 'Tag', key = 'tag_'..v, nodes = {}}, tag = v}
+                                            break
+                                        end
+                                    end
+                                elseif v.id == 'no_shop_jokers' then
+                                    G.GAME.joker_rate = 0
+                                elseif v.id == 'win_ante' then
+                                    G.GAME.win_ante = v.value
+                                elseif v.id == 'no_vouchers' then
+                                    G.GAME.modifiers.no_vouchers = true
+                                    G.GAME.current_round.voucher = nil
+                                    G.GAME.banned_keys['tag_voucher'] = true
+                                    for kk, vv in ipairs(G.GAME.chaos_tags) do
+                                        if vv == 'voucher' or vv == 'cry_better_voucher' then
+                                            table.remove(G.GAME.chaos_tags, kk)
+                                        end
+                                    end
+                                elseif v.id == 'blind_scaling' then
+                                    G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * v.value
+                                elseif v.id == 'disable_hand' then --hand is not allowed
+                                    disabledHands[#disabledHands+1] = v.hand
+                                    local chaos_number = pseudorandom('chaos_engine')
+                                    for k, v in ipairs(G.GAME.chaos_hands) do --choose a random hand to ban
+                                        if chaos_number < k/#G.GAME.chaos_hands then
+                                            G.GAME.chaos_engine_rules[#G.GAME.chaos_engine_rules+1] = {id = 'disable_hand', value = v, hand = v}
+                                            break
+                                        end
+                                    end
+                                elseif v.id == 'disable_hand_containing' then --hands with this in them are not allowed
+                                    disabledContaining[#disabledContaining+1] = v.hand
+                                elseif v.value then
+                                    G.GAME.modifiers[v.id] = v.value
+                                else
+                                    G.GAME.modifiers[v.id] = true
+                                end
+                                G.GAME.chaos_rules[#G.GAME.chaos_rules+1] = v
+                                if v.edition_type == 'cards' and #G.GAME.chaos_editions_cards > 0 then
+                                    local chaos_number = pseudorandom('chaos_engine')
+                                    for kk, vv in ipairs(G.GAME.chaos_editions_cards) do --choose a random playing card edition to add as a ban
+                                        if chaos_number < kk/#G.GAME.chaos_editions_cards then
+                                            G.GAME.chaos_engine_rules[k] = {id = 'no_'..vv..'_cards', edition_type = 'cards'}
+                                            table.remove(G.GAME.chaos_editions_cards, kk)
+                                            break
+                                        end
+                                    end
+                                elseif v.edition_type == 'jokers' and #G.GAME.chaos_editions_jokers > 0 then
+                                    local chaos_number = pseudorandom('chaos_engine')
+                                    for kk, vv in ipairs(G.GAME.chaos_editions_jokers) do --choose a random joker edition to add as a ban
+                                        if chaos_number < kk/#G.GAME.chaos_editions_jokers then
+                                            G.GAME.chaos_engine_rules[k] = {id = 'no_'..vv..'_jokers', edition_type = 'jokers'}
+                                            table.remove(G.GAME.chaos_editions_jokers, kk)
+                                            break
+                                        end
+                                    end
+                                elseif v.edition_type == 'all' and #G.GAME.chaos_editions > 0  then
+                                    local chaos_number = pseudorandom('chaos_engine')
+                                    for kk, vv in ipairs(G.GAME.chaos_editions) do --choose a random edition to add as a ban for every card
+                                        if chaos_number < kk/#G.GAME.chaos_editions then
+                                            G.GAME.chaos_engine_rules[k] = {id = 'no_'..vv..'s', edition_type = 'all'}
+                                            table.remove(G.GAME.chaos_editions, kk)
+                                            break
+                                        end
+                                    end
+                                elseif v.id ~= 'anaglyph' then
+                                    table.remove(G.GAME.chaos_engine_rules, k)
+                                end
+                                break
+                            end
+                        end
+                    G.GAME.modifiers.disable_hand_containing = disabledContaining
+                    G.GAME.modifiers.disable_hand = disabledHands
+end'''

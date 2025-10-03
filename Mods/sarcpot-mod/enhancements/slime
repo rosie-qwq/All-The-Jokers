@@ -1,0 +1,30 @@
+SMODS.Enhancement({
+    key = "slime",
+    atlas = "enhancements",
+    pos = {x=2,y=0},
+    discovered = false,
+    config = {},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS['c_sarc_plort']
+    end,
+    calculate = function(self, card, context)
+        if context.cardarea == G.play and context.main_scoring then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    if #G.consumeables.cards < G.consumeables.config.card_limit then
+                        local consumable = create_card('travel', G.consumeables, nil, nil, true, nil, 'c_sarc_plort')
+                        consumable:add_to_deck()
+                        G.consumeables:emplace(consumable)
+                        G.GAME.consumeable_buffer = 0
+                        card:juice_up()
+                        play_sound("card1")
+                        return true
+                    end
+                    return true
+                end
+            }))
+        end
+    end
+})

@@ -1,0 +1,16 @@
+{
+	"id": "finity",
+	"name": "Finity",
+	"display_name": "Finity",
+	"author": ["_Freh, missingnumber"],
+	"description": "Showdown Jokers appear! This mod adds a plethora of new Jokers based on the Boss Blinds fought on Ante 8, defeat them to make the corresponding Joker appear in the next shop. Finity is compatible with a lot of other mods that add Showdown Boss Blinds with more than 20 Cross-Mod Jokers.",
+	"prefix": "finity",
+	"main_file": "Finity.lua",
+	"priority": 1.1,
+	"badge_colour": "75090d",
+	"badge_text_colour": "0aa1ff",
+	"version": "1.4.5.1",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-0308a)"
+	]
+}

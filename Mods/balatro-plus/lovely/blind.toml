@@ -1,0 +1,46 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# The Brake allow play/discard
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if G.GAME.current_round.discards_left <= 0 or #G.hand.highlighted <= 0 then"
+position = "at"
+match_indent = true
+payload = """
+local allowed = G.GAME.current_round.discards_left > 0 and #G.hand.highlighted > 0
+
+if G.GAME.blind.name == "bl_bplus_brake" and not G.GAME.blind.disabled then
+  local last_act = G.GAME.current_round.bplus_the_brake_last_act
+  allowed = allowed and (last_act ~= "discard")
+end
+
+if not allowed then
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "check_for_unlock({type = 'discard_custom', cards = cards})"
+position = "before"
+match_indent = true
+payload = """
+if G.GAME.blind.name == "bl_bplus_brake" and not G.GAME.blind.disabled then
+  G.GAME.current_round.bplus_the_brake_last_act = "discard"
+end
+"""
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.current_round.hands_played = G.GAME.current_round.hands_played + 1"
+position = "after"
+match_indent = true
+payload = """
+if G.GAME.blind.name == "bl_bplus_brake" and not G.GAME.blind.disabled then
+  G.GAME.current_round.bplus_the_brake_last_act = "play"
+end
+"""

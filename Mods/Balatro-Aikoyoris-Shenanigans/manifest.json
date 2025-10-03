@@ -1,0 +1,21 @@
+{
+	"id": "aikoyorisshenanigans",
+	"name": "Aikoyori's Shenanigans",
+	"author": ["Aikoyori"],
+	"description": "Adds a bunch of stuff I want to add to the game.",
+	"prefix": "akyrs",
+	"main_file": "main.lua",
+	"priority": 700,
+	"badge_colour": "ff475a",
+	"badge_text_colour": "edefff",
+	"display_name": "AikoShen",
+	"version": "0.2.0-alpha-250912a",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-0827)", 
+		"Lovely (>=0.8.0)", 
+		"Balatro (>=1.0.1o)"],
+	"conflicts": [
+	],
+	"provides": [
+	]
+}

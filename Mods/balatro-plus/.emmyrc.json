@@ -1,0 +1,12 @@
+{
+  "workspace.library": [
+    "src",
+    "../smods/lsp_def"
+  ],
+  "diagnostics.globals": [
+    "G"
+  ],
+  "diagnostics.disable": [
+    "lowercase-global"
+  ]
+}

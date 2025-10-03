@@ -1,0 +1,104 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "                    self.children.front:draw_shader('dissolve')"
+position = "before"
+payload = """
+if not self.is_null then
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "                    self.children.front:draw_shader('dissolve')"
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "                    self.children.front:draw_shader('negative', nil, self.ARGS.send_to_shader)"
+position = "before"
+payload = """
+if not self.is_null then
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "            --Draw the main part of the card"
+position = "after"
+payload = """
+        self.front_bak = self.children.front
+        if self.is_null then
+            self.children.front = nil
+        else
+            self.children.front = self.front_bak
+        end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "                    self.children.front:draw_shader('negative', nil, self.ARGS.send_to_shader)"
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "                        self.children.front:draw_shader('played', nil, self.ARGS.send_to_shader)"
+position = "before"
+payload = """
+if not self.is_null then
+"""
+overwrite = true
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "                        self.children.front:draw_shader('played', nil, self.ARGS.send_to_shader)"
+position = "after"
+payload = """
+end
+"""
+overwrite = true
+match_indent = true
+
+
+
+[[patches]]
+[patches.regex]
+target = "card.lua"
+pattern = """(?<indent>[\t ]*)(?<render>self.children.front:draw_shader\\('\\w+', nil, self.ARGS.send_to_shader\\))"""
+position = "at"
+line_prepend = '$indent'
+payload = """
+if not (self.is_null) then 
+    --print("WTF")
+    $render
+end
+"""

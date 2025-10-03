@@ -1,0 +1,1 @@
+return { TargetFPS = 60, SimpleGraphics = false, CanvasScale = 1 }

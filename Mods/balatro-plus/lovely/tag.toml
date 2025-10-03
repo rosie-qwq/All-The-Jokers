@@ -1,0 +1,37 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Add 'hand_drawn' context type for Tag trigger
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "SMODS.calculate_context({first_hand_drawn = not G.GAME.current_round.any_hand_drawn and G.GAME.facing_blind,"
+position = "before"
+match_indent = true
+payload = """
+for _, t in ipairs(G.GAME.tags) do
+  t:apply_to_run {
+    type = "hand_drawn",
+    first_hand = not G.GAME.current_round.any_hand_drawn and G.GAME.facing_blind,
+    hand_drawn = G.GAME.facing_blind and SMODS.drawn_cards,
+    other_drawn = not G.GAME.facing_blind and SMODS.drawn_cards,
+  }
+end
+"""
+
+# Show tag icon for Tag that trigger at 'eval' context type
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local blind_sprite = Sprite(0, 0, 0.7,0.7, G.ASSET_ATLAS['tags'], copy_table(config.pos))"
+position = "at"
+match_indent = true
+payload = """
+local tag_atlas
+if config.tag and config.tag.config and config.tag.config.bplus_eval_atlas then
+  tag_atlas = config.tag.config.bplus_eval_atlas
+end
+local blind_sprite = Sprite(0, 0, 0.7,0.7, G.ASSET_ATLAS[tag_atlas or 'tags'], copy_table(config.pos))
+"""

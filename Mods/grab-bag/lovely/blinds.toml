@@ -1,0 +1,67 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# defeated blind tracking
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+match_indent = true
+pattern = '''blind_name_dynatext:pop_out(2)'''
+position = "after"
+payload = '''
+G.GAME.GB_DEFEATED_BLINDS = G.GAME.GB_DEFEATED_BLINDS or {}
+G.GAME.GB_DEFEATED_BLIND_COUNT = G.GAME.GB_DEFEATED_BLIND_COUNT or 0
+if self.config.blind.key ~= "bl_small"
+and self.config.blind.key ~= "bl_big" then
+    G.GAME.GB_DEFEATED_BLINDS[self.config.blind.key] = true
+    G.GAME.GB_DEFEATED_BLIND_COUNT = G.GAME.GB_DEFEATED_BLIND_COUNT + 1
+end
+'''
+
+# lance patch 1/2
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+match_indent = true
+pattern = '''G.hand.highlighted[i]:calculate_seal({discard = true})'''
+position = "after"
+payload = '''G.hand.highlighted[i].ability.discarded_this_ante = true'''
+
+# lance patch 2/2
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+match_indent = true
+pattern = '''v.ability.played_this_ante = nil'''
+position = "after"
+payload = '''v.ability.discarded_this_ante = nil'''
+
+# shame patch 1/2
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+match_indent = true
+pattern = '''G.CONTROLLER.locks.skip_blind = true'''
+position = "after"
+payload = '''
+G.GAME.GB_BLINDS_SKIPPED_THIS_ANTE = (G.GAME.GB_BLINDS_SKIPPED_THIS_ANTE) or 0
+G.GAME.GB_BLINDS_SKIPPED_THIS_ANTE = G.GAME.GB_BLINDS_SKIPPED_THIS_ANTE + 1
+'''
+
+# shame patch 2/2
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+match_indent = true
+pattern = '''G.GAME.round_resets.blind_states.Boss = 'Defeated''''
+position = "after"
+payload = '''G.GAME.GB_BLINDS_SKIPPED_THIS_ANTE = 0'''
+
+
+

@@ -1,0 +1,31 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Partner "compat"
+[[patches]]
+[patches.pattern]
+target = '=[SMODS partner "partner.lua"]'
+pattern = '''G.FUNCS.run_setup_partners_option()'''
+position = "at"
+match_indent = true
+payload = '''if not G.GAME.modifiers.chdp_disabled_partner then G.FUNCS.run_setup_partners_option() end'''
+
+# Bakery "compat"
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Bakery "src//charm.lua"]'
+pattern = '''Bakery_API.add_charm_to_shop(key, 'shop_voucher')'''
+position = "at"
+match_indent = true
+payload = '''if not G.GAME.modifiers.chdp_disable_charms then Bakery_API.add_charm_to_shop(key, 'shop_voucher') end'''
+
+# grim "Compat"
+[[patches]]
+[patches.pattern]
+target = '=[SMODS GRM "Grim.lua"]'
+pattern = '''local t = {n=G.UIT.R, config={align = "cm", id = 'skill_tree_ui', colour = G.C.CLEAR, paddng = 0.1}, nodes = {'''
+position = "at"
+match_indent = true
+payload = '''local t = G.GAME.modifiers.chdp_hide_skills_grim and nil or {n=G.UIT.R, config={align = "cm", id = 'skill_tree_ui', colour = G.C.CLEAR, paddng = 0.1}, nodes = {'''

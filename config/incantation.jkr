@@ -1,0 +1,5 @@
+return {
+	["StackAnything"] = false,
+	["UnsafeMode"] = false,
+	["NegativesOnly"] = false,
+}

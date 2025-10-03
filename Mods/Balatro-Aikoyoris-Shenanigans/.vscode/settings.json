@@ -1,0 +1,5 @@
+{
+    "files.exclude": {
+        "./func/words/words.lua": true,
+    }
+}

@@ -1,0 +1,36 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Jokers added at the start of a Challenge run will never have randomly assigned stickers??? I don't know why I did this.
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "local _joker = add_joker(v.id, v.edition, k ~= 1)"
+position = "at"
+match_indent = true
+payload = 'local _joker = add_joker(v.id, v.edition, k ~= 1, false, true)'
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "function add_joker(joker, edition, silent, eternal)"
+position = "at"
+match_indent = true
+payload = 'function add_joker(joker, edition, silent, eternal, ignore_sticker)'
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if edition then card:set_edition{[edition] = true} end"
+position = "after"
+match_indent = true
+payload = '''
+if ignore_sticker then 
+    card:set_eternal(false)
+    card:set_rental(false)
+    card.ability.perishable = false
+end
+'''

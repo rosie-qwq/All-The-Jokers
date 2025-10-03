@@ -1,0 +1,1075 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+## Add globals
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''function love.load()'''
+position = "before"
+payload = '''
+Kino = {}
+Kino.jokers = {}
+'''
+match_indent = true
+
+### The Thing Functionality
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if flush_calc then"
+position = "after"
+payload = '''
+if next(find_joker('j_kino_thing')) and (self.base.suit == G.GAME.current_round.kino_thing_card.suit) then
+	return true
+end
+
+if next(find_joker('j_kino_sleepy_hollow')) and (SMODS.has_enhancement(self, 'm_kino_monster') or SMODS.has_enhancement(self, 'm_kino_horror')) then
+	return true
+end
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.debuff and not bypass_debuff then return end"
+position = "after"
+payload = '''
+if next(find_joker('j_kino_thing')) and (self.base.suit == G.GAME.current_round.kino_thing_card.suit) then
+	return true
+end
+
+if next(find_joker('j_kino_sleepy_hollow')) and (SMODS.has_enhancement(self, 'm_kino_monster') or SMODS.has_enhancement(self, 'm_kino_horror')) then
+	return true
+end
+'''
+match_indent = true
+overwrite = false
+
+
+# # Demonic Card patches
+# [[patches]]
+# [patches.pattern]
+# target = "functions/state_events.lua"
+# pattern = "local cards_destroyed = {}"
+# position = "after"
+# payload = '''
+
+# if not next(find_joker("j_kino_hellboy_1")) then
+#     local has_demonic_card = false
+#     local _sacrifices_this_hand = 0
+#     local _arrayofsacrifices = {}
+
+#     for i = 1, #scoring_hand do
+#         if SMODS.has_enhancement(scoring_hand[i], 'm_kino_demonic') and not scoring_hand[i].debuff then
+#             has_demonic_card = true
+#         end
+#     end
+
+#     for i = 1, #scoring_hand do
+#         if has_demonic_card and not SMODS.has_enhancement(scoring_hand[i], 'm_kino_demonic') then
+#             if next(find_joker("j_kino_smile")) and scoring_hand[i]:is_face() then
+
+#             else
+#                 cards_destroyed[#cards_destroyed + 1] = scoring_hand[i]
+#                 _arrayofsacrifices[#_arrayofsacrifices + 1] = scoring_hand[i]
+#                 scoring_hand[i].kino_tobesacrificed = true
+#                 G.GAME.current_round.sacrifices_made = G.GAME.current_round.sacrifices_made + 1
+#                 scoring_hand[i].destroyed = true
+#                 _sacrifices_this_hand = _sacrifices_this_hand + 1
+#             end
+#         end
+#     end
+
+#     if _sacrifices_this_hand > 0 then
+#         SMODS.calculate_context({kino_sacrifices = true, kino_sacrifice_num = _sacrifices_this_hand, kino_sacrificed_cards = _arrayofsacrifices})
+#     end
+
+#     -- Challenge additional implementations
+#     if has_demonic_card and G.GAME.modifiers.kino_bestsong then
+#         G.E_MANAGER:add_event(Event({
+#             trigger = 'after',
+#             func = (function()     
+#                 ease_discard(_sacrifices_this_hand)
+#             return true end)
+#         }))
+#     end
+# end
+# '''
+# match_indent = true
+# overwrite = false
+
+## Consumable Type code (Taken from Bunco)
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''local shared_sprite = (self.ability.set == 'Edition' or self.ability.set == 'Joker') and G.shared_undiscovered_joker or G.shared_undiscovered_tarot'''
+position = 'after'
+match_indent = true
+payload = '''
+
+if not G.shared_undiscovered_confection then G.shared_undiscovered_confection = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS['kino_confections'], {x = 1, y = 3}) end
+
+if self.ability.set == 'confection' then
+    shared_sprite = G.shared_undiscovered_confection
+end
+
+'''
+
+## Hand upgrade system
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''G.GAME.hands[hand].chips = math.max(G.GAME.hands[hand].s_chips + G.GAME.hands[hand].l_chips*(G.GAME.hands[hand].level - 1), 0)'''
+position = 'after'
+match_indent = true
+payload = '''
+G.GAME.hands[hand].mult = G.GAME.hands[hand].mult + (G.GAME.hands[hand].mult_bonus or 0)
+G.GAME.hands[hand].chips = G.GAME.hands[hand].chips + (G.GAME.hands[hand].chips_bonus or 0)
+'''
+
+## Add start round functionality
+# 
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = 'SMODS.calculate_context({ending_shop = true})'
+position = 'after'
+match_indent = true
+payload = '''
+	end_shopping()
+'''
+
+## From Bunco (line 2519 - 2549)
+# tag functionality (hand_played before scoring)
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = 'SMODS.calculate_context({full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, before = true})'
+position = 'after'
+match_indent = true
+payload = '''
+
+for i = 1, #G.GAME.tags do
+    G.GAME.tags[i]:apply_to_run({type = 'hand_played', before = true, scoring_name = text})
+end
+'''
+
+# Edition tags 2/5
+# tag functionality (hand_played after scoring)
+[[patches]]
+[patches.regex]
+target = 'functions/state_events.lua'
+pattern = "(?<indent>[\t ]*)else\\s*\\n[\\t ]*mult\\s*=\\s*mod_mult\\(\\s*0\\s*\\)\\s*\\n[\\t ]*hand_chips\\s*=\\s*mod_chips\\(\\s*0\\s*\\)\\s*"
+position = 'before'
+line_prepend = '$indent'
+payload = '''
+
+for i = 1, #G.GAME.tags do
+    G.GAME.tags[i]:apply_to_run({type = 'hand_played', after = true})
+end
+
+'''
+
+## End Bunco code
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "local ret = G.GAME.tags[i]:apply_to_run({type = 'eval'})"
+position = 'after'
+match_indent = true
+payload = '''
+local revenue = G.GAME.tags[i]:apply_to_run({type = 'eval_interest'})
+'''
+
+## High Score Counter
+# if G.GAME.round_scores[score] and math.floor(amt) > G.GAME.round_scores[score].amt then
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "if G.GAME.round_scores[score] and math.floor(amt) > G.GAME.round_scores[score].amt then"
+position = 'after'
+match_indent = true
+payload = '''
+if amt > 1 then
+	G.GAME.current_round.beaten_run_high = G.GAME.current_round.beaten_run_high + 1
+end
+'''
+## Add reroll cards to the code
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "G.GAME.round_bonus.next_hands = 0"
+position = 'before'
+match_indent = true
+payload = '''
+
+local blair = find_joker('j_kino_blair_witch')
+G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + #blair
+calculate_reroll_cost(true)
+'''
+
+## Adds an additional check for :can_sell_card so
+## some cards cannot be sold
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "self.area.config.type == 'joker' and"
+position = 'after'
+match_indent = true
+payload = '''
+self.config.center.can_be_sold ~= false and
+'''
+
+## Adds an additional check for :can_sell_card so
+## some cards cannot be sold
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "elseif card.config.center.set == 'Spectral' then  G.GAME.consumeable_usage_total.spectral = G.GAME.consumeable_usage_total.spectral + 1"
+position = 'after'
+match_indent = true
+payload = '''
+elseif card.config.center.set == 'confection' then
+	if not G.GAME.consumeable_usage_total.confection then
+		G.GAME.consumeable_usage_total.confection = 0
+	end
+    G.GAME.current_round.confection_used = true
+	G.GAME.consumeable_usage_total.confection = G.GAME.consumeable_usage_total.confection + 1
+'''
+
+## Lucky card changes for the Prestige (Kept for compatibility reasons)
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "if pseudorandom('lucky_money') < G.GAME.probabilities.normal/15 then"
+position = 'at'
+match_indent = true
+payload = '''
+if pseudorandom('lucky_money') < (G.GAME.probabilities.normal * (self.ability.lucky_bonus or 1))/15 then
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "if pseudorandom('lucky_mult') < G.GAME.probabilities.normal/5 then"
+position = 'at'
+match_indent = true
+payload = '''
+if pseudorandom('lucky_mult') < (G.GAME.probabilities.normal * (self.ability.lucky_bonus or 1))/5 then
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "elseif _c.effect == 'Lucky Card' then loc_vars = {G.GAME.probabilities.normal, cfg.mult, 5, cfg.p_dollars, 15}"
+position = 'at'
+match_indent = true
+payload = '''
+elseif _c.effect == 'Lucky Card' then loc_vars = {G.GAME.probabilities.normal * (cfg.lucky_bonus or 1), cfg.mult, 5, cfg.p_dollars, 15}
+'''
+
+# Lucky cards Post-probability rework
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "if SMODS.pseudorandom_probability(self, 'lucky_money', 1, 15) then"
+position = 'at'
+match_indent = true
+payload = '''
+if SMODS.pseudorandom_probability(self, 'lucky_money', 1 * (self.ability.lucky_bonus or 1), 15) then
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "if SMODS.pseudorandom_probability(self, 'lucky_mult', 1, 5) then"
+position = 'at'
+match_indent = true
+payload = '''
+if SMODS.pseudorandom_probability(self, 'lucky_mult', 1 * (self.ability.lucky_bonus or 1), 5) then
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "elseif _c.effect == 'Lucky Card' then loc_vars = {G.GAME.probabilities.normal, cfg.mult, 5, cfg.p_dollars, 15}"
+position = 'at'
+match_indent = true
+payload = '''
+elseif _c.effect == 'Lucky Card' then loc_vars = {G.GAME.probabilities.normal * (cfg.lucky_bonus or 1), cfg.mult, 5, cfg.p_dollars, 15}
+'''
+
+# # Boss Blind unabduct
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "G.FUNCS.draw_from_discard_to_deck()"
+position = 'after'
+match_indent = true
+payload = '''
+if G.GAME.blind:get_type() == 'Boss' then
+	G.FUNCS.draw_from_area_to_abduction()  
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+		delay = 0.3,
+        func = (function()  
+			Kino.abduction_end()
+	        return true end)
+	}))
+end
+'''
+
+
+# Abduction functionality
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "check_for_unlock({type = 'play_all_hearts'})"
+position = 'after'
+match_indent = true
+payload = '''
+G.FUNCS.draw_from_area_to_abduction()
+'''
+
+# 
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''
+if (not v.shattered) and (not v.destroyed) then 
+'''
+position = 'at'
+match_indent = true
+payload = '''
+if (not v.shattered) and (not v.destroyed) and (not v.abducted) then 
+'''
+
+
+# 
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''
+if G.GAME.blind.name == 'The Serpent' and
+'''
+position = 'before'
+match_indent = true
+payload = '''
+if G.GAME.blind.in_blind and 
+next(find_joker('j_kino_insomnia')) and
+(G.GAME.current_round.hands_played > 0 or
+G.GAME.current_round.discards_used > 0) then 
+	SMODS.calculate_context({insomnia_awake = true})
+	return
+end
+'''
+
+# Allows booster packs to have adjustable weight
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+for k, v in ipairs(G.P_CENTER_POOLS['Booster']) do
+	if (not _type or _type == v.kind) and not G.GAME.banned_keys[v.key] then cume = cume + (v.weight or 1 ) end
+end
+'''
+position = 'at'
+match_indent = true
+payload = '''
+for k, v in ipairs(G.P_CENTER_POOLS['Booster']) do
+	local _weight = v.get_weight and v:get_weight() or v.weight
+	if (not _type or _type == v.kind) and not G.GAME.banned_keys[v.key] then cume = cume + (_weight or 1 ) end
+end
+'''
+
+# Patch SMODS for snackbag CardArea
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''
+-- TARGET: add your own CardAreas for joker evaluation
+'''
+position = "after"
+payload = '''
+table.insert(t, Kino.snackbag)
+table.insert(t, G.kino_offscreen_area)
+'''
+match_indent = true
+times = 1
+
+## Patch generate_card_ui to allow for main_start and main_end in info_queue
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+for _, v in ipairs(info_queue) do
+    generate_card_ui(v, full_UI_table, {is_info_queue = true})
+end
+'''
+position = "at"
+payload = '''
+for _, v in ipairs(info_queue) do
+    generate_card_ui(v, full_UI_table, {is_info_queue = true}, nil, nil, nil, v.main_start, v.main_end)
+end
+'''
+match_indent = true
+times = 1
+
+        # --if pool is empty
+# Add functionality to add legendary jokers to other pools if relevant
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+--if pool is empty
+'''
+position = "before"
+payload = '''
+	if _type == "Joker" then
+		for _, _jokerid in ipairs(Kino.legendaries) do
+			local _joker = SMODS.Centers["j_kino_" .. _jokerid]
+			if _joker then
+				local _garb, rarity_test = _joker:legendary_conditions(self, _joker)
+				rarity_test = 6 - rarity_test
+				if rarity_test == 0 then rarity_test = 1 end
+				if type(comp_rarity) == "number" 
+				and rarity_test == comp_rarity then
+					_pool[#_pool + 1] = "j_kino_" .. _jokerid
+				end
+			end
+		end
+	end
+'''
+match_indent = true
+times = 1
+
+# 
+# Add functionality to add legendary jokers to other pools if relevant
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+--create the pool
+'''
+position = "before"
+payload = '''
+	local comp_rarity = nil
+'''
+match_indent = true
+times = 1
+
+# 
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+local rarity = _rarity or SMODS.poll_rarity("Joker", 'rarity'..G.GAME.round_resets.ante..(_append or ''))
+'''
+position = "after"
+payload = '''
+	comp_rarity = rarity
+'''
+match_indent = true
+times = 1
+
+
+            # -- card_w = G.CARD_W * 0.7,
+# Card Areas
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''G.SPLASH_BACK = Sprite(-30, -6, G.ROOM.T.w+60, G.ROOM.T.h+12, G.ASSET_ATLAS["ui_1"], {x = 2, y = 0})'''
+position = "before"
+payload = '''
+    -- Abduction Mechanics
+    self.kino_abductionarea = CardArea(
+        0,
+        0,
+        self.CARD_W * 4.95,
+        self.CARD_H * 0.95,
+        {
+            card_limit = 999,
+            type = "abduction",
+            highlight_limit = 0
+        }
+    )
+    self.kino_abductionarea.states.visible = false
+    Kino.abduction = G.kino_abductionarea
+
+    -- Confection Mechanics
+    self.kino_snackbag = CardArea(
+        G.consumeables.T.x + 2,
+        G.consumeables.T.y + G.consumeables.T.h + 1,
+        self.CARD_W * 2,
+        self.CARD_H * 0.95,
+        {
+            card_limit = 4,
+            type = 'joker',
+            highlight_limit = 1,
+            card_w = G.CARD_W * 0.1,
+        }
+    )
+    self.kino_snackbag.states.visible = false
+    Kino.snackbag = G.kino_snackbag
+'''
+match_indent = true
+times = 1
+
+# Movie Jokers only functionality
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if v.yes_pool_flag and not G.GAME.pool_flags[v.yes_pool_flag] then add = nil end"
+position = "after"
+payload = '''
+if v.set == 'Joker' and not v.kino_joker and 
+((kino_config and kino_config.movie_jokers_only) or
+G.GAME.modifiers.movie_jokers_only) then add = nil end
+'''
+match_indent = true
+
+# Challenge Logic
+
+# Random Enhancement Assignment
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+        ::continue::
+    end
+end 
+'''
+position = "after"
+payload = '''
+if args.challenge and args.challenge.deck and args.challenge.deck.rand_enhancement then
+    local _type = args.challenge.deck.rand_enhancement.key
+    local _num = args.challenge.deck.rand_enhancement.value
+
+    for i = 1, _num do
+        local _is_set = false
+        while _is_set == false do
+            local _picked_card = pseudorandom_element(card_protos, pseudoseed("challenge"))
+            
+            if _picked_card.e ~= _type then
+                _picked_card.e = _type
+                _is_set = true
+            end
+        end
+    end
+end
+'''
+match_indent = true
+
+# Set random cards in the display
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+    for k, v in ipairs(card_protos) do
+      local _card = Card(0,0, G.CARD_W*0.45, G.CARD_H*0.45, G.P_CARDS[v.s..'_'..v.r], G.P_CENTERS[v.e or 'c_base'])
+      if v.d then _card:set_edition({[v.d] = true}, true, true) end
+      if v.g then _card:set_seal(v.g, true, true) end
+      SUITS[v.s][#SUITS[v.s]+1] = _card
+    end
+'''
+position = "before"
+payload = '''
+if challenge and challenge.deck and challenge.deck.rand_enhancement then
+    local _type = challenge.deck.rand_enhancement.key
+    local _num = challenge.deck.rand_enhancement.value
+
+    for i = 1, _num do
+        local _is_set = false
+        while _is_set == false do
+            local _picked_card = pseudorandom_element(card_protos, pseudoseed("challenge"))
+            
+            if _picked_card.e ~= _type then
+                _picked_card.e = _type
+                _is_set = true
+            end
+        end
+    end
+end
+'''
+match_indent = true
+
+
+### CHALLENGE RULES
+
+## Payout
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+if G.GAME.current_round.discards_left > 0 and G.GAME.modifiers.money_per_discard then
+    add_round_eval_row({dollars = G.GAME.current_round.discards_left*(G.GAME.modifiers.money_per_discard), disp = G.GAME.current_round.discards_left, bonus = true, name='discards', pitch = pitch})
+    pitch = pitch + 0.06
+    dollars = dollars +  G.GAME.current_round.discards_left*(G.GAME.modifiers.money_per_discard)
+end
+'''
+position = "before"
+payload = '''
+if G.GAME.modifiers.kino_yeag and G.GAME.current_round.sci_fi_upgrades_last_round > 0 then
+    add_round_eval_row({dollars = G.GAME.current_round.sci_fi_upgrades_last_round*(G.GAME.modifiers.kino_yeag), disp = G.GAME.current_round.sci_fi_upgrades_last_round, bonus = true, name='kino_sci_fi_payout', pitch = pitch})
+    pitch = pitch + 0.06
+    dollars = dollars +  G.GAME.current_round.sci_fi_upgrades_last_round*(G.GAME.modifiers.kino_yeag)
+end
+'''
+match_indent = true
+
+# Payout Text
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+elseif config.name == 'interest' then
+    table.insert(left_text, {n=G.UIT.T, config={text = num_dollars, scale = 0.8*scale, colour = G.C.MONEY, shadow = true, juice = true}})
+    table.insert(left_text,{n=G.UIT.O, config={object = DynaText({string = {" "..localize{type = 'variable', key = 'interest', vars = {G.GAME.interest_amount, 5, G.GAME.interest_amount*G.GAME.interest_cap/5}}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, pop_in = 0, scale = 0.4*scale, silent = true})}})
+end
+'''
+position = "after"
+payload = '''
+elseif config.name == 'kino_sci_fi_payout' then
+    table.insert(left_text, {n=G.UIT.T, config={text = num_dollars, scale = 0.8*scale, colour = G.C.MONEY, shadow = true, juice = true}})
+    table.insert(left_text,{n=G.UIT.O, config={object = DynaText({string = {" "..localize{type = 'variable', key = 'kino_sci_fi_payout', vars = {G.GAME.modifiers.kino_yeag}}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, pop_in = 0, scale = 0.4*scale, silent = true})}})
+end
+'''
+match_indent = true
+
+# Xenomorph Invasion
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+G.E_MANAGER:add_event(Event({
+    trigger = 'immediate',
+    func = (function()     
+        if G.GAME.modifiers.debuff_played_cards then 
+            for k, v in ipairs(scoring_hand) do v.ability.perma_debuff = true end
+        end
+    return true end)
+    }))
+'''
+position = "after"
+payload = '''
+G.E_MANAGER:add_event(Event({
+    trigger = 'immediate',
+    func = (function()
+        if G.GAME.modifiers.kino_alien then  
+            for i = 1, G.GAME.modifiers.kino_alien do
+                local _card = nil
+                local _found_target = false
+                while not _found_target do
+                    _card = pseudorandom_element(G.deck.cards)
+                    if not _card.debuff then
+                        _found_target = true
+                    end
+                end
+                    
+                SMODS.debuff_card(_card, true, "challenge_alien")
+            end
+        end
+    return true end)
+    }))
+'''
+match_indent = true
+
+# Hand and Discard carryover rules
+            
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+G.GAME.current_round.discards_left = math.max(0, G.GAME.round_resets.discards + G.GAME.round_bonus.discards)
+G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands))
+'''
+position = "at"
+payload = '''
+if not G.GAME.modifiers.carryover_discards then
+    G.GAME.current_round.discards_left = math.max(0, G.GAME.round_resets.discards + G.GAME.round_bonus.discards)
+end
+if not G.GAME.modifiers.carryover_hands then
+    G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands))
+end
+'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+G.GAME.current_round.discards_left = math.max(0, G.GAME.round_resets.discards + G.GAME.round_bonus.discards)
+G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands))
+'''
+position = "at"
+payload = '''
+if not G.GAME.modifiers.carryover_discards then
+    G.GAME.current_round.discards_left = math.max(0, G.GAME.round_resets.discards + G.GAME.round_bonus.discards)
+end
+if not G.GAME.modifiers.carryover_hands then
+    G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands))
+end
+'''
+match_indent = true
+
+
+# Wallstreet 
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+SMODS.calculate_context({using_consumeable = true, consumeable = card, area = card.from_area})
+'''
+position = "after"
+payload = '''
+G.E_MANAGER:add_event(Event({
+    trigger = 'immediate',
+    func = (function()     
+        if G.GAME.modifiers.kino_wallstreet then
+            ease_dollars(-G.GAME.dollars)
+        end
+    return true end)
+    }))
+'''
+match_indent = true
+
+###################
+
+# New Contexts
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = 'for i = 1, G.GAME.shop.joker_max - #G.shop_jokers.cards do'
+position = 'before'
+match_indent = true
+payload = '''
+
+if G.jokers ~= nil then
+    for _, v in ipairs(G.jokers.cards) do
+        v:calculate_joker({kino_enter_shop = true})
+    end
+    for _, v in ipairs(G.consumeables.cards) do
+        v:calculate_joker({kino_enter_shop = true})
+    end
+        for _, v in ipairs(Kino.snackbag.cards) do
+        v:calculate_joker({kino_enter_shop = true})
+    end
+end
+
+'''
+
+### Destroying card count
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+-- TARGET: effects when cards are removed
+'''
+position = "after"
+payload = '''
+
+G.GAME.cards_destroyed = G.GAME.cards_destroyed + (#cards_destroyed or 0)
+
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+-- TARGET: effects after cards destroyed in discard
+'''
+position = "after"
+payload = '''
+
+G.GAME.cards_destroyed = G.GAME.cards_destroyed + (#destroyed_cards or 0)
+
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed_cards })
+'''
+position = "after"
+payload = '''
+
+G.GAME.cards_destroyed = G.GAME.cards_destroyed + (#destroyed_cards or 0)
+
+'''
+match_indent = true
+times = 1
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+scoring_hand = final_scoring_hand
+'''
+position = "after"
+payload = '''
+
+G.GAME.last_played_hand = Kino.get_dummy_codex()
+
+for _, _pcard in ipairs(scoring_hand) do
+    G.GAME.last_played_hand[_] = _pcard
+end
+
+
+'''
+match_indent = true
+times = 1
+
+# Button realigment
+# Code taken almost exactly from Horoscope.toml from the Maximus mod
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+config = {align=
+        ((self.area == G.jokers) or (self.area == G.consumeables)) and "cr" or
+        "bmi"
+    , offset = 
+        ((self.area == G.jokers) or (self.area == G.consumeables)) and {x=x_off - 0.4,y=0} or
+        {x=0,y=0.65},
+    parent =self}
+'''
+position = "at"
+payload = '''
+config = {align=
+        ((self.area == G.jokers) or (self.area == G.consumeables) or (self.area == Kino.snackbag)) and "cr" or
+        "bmi"
+    , offset = 
+        ((self.area == G.jokers) or (self.area == G.consumeables) or (self.area == Kino.snackbag)) and {x=x_off - 0.4,y=0} or
+        {x=0,y=0.65},
+    parent =self}
+'''
+match_indent = true
+
+
+# Add discard checks to make a card not discard when discarded (great phrasing)
+# [[patches]]
+# [patches.pattern]
+# target = "functions/state_events.lua"
+# pattern = '''
+# SMODS.calculate_context({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted, ignore_other_debuff = true}, effects)
+# '''
+# position = "after"
+# payload = '''
+# if G.hand.highlighted[i].ability.cannot_be_discarded then
+#     break
+# end
+# '''
+# match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+for k, v in ipairs(G.playing_cards) do
+        v.ability.forced_selection = nil
+end
+'''
+position = "after"
+payload = '''
+for _index, _pcard in ipairs(G.hand.highlighted) do
+    if _pcard.ability.cannot_be_discarded then
+        table.remove(G.hand.highlighted, _index)
+    end
+end
+'''
+match_indent = true
+
+
+# Add Quest Log UI page
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+tab_definition_function = G.UIDEF.used_vouchers,
+},
+'''
+position = "after"
+payload = '''
+{
+	label = localize('b_questlog'),
+	tab_definition_function = create_UIBox_quest_log
+},
+'''
+match_indent = true
+overwrite = false
+
+# for k, v in ipairs(G.playing_cards) do
+#         v.ability.forced_selection = nil
+# end
+
+
+## Main Menu sprite Additions
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+local replace_card = Card(self.title_top.T.x, self.title_top.T.y, 1.2*G.CARD_W*SC_scale, 1.2*G.CARD_H*SC_scale, G.P_CARDS.S_A, G.P_CENTERS.c_base)
+'''
+position = "after"
+payload = '''
+G.KINO_SPLASH_LOGO = Sprite(0, 0, 
+    13*SC_scale, 
+    13*SC_scale*(G.ASSET_ATLAS["kino_splash_screen"].py/G.ASSET_ATLAS["kino_splash_screen"].px),
+    G.ASSET_ATLAS["kino_splash_screen"], {x=0,y=0})
+
+G.KINO_SPLASH_LOGO:set_alignment({
+    major = G.title_top,
+    instance_type = "NODE",
+    type = 'cm',
+    bond = 'Strong',
+    offset = {x=2.25,y=0.33}
+})
+G.KINO_SPLASH_LOGO:define_draw_steps({{
+        shader = 'dissolve',
+    }})
+
+G.KINO_SPLASH_LOGO.dissolve_colours = {G.C.WHITE, G.C.WHITE}
+G.KINO_SPLASH_LOGO.dissolve = 1   
+'''
+match_indent = true
+overwrite = false
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+ease_value(G.SPLASH_LOGO, 'dissolve', -1, nil, nil, nil, change_context == 'splash' and 2.3 or 0.9)
+'''
+position = "before"
+payload = '''
+ease_value(G.KINO_SPLASH_LOGO, 'dissolve', -1, nil, nil, nil, change_context == 'splash' and 2.3 or 0.9)
+'''
+match_indent = true
+overwrite = false
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+if G.SPLASH_LOGO then
+    love.graphics.push()
+    G.SPLASH_LOGO:translate_container()
+    G.SPLASH_LOGO:draw()
+    love.graphics.pop()
+end
+'''
+position = "before"
+payload = '''
+if G.KINO_SPLASH_LOGO then
+    love.graphics.push()
+    G.KINO_SPLASH_LOGO:translate_container()
+    G.KINO_SPLASH_LOGO:draw()
+    love.graphics.pop()
+end
+'''
+match_indent = true
+overwrite = false
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+if G.SPLASH_LOGO then 
+    G.SPLASH_LOGO.states.visible = true
+    if G.title_top and G.title_top.cards[1] then G.title_top.cards[1].states.visible = true end
+end
+'''
+position = "before"
+payload = '''
+if G.KINO_SPLASH_LOGO then
+    print("test true") 
+    G.KINO_SPLASH_LOGO.states.visible = true
+end
+'''
+match_indent = true
+overwrite = false
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+if G.SPLASH_LOGO then 
+    G.SPLASH_LOGO.states.visible = false
+    if G.title_top and G.title_top.cards[1] then G.title_top.cards[1].states.visible = false end
+end
+'''
+position = "before"
+payload = '''
+if G.KINO_SPLASH_LOGO then
+    print("test false")
+    G.KINO_SPLASH_LOGO.states.visible = false
+end
+'''
+match_indent = true
+overwrite = false
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+if self.SPLASH_LOGO then self.SPLASH_LOGO:remove(); self.SPLASH_LOGO = nil end
+'''
+position = "before"
+payload = '''
+if self.KINO_SPLASH_LOGO then self.KINO_SPLASH_LOGO:remove(); self.KINO_SPLASH_LOGO = nil end
+'''
+match_indent = true
+overwrite = false
+
+
+## ----------- Card Area UI changes ----------
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''
+local card_count = self ~= G.shop_vouchers and {n=G.UIT.R, config={align = self == G.jokers and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={
+    {n=G.UIT.B, config={w = 0.1,h=0.1}},
+    {n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_count', scale = 0.3, colour = G.C.WHITE}},
+    {n=G.UIT.T, config={text = '/', scale = 0.3, colour = G.C.WHITE}},
+    {n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_limit', scale = 0.3, colour = G.C.WHITE}},
+    {n=G.UIT.B, config={w = 0.1,h=0.1}}
+}} or nil
+'''
+position = "after"
+payload = '''
+
+
+if self == G.jokers then
+    card_count = self ~= G.shop_vouchers and {n=G.UIT.R, config={align = self == G.jokers and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={
+        {n=G.UIT.B, config={w = 0.1,h=0.1}},
+        {n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_count', scale = 0.3, colour = G.C.WHITE}},
+        {n=G.UIT.T, config={text = '/', scale = 0.3, colour = G.C.WHITE}},
+        {n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_limit', scale = 0.3, colour = G.C.WHITE}},
+        {n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_limit_UI_text', scale = 0.3, colour = G.C.BLUE}},
+        {n=G.UIT.B, config={w = 0.1,h=0.1}}
+    }} or nil
+end
+'''
+match_indent = true
+overwrite = false

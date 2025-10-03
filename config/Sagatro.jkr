@@ -1,0 +1,6 @@
+return {
+	["Ortagas"] = false,
+	["DisableSagatroItems"] = false,
+	["DisableOtherJokers"] = false,
+	["SagatroMusic"] = false,
+}

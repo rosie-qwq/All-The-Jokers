@@ -1,0 +1,14 @@
+{
+	"id": "7DeadlyDecks",
+	"name": "Seven Deadly Decks",
+	"display_name": "7 Deadly Decks",
+	"author": ["AstroLightz"],
+	"description": "Adds 7 new decks to the game, themed after the 7 Deadly Sins.",
+	"prefix": "7dd",
+	"main_file": "main.lua",
+	"priority": -5,
+	"version": "1.1.0",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-0301a)",
+		"Lovely (>=0.6.0)"]
+}

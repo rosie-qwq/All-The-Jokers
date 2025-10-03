@@ -1,0 +1,47 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = 'if card and card.playing_card then SMODS.drawn_cards[#SMODS.drawn_cards+1] = card end'
+position = "after"
+payload = '''if card and card.playing_card and next(SMODS.find_card("j_entr_jokerinyellow")) then
+                for i, v in pairs(G.jokers.cards) do
+                    if v.config.center.key == "j_entr_jokerinyellow" then
+                        if SMODS.pseudorandom_probability(v, 'kiy', 1, v.ability.extra.odds) then
+                            card.ability.entr_yellow_sign = true
+                        end
+                    end
+                end
+            end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS Cryptid "lib/pointerlib.lua"]'''
+pattern = 'and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit -- and you have room'
+position = "at"
+payload = '''
+and (#G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit or next(SMODS.find_card("j_entr_ruby"))) -- and you have room
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS Cryptid "lib/pointerlib.lua"]'''
+pattern = '''
+	if G.GAME.banned_keys[target] then
+		results[1] = true
+	end
+'''
+position = "at"
+payload = '''
+	if G.GAME.banned_keys[target] and not next(SMODS.find_card("j_entr_ruby")) then
+		results[1] = true
+	end
+'''
+match_indent = true

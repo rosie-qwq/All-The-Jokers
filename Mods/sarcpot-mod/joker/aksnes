@@ -1,0 +1,79 @@
+SMODS.Joker {
+    key = "aksnes",
+    config = {
+        extra = {
+            total_retriggers = 3,
+            retriggers = 1,
+            found_heart = false,
+            found_club = false,
+            found_spade = false
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+        }
+    end,
+    rarity = 2,
+    pos = {
+        x = 0,
+        y = 6
+    },
+    atlas = 'sarcpot_atlas',
+    cost = 6,
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    soul_pos = nil,
+
+    in_pool = function(self, args)
+        return true
+    end,
+    calculate = function(self, card, context)
+
+        if not card.debuff then
+            if context.repetition and context.cardarea == G.play and card.ability.extra.total_retriggers > 0 then
+                if SMODS.has_any_suit(context.other_card)then
+                    card.ability.extra.total_retriggers = card.ability.extra.total_retriggers - 1
+                    return {
+                        message = localize('k_again_ex'),
+                        repetitions = 1,
+                        card = card
+                    }
+
+                elseif context.other_card:is_suit("Hearts") and card.ability.extra.found_heart == false then
+                    card.ability.extra.total_retriggers = card.ability.extra.total_retriggers - 1
+                    card.ability.extra.found_heart = true
+                    return {
+                        message = localize('k_again_ex'),
+                        repetitions = 1,
+                        card = card
+                    }
+                elseif context.other_card:is_suit("Clubs") and card.ability.extra.found_club == false then
+                    card.ability.extra.total_retriggers = card.ability.extra.total_retriggers - 1
+                    card.ability.extra.found_club = true
+                    return {
+                        message = localize('k_again_ex'),
+                        repetitions = 1,
+                        card = card
+                    }
+                elseif context.other_card:is_suit("Spades") and card.ability.extra.found_spade == false then
+                    card.ability.extra.total_retriggers = card.ability.extra.total_retriggers - 1
+                    card.ability.extra.found_spade = true
+                    return {
+                        message = localize('k_again_ex'),
+                        repetitions = 1,
+                        card = card
+                    }
+                end
+            end
+        end
+        if context.after then
+            card.ability.extra.found_heart = false
+            card.ability.extra.found_club = false
+            card.ability.extra.found_spade = false
+            card.ability.extra.total_retriggers = 3
+        end
+    end
+}
+

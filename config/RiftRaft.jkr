@@ -1,0 +1,5 @@
+return {
+	["negative_cards"] = true,
+	["allow_buy"] = false,
+	["void_pack_rate"] = 2,
+}

@@ -1,0 +1,42 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+if G.SPLASH_LOGO then
+    love.graphics.push()
+    G.SPLASH_LOGO:translate_container()
+    G.SPLASH_LOGO:draw()
+    love.graphics.pop()
+end
+'''
+position = "after"
+payload = '''
+if self.SPLASH_MULTIVERSE_LOGO then
+    love.graphics.push()
+    self.SPLASH_MULTIVERSE_LOGO:translate_container()
+    self.SPLASH_MULTIVERSE_LOGO:draw()
+    self.SPLASH_MULTIVERSE_LOGO.T.r = 0.08 * math.sin(G.TIMERS.REAL * 1.152)
+    self.SPLASH_MULTIVERSE_LOGO.T.scale = 1 + 0.03 * math.sin(G.TIMERS.REAL * 1.06)
+    love.graphics.pop()
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+if self.SPLASH_LOGO then self.SPLASH_LOGO:remove(); self.SPLASH_LOGO = nil end
+'''
+position = "after"
+payload = '''
+if self.SPLASH_MULTIVERSE_LOGO then self.SPLASH_MULTIVERSE_LOGO:remove(); self.SPLASH_MULTIVERSE_LOGO = nil end
+'''
+match_indent = true
+times = 1

@@ -1,0 +1,10 @@
+{
+	"id": "ChEx",
+	"name": "Challenger Examples",
+	"display_name": "Challenger Examples",
+	"author": ["Opal","wingedcatgirl"],
+	"description": "Adds some Challenges that use Challenger Deep Rules.",
+	"prefix": "chex",
+	"main_file": "challengerexamples.lua",
+	"version": "1.1.0"
+}
