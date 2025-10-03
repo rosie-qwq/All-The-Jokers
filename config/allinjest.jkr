@@ -1,5 +1,0 @@
-return {
-	["moons_enabled"] = true,
-	["no_copy_neg"] = false,
-	["alter_trypophobia"] = false,
-}

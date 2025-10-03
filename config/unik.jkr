@@ -1,4 +1,0 @@
-return {
-	["unik_legendary_blinds"] = true,
-	["unik_cryptid_nerfs"] = true,
-}

@@ -1,8 +1,0 @@
-return {
-	["Gems_Blinds"] = true,
-	["Gems_Challenges"] = true,
-	["Gems_Vouchers"] = true,
-	["Gems_Jokers"] = true,
-	["Gems_Tags"] = true,
-	["Gems_Decks"] = true,
-}

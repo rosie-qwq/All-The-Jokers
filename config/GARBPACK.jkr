@@ -1,5 +1,0 @@
-return {
-	["on_card_credits"] = true,
-	["fukkireta"] = true,
-	["title"] = true,
-}

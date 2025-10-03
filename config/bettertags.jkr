@@ -1,4 +1,0 @@
-return {
-	["auto_merge_cat_tags"] = false,
-	["ui_location"] = 1,
-}

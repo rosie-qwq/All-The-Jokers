@@ -1,9 +1,0 @@
-return {
-	["left_click"] = false,
-	["disabled_keys"] = {
-		["p_unstb_prem_2"] = true,
-		["p_unstb_prem_jumbo"] = true,
-		["p_unstb_prem_1"] = true,
-		["p_unstb_prem_mega"] = true,
-	},
-}

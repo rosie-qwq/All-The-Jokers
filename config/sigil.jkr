@@ -1,4 +1,0 @@
-return {
-	["chaos"] = false,
-	["no_collection"] = false,
-}

@@ -1,5 +1,0 @@
-return {
-	["allow_hell_of_doot"] = false,
-	["allow_profanity"] = true,
-	["allow_birthday_event"] = true,
-}

@@ -1,5 +1,0 @@
-return {
-	["show_joker_preview"] = true,
-	["wildcard_behaviour"] = 1,
-	["turn_on_crt"] = true,
-}
